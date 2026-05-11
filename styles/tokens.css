@@ -1,0 +1,144 @@
+/* ==========================================================================
+   FUTURE SOLDIER 2030 — DESIGN TOKENS
+   Single source of truth for the system.
+   Reference these via var(--token-name) in components.
+
+   Token naming:
+     --gov-{role}                  semantic surface / ink colors
+     --gov-{role}-{shade}          variations
+     --type-{family|size|weight|tracking|leading}-{slot}
+     --space-{step}                spacing scale (4px-based)
+     --radius-{step}               border-radius scale
+     --shadow-{kind}-{step}        elevation tokens
+     --motion-{duration|easing}    motion tokens
+   ========================================================================== */
+
+:root {
+    /* ── Color · Surfaces (Doctrine A: Civic Plastic) ─────────────────────── */
+    --gov-plastic:        #EAEAEA;   /* Base plastic surface */
+    --gov-plastic-dark:   #D1D1D1;   /* Recessed / pressed surface */
+    --gov-plastic-deep:   #DADADA;   /* Track / shadow well */
+
+    /* ── Color · Surfaces (Doctrine B: Archival Record) ──────────────────── */
+    --gov-manila:         #F4EFE6;   /* Base paper */
+    --gov-manila-dark:    #E6DECC;   /* Folder tab / sidebar */
+    --gov-slate:          #7B8C98;   /* Cool slate backdrop */
+
+    /* ── Color · Ink ──────────────────────────────────────────────────────── */
+    --gov-ink:            #111314;   /* Primary text on plastic */
+    --gov-blue-ink:       #2A4B7C;   /* Primary text on manila */
+    --gov-red-stamp:      #D32F2F;   /* Stamps / margin annotations */
+
+    /* ── Color · Status ───────────────────────────────────────────────────── */
+    --gov-status-green:   #22c55e;   /* Pass / active / nominal */
+    --gov-status-amber:   #f59e0b;   /* Caution / partial */
+    --gov-status-red:     #ef4444;   /* Fail / blocker */
+    --gov-led-glow-green: rgba(34,197,94,0.6);
+
+    /* ── Color · Terminal accent ─────────────────────────────────────────── */
+    --gov-terminal-bg:    #1A1F23;   /* LCD chassis */
+    --gov-terminal-fg:    #6CFF8B;   /* LED phosphor */
+
+    /* ── Typography · Families ───────────────────────────────────────────── */
+    --type-family-display:   'Space Grotesk', system-ui, sans-serif;
+    --type-family-stencil:   'Big Shoulders Stencil Display', Impact, sans-serif;
+    --type-family-serif:     'Redaction 50', Georgia, serif;
+    --type-family-editorial: 'Instrument Serif', Georgia, serif;
+    --type-family-mono:      'VT323', ui-monospace, monospace;
+    --type-family-mono-print:'Geist Mono', 'Courier New', monospace; /* fallback for print */
+
+    /* ── Typography · Scale ──────────────────────────────────────────────── */
+    --type-size-micro:    0.625rem;   /* 10px · micro tag */
+    --type-size-caption:  0.75rem;    /* 12px · caption */
+    --type-size-body:     1rem;       /* 16px · body */
+    --type-size-lead:     1.125rem;   /* 18px · lead paragraph */
+    --type-size-h6:       1.25rem;    /* 20px */
+    --type-size-h5:       1.5rem;     /* 24px */
+    --type-size-h4:       2rem;       /* 32px */
+    --type-size-h3:       2.5rem;     /* 40px */
+    --type-size-h2:       3rem;       /* 48px */
+    --type-size-h1:       4rem;       /* 64px · default hero */
+    --type-size-hero:     6rem;       /* 96px · max hero */
+
+    /* ── Typography · Tracking ───────────────────────────────────────────── */
+    --type-tracking-tight-display: -0.07em;
+    --type-tracking-tight:         -0.02em;
+    --type-tracking-normal:         0em;
+    --type-tracking-wide:           0.1em;
+    --type-tracking-mono-eyebrow:   0.2em;
+    --type-tracking-mono-microtag:  0.25em;
+
+    /* ── Typography · Leading ────────────────────────────────────────────── */
+    --type-leading-tight:    0.95;
+    --type-leading-snug:     1.15;
+    --type-leading-normal:   1.5;
+    --type-leading-relaxed:  1.6;
+
+    /* ── Spacing scale (4px base) ────────────────────────────────────────── */
+    --space-1:  0.25rem;   /* 4px  */
+    --space-2:  0.5rem;    /* 8px  */
+    --space-3:  0.75rem;   /* 12px */
+    --space-4:  1rem;      /* 16px */
+    --space-5:  1.25rem;   /* 20px */
+    --space-6:  1.5rem;    /* 24px */
+    --space-8:  2rem;      /* 32px */
+    --space-10: 2.5rem;    /* 40px */
+    --space-12: 3rem;      /* 48px */
+    --space-16: 4rem;      /* 64px */
+    --space-20: 5rem;      /* 80px */
+
+    /* ── Border radius ───────────────────────────────────────────────────── */
+    --radius-sm:    0.25rem;
+    --radius-md:    0.5rem;
+    --radius-lg:    0.75rem;
+    --radius-xl:    1rem;
+    --radius-2xl:   1.5rem;
+    --radius-pill:  9999px;
+
+    /* ── Elevation · Doctrine A neumorphic shadows ───────────────────────── */
+    --shadow-raised-sm:
+        2px 2px 4px rgba(0,0,0,0.08),
+       -2px -2px 4px rgba(255,255,255,0.7);
+    --shadow-raised-md:
+        4px 4px 8px rgba(0,0,0,0.10),
+       -4px -4px 8px rgba(255,255,255,0.85);
+    --shadow-raised-lg:
+        6px 6px 12px rgba(0,0,0,0.15),
+       -6px -6px 12px rgba(255,255,255,0.9);
+
+    --shadow-debossed-sm:
+        inset 2px 2px 4px rgba(0,0,0,0.10),
+        inset -2px -2px 4px rgba(255,255,255,0.75);
+    --shadow-debossed-md:
+        inset 3px 3px 6px rgba(0,0,0,0.15),
+        inset -3px -3px 6px rgba(255,255,255,0.9);
+    --shadow-debossed-lg:
+        inset 4px 4px 8px rgba(0,0,0,0.12),
+        inset -4px -4px 8px rgba(255,255,255,0.9);
+
+    /* ── LED glow ─────────────────────────────────────────────────────────── */
+    --shadow-led-green:  0 0 6px var(--gov-led-glow-green);
+    --shadow-led-amber:  0 0 6px rgba(245,158,11,0.6);
+    --shadow-led-red:    0 0 6px rgba(239,68,68,0.6);
+
+    /* ── Motion ───────────────────────────────────────────────────────────── */
+    --motion-duration-instant: 100ms;
+    --motion-duration-quick:   150ms;
+    --motion-duration-base:    200ms;
+    --motion-duration-slow:    400ms;
+    --motion-easing-standard:  cubic-bezier(0.4, 0, 0.2, 1);
+    --motion-easing-decel:     cubic-bezier(0, 0, 0.2, 1);
+
+    /* ── Layout ───────────────────────────────────────────────────────────── */
+    --layout-page-max: 72rem;     /* 1152px — matches Tailwind max-w-6xl */
+    --layout-sidebar:  18rem;     /* classification sidebar */
+}
+
+@media (prefers-reduced-motion: reduce) {
+    :root {
+        --motion-duration-instant: 0.01ms;
+        --motion-duration-quick:   0.01ms;
+        --motion-duration-base:    0.01ms;
+        --motion-duration-slow:    0.01ms;
+    }
+}

@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design System Reference · Future Soldier 2030</title>
+    <meta name="description" content="Design system reference for the Future Soldier 2030 doctrine study. Tokens, foundations, and components.">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Big+Shoulders+Stencil+Display:wght@400;700;800;900&family=VT323&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/fontsource/css/redaction-50@latest/index.css" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'gov-slate':       '#7B8C98',
+                        'gov-manila':      '#F4EFE6',
+                        'gov-manila-dark': '#E6DECC',
+                        'gov-ink':         '#111314',
+                        'gov-plastic':     '#EAEAEA',
+                        'gov-plastic-dark':'#D1D1D1',
+                        'gov-blue-ink':    '#2A4B7C',
+                        'gov-red-stamp':   '#D32F2F',
+                    },
+                    fontFamily: {
+                        'mono':      ['"VT323"', 'monospace'],
+                        'display':   ['"Space Grotesk"', 'system-ui', 'sans-serif'],
+                        'stencil':   ['"Big Shoulders Stencil Display"', 'Impact', 'sans-serif'],
+                        'serif':     ['"Redaction 50"', 'Georgia', 'serif'],
+                        'editorial': ['"Instrument Serif"', 'Georgia', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="styles/tokens.css?v=1">
+    <link rel="stylesheet" href="styles/shared.css?v=10">
+    <link rel="stylesheet" href="styles/doctrine-a.css?v=10">
+    <link rel="stylesheet" href="styles/doctrine-b.css?v=10">
+    <link rel="stylesheet" href="styles/print.css?v=10" media="print">
+
+    <style>
+        body { background: #EAEAEA; color: #111314; font-family: 'Space Grotesk', sans-serif; -webkit-font-smoothing: antialiased; }
+
+        /* Documentation-specific styles */
+        .doc-section { padding-top: 4rem; padding-bottom: 4rem; border-bottom: 1px solid rgba(17,19,20,0.08); scroll-margin-top: 6rem; }
+        .doc-eyebrow {
+            font-family: 'VT323', monospace;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: rgba(17,19,20,0.6);
+            margin-bottom: 0.75rem;
+        }
+        .doc-h2 {
+            font-family: 'Big Shoulders Stencil Display', Impact, sans-serif;
+            font-weight: 900;
+            font-size: 3rem;
+            text-transform: uppercase;
+            letter-spacing: -0.03em;
+            line-height: 0.95;
+            color: rgba(17,19,20,0.9);
+        }
+        .doc-body { max-width: 38rem; color: rgba(17,19,20,0.78); line-height: 1.55; }
+        .demo-grid {
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            margin-top: 2rem;
+        }
+        .demo-card {
+            background: #EAEAEA;
+            border-radius: 1rem;
+            box-shadow: 6px 6px 12px rgba(0,0,0,0.10), -6px -6px 12px rgba(255,255,255,0.9);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .demo-stage {
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #EAEAEA;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            position: relative;
+        }
+        .demo-stage.dark { background: #111314; }
+        .demo-stage.manila { background: #F4EFE6; background-image: radial-gradient(#2A4B7C 0.5px, transparent 0.5px); background-size: 8px 8px; }
+        .demo-meta {
+            font-family: 'VT323', monospace;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+        .demo-name { font-weight: 700; color: rgba(17,19,20,0.85); }
+        .demo-token { color: rgba(17,19,20,0.55); }
+        .doc-code {
+            font-family: 'VT323', monospace;
+            font-size: 0.9rem;
+            background: #111314;
+            color: #6CFF8B;
+            padding: 0.4rem 0.6rem;
+            border-radius: 0.25rem;
+            display: inline-block;
+            letter-spacing: 0.05em;
+        }
+        .token-swatch {
+            display: grid;
+            grid-template-columns: 6rem 1fr 1fr;
+            gap: 1rem;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(17,19,20,0.08);
+        }
+        .token-chip {
+            width: 5rem;
+            height: 3.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 3px 3px 6px rgba(0,0,0,0.12), -3px -3px 6px rgba(255,255,255,0.9);
+        }
+        .token-chip.bordered { border: 1px solid rgba(17,19,20,0.15); }
+        .toc {
+            position: sticky;
+            top: 6rem;
+            font-family: 'VT323', monospace;
+            font-size: 0.95rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        .toc a {
+            display: block;
+            padding: 0.35rem 0;
+            color: rgba(17,19,20,0.65);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(17,19,20,0.05);
+        }
+        .toc a:hover { color: #111314; }
+        .toc-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: rgba(17,19,20,0.45);
+            letter-spacing: 0.25em;
+            margin-bottom: 0.5rem;
+            margin-top: 1rem;
+        }
+        .toc-label:first-child { margin-top: 0; }
+    </style>
+</head>
+<body class="min-h-screen pt-12">
+
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <!-- Top bar identical to main page for consistency -->
+    <div class="mode-switcher" role="group" aria-label="Visual doctrine">
+        <span class="opacity-50 mr-4" aria-hidden="true">System Override:</span>
+        <a href="/" class="mode-btn">← Back to Dossier</a>
+        <span class="opacity-50">Design System Reference · v1.0</span>
+    </div>
+
+    <main id="main" tabindex="-1" class="max-w-6xl mx-auto px-4 md:px-8 py-12">
+
+        <!-- Hero -->
+        <header class="border-b-4 border-gov-plastic-dark pb-8 mb-12">
+            <p class="font-mono text-xs uppercase tracking-[0.25em] text-gov-ink/65 font-bold mb-3">Design System · v1.0 · 2026</p>
+            <h1 class="font-stencil text-6xl md:text-8xl font-black uppercase text-gov-ink/90 leading-[0.9] tracking-tight">System Reference</h1>
+            <p class="font-display text-3xl md:text-4xl font-bold uppercase tracking-tight text-gov-ink/70 mt-1">Tokens · Foundations · Components</p>
+            <p class="font-display text-base md:text-lg text-gov-ink/75 mt-5 max-w-2xl leading-relaxed">
+                The implicit design system behind the Future Soldier 2030 dossier, published as an explicit token set, type stack, and component catalogue. Two doctrines — <span class="font-bold">Civic Plastic</span> (neumorphic hardware) and <span class="font-bold">Archival Record</span> (manila + ink) — share foundations and split on display type.
+            </p>
+        </header>
+
+        <div class="grid lg:grid-cols-[14rem_1fr] gap-12">
+
+            <!-- Table of Contents -->
+            <aside class="toc">
+                <div class="toc-label">Foundations</div>
+                <a href="#colors">Color</a>
+                <a href="#typography">Typography</a>
+                <a href="#spacing">Spacing</a>
+                <a href="#radii">Radii</a>
+                <a href="#shadows">Elevation</a>
+
+                <div class="toc-label">Components · Plastic</div>
+                <a href="#stat-tile">Stat Tile</a>
+                <a href="#spec-card">Spec Card</a>
+                <a href="#gauge">Gauge</a>
+                <a href="#hardware-switch">Hardware Switch</a>
+                <a href="#toggle-switch">Toggle Switch</a>
+                <a href="#large-dial">Dial</a>
+                <a href="#counter">Counter Display</a>
+                <a href="#stamped-table">Stamped Table</a>
+                <a href="#heatmap">Heatmap</a>
+                <a href="#status-ticker">Status Ticker</a>
+
+                <div class="toc-label">Components · Manila</div>
+                <a href="#folder-tab">Folder Tab</a>
+                <a href="#classification-sidebar">Classification</a>
+                <a href="#invoice-table">Invoice Table</a>
+                <a href="#signature-block">Signature Block</a>
+                <a href="#barcode-row">Barcode Row</a>
+                <a href="#photo-card">Photo Card</a>
+                <a href="#margin-note">Margin Note</a>
+                <a href="#stamp">Stamp</a>
+            </aside>
+
+            <div>
+
+                <!-- Doctrines -->
+                <section class="doc-section" id="doctrines">
+                    <p class="doc-eyebrow">Doctrines</p>
+                    <h2 class="doc-h2">Two surfaces, one system</h2>
+                    <p class="doc-body mt-4">
+                        The system splits on <em class="font-editorial italic text-2xl">material logic</em>. Doctrine A is smooth molded plastic — neumorphic hardware. Doctrine B is paper and ink — archival manila. They share tokens (color, spacing, monospace) and split on display type.
+                    </p>
+
+                    <div class="grid md:grid-cols-2 gap-6 mt-8">
+                        <div class="raised-panel rounded-2xl p-8">
+                            <div class="font-mono text-xs uppercase tracking-widest text-gov-ink/60 font-bold mb-2">Doctrine A</div>
+                            <div class="font-stencil text-4xl font-black uppercase text-gov-ink/85 leading-none tracking-tight">Civic Plastic</div>
+                            <div class="font-display text-sm text-gov-ink/70 mt-4 leading-relaxed">
+                                Smooth ABS/PC surface · neumorphic shadows · stenciled industrial display · pixel-CRT mono. Reads as molded equipment.
+                            </div>
+                            <div class="mt-4 flex gap-2 font-mono text-xs">
+                                <span class="px-2 py-1 bg-gov-plastic-dark rounded text-gov-ink/75">Display: Stencil</span>
+                                <span class="px-2 py-1 bg-gov-plastic-dark rounded text-gov-ink/75">Surface: #EAEAEA</span>
+                            </div>
+                        </div>
+                        <div class="rounded-2xl p-8" style="background:#F4EFE6; background-image:radial-gradient(#2A4B7C 0.5px, transparent 0.5px); background-size:8px 8px; border:2px solid #2A4B7C;">
+                            <div class="font-mono text-xs uppercase tracking-widest text-gov-blue-ink/65 font-bold mb-2">Doctrine B</div>
+                            <div class="font-serif text-4xl font-bold text-gov-blue-ink leading-none tracking-tight">Archival Record</div>
+                            <div class="font-display text-sm text-gov-blue-ink/75 mt-4 leading-relaxed">
+                                Manila paper · blue ink · photocopied newsprint serif · pixel-CRT mono. Reads as declassified document.
+                            </div>
+                            <div class="mt-4 flex gap-2 font-mono text-xs">
+                                <span class="px-2 py-1 rounded" style="background:#E6DECC; color:#2A4B7C;">Display: Redaction</span>
+                                <span class="px-2 py-1 rounded" style="background:#E6DECC; color:#2A4B7C;">Surface: #F4EFE6</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Color -->
+                <section class="doc-section" id="colors">
+                    <p class="doc-eyebrow">01 · Foundations</p>
+                    <h2 class="doc-h2">Color tokens</h2>
+                    <p class="doc-body mt-4">Surfaces, ink, status, and accent. Reference as CSS variables from <span class="doc-code">tokens.css</span>.</p>
+                    <div class="mt-8 grid md:grid-cols-2 gap-x-12">
+                        <div>
+                            <div class="font-mono text-xs uppercase tracking-widest text-gov-ink/55 font-bold mb-3">Surfaces · Plastic</div>
+                            <div class="token-swatch"><div class="token-chip" style="background:#EAEAEA"></div><div><div class="demo-name">Plastic</div><div class="demo-token font-mono text-xs">--gov-plastic</div></div><div class="font-mono text-xs text-gov-ink/65">#EAEAEA</div></div>
+                            <div class="token-swatch"><div class="token-chip" style="background:#D1D1D1"></div><div><div class="demo-name">Plastic Dark</div><div class="demo-token font-mono text-xs">--gov-plastic-dark</div></div><div class="font-mono text-xs text-gov-ink/65">#D1D1D1</div></div>
+                            <div class="token-swatch"><div class="token-chip" style="background:#DADADA"></div><div><div class="demo-name">Plastic Deep</div><div class="demo-token font-mono text-xs">--gov-plastic-deep</div></div><div class="font-mono text-xs text-gov-ink/65">#DADADA</div></div>
+
+                            <div class="font-mono text-xs uppercase tracking-widest text-gov-ink/55 font-bold mb-3 mt-8">Surfaces · Manila</div>
+                            <div class="token-swatch"><div class="token-chip bordered" style="background:#F4EFE6"></div><div><div class="demo-name">Manila</div><div class="demo-token font-mono text-xs">--gov-manila</div></div><div class="font-mono text-xs text-gov-ink/65">#F4EFE6</div></div>
+                            <div class="token-swatch"><div class="token-chip bordered" style="background:#E6DECC"></div><div><div class="demo-name">Manila Dark</div><div class="demo-token font-mono text-xs">--gov-manila-dark</div></div><div class="font-mono text-xs text-gov-ink/65">#E6DECC</div></div>
+                            <div class="token-swatch"><div class="token-chip" style="background:#7B8C98"></div><div><div class="demo-name">Slate</div><div class="demo-token font-mono text-xs">--gov-slate</div></div><div class="font-mono text-xs text-gov-ink/65">#7B8C98</div></div>
+                        </div>
+                        <div>
+                            <div class="font-mono text-xs uppercase tracking-widest text-gov-ink/55 font-bold mb-3">Ink</div>
+                            <div class="token-swatch"><div class="token-chip" style="background:#111314"></div><div><div class="demo-name">Ink</div><div class="demo-token font-mono text-xs">--gov-ink</div></div><div class="font-mono text-xs text-gov-ink/65">#111314</div></div>
+                            <div class="token-swatch"><div class="token-chip" style="background:#2A4B7C"></div><div><div class="demo-name">Blue Ink</div><div class="demo-token font-mono text-xs">--gov-blue-ink</div></div><div class="font-mono text-xs text-gov-ink/65">#2A4B7C</div></div>
+                            <div class="token-swatch"><div class="token-chip" style="background:#D32F2F"></div><div><div class="demo-name">Red Stamp</div><div class="demo-token font-mono text-xs">--gov-red-stamp</div></div><div class="font-mono text-xs text-gov-ink/65">#D32F2F</div></div>
+
+                            <div class="font-mono text-xs uppercase tracking-widest text-gov-ink/55 font-bold mb-3 mt-8">Status</div>
+                            <div class="token-swatch"><div class="token-chip" style="background:#22c55e; box-shadow:0 0 8px rgba(34,197,94,0.4)"></div><div><div class="demo-name">Green</div><div class="demo-token font-mono text-xs">--gov-status-green</div></div><div class="font-mono text-xs text-gov-ink/65">#22c55e</div></div>
+                            <div class="token-swatch"><div class="token-chip" style="background:#f59e0b; box-shadow:0 0 8px rgba(245,158,11,0.4)"></div><div><div class="demo-name">Amber</div><div class="demo-token font-mono text-xs">--gov-status-amber</div></div><div class="font-mono text-xs text-gov-ink/65">#f59e0b</div></div>
+                            <div class="token-swatch"><div class="token-chip" style="background:#ef4444; box-shadow:0 0 8px rgba(239,68,68,0.4)"></div><div><div class="demo-name">Red</div><div class="demo-token font-mono text-xs">--gov-status-red</div></div><div class="font-mono text-xs text-gov-ink/65">#ef4444</div></div>
+
+                            <div class="font-mono text-xs uppercase tracking-widest text-gov-ink/55 font-bold mb-3 mt-8">Terminal</div>
+                            <div class="token-swatch"><div class="token-chip" style="background:#1A1F23"></div><div><div class="demo-name">Terminal BG</div><div class="demo-token font-mono text-xs">--gov-terminal-bg</div></div><div class="font-mono text-xs text-gov-ink/65">#1A1F23</div></div>
+                            <div class="token-swatch"><div class="token-chip" style="background:#6CFF8B; box-shadow:0 0 8px rgba(108,255,139,0.5)"></div><div><div class="demo-name">Terminal FG</div><div class="demo-token font-mono text-xs">--gov-terminal-fg</div></div><div class="font-mono text-xs text-gov-ink/65">#6CFF8B</div></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Typography -->
+                <section class="doc-section" id="typography">
+                    <p class="doc-eyebrow">02 · Foundations</p>
+                    <h2 class="doc-h2">Typography</h2>
+                    <p class="doc-body mt-4">Five families. Use <span class="font-bold">stencil</span> for plastic display, <span class="font-bold">serif</span> (Redaction) for paper display, <span class="font-bold">display</span> (Space Grotesk) for body and mid-size headings, <span class="font-bold">mono</span> (VT323) for labels and telemetry, <span class="font-bold">editorial</span> (Instrument Serif italic) for one pull-quote moment per page.</p>
+
+                    <div class="grid md:grid-cols-2 gap-8 mt-8">
+                        <div class="raised-panel rounded-xl p-6">
+                            <div class="font-mono text-xs uppercase tracking-widest text-gov-ink/55 font-bold mb-3">Display · Stencil · Doctrine A</div>
+                            <div class="font-stencil font-black uppercase text-gov-ink/90 leading-none tracking-tight text-5xl">Aa 48</div>
+                            <div class="demo-token font-mono text-xs mt-3">--type-family-stencil · Big Shoulders Stencil Display</div>
+                        </div>
+                        <div class="raised-panel rounded-xl p-6">
+                            <div class="font-mono text-xs uppercase tracking-widest text-gov-ink/55 font-bold mb-3">Display · Serif · Doctrine B</div>
+                            <div class="font-serif font-bold text-gov-blue-ink leading-none text-5xl">Aa 48</div>
+                            <div class="demo-token font-mono text-xs mt-3">--type-family-serif · Redaction 50</div>
+                        </div>
+                        <div class="raised-panel rounded-xl p-6">
+                            <div class="font-mono text-xs uppercase tracking-widest text-gov-ink/55 font-bold mb-3">UI Display · Body</div>
+                            <div class="font-display font-bold text-gov-ink/85 leading-none text-5xl">Aa 48</div>
+                            <div class="demo-token font-mono text-xs mt-3">--type-family-display · Space Grotesk</div>
+                        </div>
+                        <div class="raised-panel rounded-xl p-6">
+                            <div class="font-mono text-xs uppercase tracking-widest text-gov-ink/55 font-bold mb-3">Mono · Telemetry · Stamps</div>
+                            <div class="font-mono text-gov-ink/85 leading-none text-5xl">Aa 48</div>
+                            <div class="demo-token font-mono text-xs mt-3">--type-family-mono · VT323</div>
+                        </div>
+                        <div class="raised-panel rounded-xl p-6 md:col-span-2">
+                            <div class="font-mono text-xs uppercase tracking-widest text-gov-ink/55 font-bold mb-3">Editorial · One pull-quote per page</div>
+                            <div class="font-editorial italic text-gov-ink/85 text-3xl leading-tight">"Reads as a real declassified document — through ironic forensic-historical authenticity."</div>
+                            <div class="demo-token font-mono text-xs mt-3">--type-family-editorial · Instrument Serif</div>
+                        </div>
+                    </div>
+
+                    <p class="font-mono text-xs uppercase tracking-widest text-gov-ink/55 font-bold mb-3 mt-10">Scale</p>
+                    <div class="raised-panel rounded-xl p-6 space-y-3 font-display text-gov-ink/85">
+                        <div class="flex items-baseline gap-4"><span class="demo-token font-mono text-xs w-16">96px</span><span class="text-[6rem] leading-none font-bold tracking-tight">Hero</span><span class="demo-token font-mono text-xs">--type-size-hero</span></div>
+                        <div class="flex items-baseline gap-4"><span class="demo-token font-mono text-xs w-16">64px</span><span class="text-[4rem] leading-none font-bold tracking-tight">H1</span><span class="demo-token font-mono text-xs">--type-size-h1</span></div>
+                        <div class="flex items-baseline gap-4"><span class="demo-token font-mono text-xs w-16">48px</span><span class="text-5xl leading-none font-bold">H2</span><span class="demo-token font-mono text-xs">--type-size-h2</span></div>
+                        <div class="flex items-baseline gap-4"><span class="demo-token font-mono text-xs w-16">32px</span><span class="text-3xl leading-none font-bold">H4</span><span class="demo-token font-mono text-xs">--type-size-h4</span></div>
+                        <div class="flex items-baseline gap-4"><span class="demo-token font-mono text-xs w-16">18px</span><span class="text-lg leading-snug">Lead paragraph for hero subhead and intro copy.</span><span class="demo-token font-mono text-xs">--type-size-lead</span></div>
+                        <div class="flex items-baseline gap-4"><span class="demo-token font-mono text-xs w-16">16px</span><span class="text-base">Body text. Default reading size.</span><span class="demo-token font-mono text-xs">--type-size-body</span></div>
+                        <div class="flex items-baseline gap-4"><span class="demo-token font-mono text-xs w-16">12px</span><span class="text-xs font-mono uppercase tracking-widest text-gov-ink/65">Caption · Mono label</span><span class="demo-token font-mono text-xs">--type-size-caption</span></div>
+                    </div>
+                </section>
+
+                <!-- Spacing -->
+                <section class="doc-section" id="spacing">
+                    <p class="doc-eyebrow">03 · Foundations</p>
+                    <h2 class="doc-h2">Spacing scale</h2>
+                    <p class="doc-body mt-4">4px-based scale. Use named tokens — never raw px values.</p>
+                    <div class="raised-panel rounded-xl p-6 mt-8 space-y-2">
+                        <div class="flex items-center gap-4"><span class="font-mono text-xs w-32 text-gov-ink/65">--space-1 · 4px</span><div class="h-3 bg-gov-ink/85" style="width:4px"></div></div>
+                        <div class="flex items-center gap-4"><span class="font-mono text-xs w-32 text-gov-ink/65">--space-2 · 8px</span><div class="h-3 bg-gov-ink/85" style="width:8px"></div></div>
+                        <div class="flex items-center gap-4"><span class="font-mono text-xs w-32 text-gov-ink/65">--space-4 · 16px</span><div class="h-3 bg-gov-ink/85" style="width:16px"></div></div>
+                        <div class="flex items-center gap-4"><span class="font-mono text-xs w-32 text-gov-ink/65">--space-6 · 24px</span><div class="h-3 bg-gov-ink/85" style="width:24px"></div></div>
+                        <div class="flex items-center gap-4"><span class="font-mono text-xs w-32 text-gov-ink/65">--space-8 · 32px</span><div class="h-3 bg-gov-ink/85" style="width:32px"></div></div>
+                        <div class="flex items-center gap-4"><span class="font-mono text-xs w-32 text-gov-ink/65">--space-12 · 48px</span><div class="h-3 bg-gov-ink/85" style="width:48px"></div></div>
+                        <div class="flex items-center gap-4"><span class="font-mono text-xs w-32 text-gov-ink/65">--space-16 · 64px</span><div class="h-3 bg-gov-ink/85" style="width:64px"></div></div>
+                        <div class="flex items-center gap-4"><span class="font-mono text-xs w-32 text-gov-ink/65">--space-20 · 80px</span><div class="h-3 bg-gov-ink/85" style="width:80px"></div></div>
+                    </div>
+                </section>
+
+                <!-- Radii -->
+                <section class="doc-section" id="radii">
+                    <p class="doc-eyebrow">04 · Foundations</p>
+                    <h2 class="doc-h2">Border radii</h2>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-8">
+                        <div class="demo-card"><div class="demo-stage"><div style="width:5rem; height:5rem; background:#EAEAEA; border-radius:0.25rem; box-shadow:4px 4px 8px rgba(0,0,0,0.12), -4px -4px 8px rgba(255,255,255,0.85);"></div></div><div class="demo-meta"><div class="demo-name">SM</div><div class="demo-token">--radius-sm · 4px</div></div></div>
+                        <div class="demo-card"><div class="demo-stage"><div style="width:5rem; height:5rem; background:#EAEAEA; border-radius:0.5rem; box-shadow:4px 4px 8px rgba(0,0,0,0.12), -4px -4px 8px rgba(255,255,255,0.85);"></div></div><div class="demo-meta"><div class="demo-name">MD</div><div class="demo-token">--radius-md · 8px</div></div></div>
+                        <div class="demo-card"><div class="demo-stage"><div style="width:5rem; height:5rem; background:#EAEAEA; border-radius:0.75rem; box-shadow:4px 4px 8px rgba(0,0,0,0.12), -4px -4px 8px rgba(255,255,255,0.85);"></div></div><div class="demo-meta"><div class="demo-name">LG</div><div class="demo-token">--radius-lg · 12px</div></div></div>
+                        <div class="demo-card"><div class="demo-stage"><div style="width:5rem; height:5rem; background:#EAEAEA; border-radius:1rem; box-shadow:4px 4px 8px rgba(0,0,0,0.12), -4px -4px 8px rgba(255,255,255,0.85);"></div></div><div class="demo-meta"><div class="demo-name">XL</div><div class="demo-token">--radius-xl · 16px</div></div></div>
+                        <div class="demo-card"><div class="demo-stage"><div style="width:5rem; height:5rem; background:#EAEAEA; border-radius:1.5rem; box-shadow:4px 4px 8px rgba(0,0,0,0.12), -4px -4px 8px rgba(255,255,255,0.85);"></div></div><div class="demo-meta"><div class="demo-name">2XL</div><div class="demo-token">--radius-2xl · 24px</div></div></div>
+                        <div class="demo-card"><div class="demo-stage"><div style="width:5rem; height:5rem; background:#EAEAEA; border-radius:9999px; box-shadow:4px 4px 8px rgba(0,0,0,0.12), -4px -4px 8px rgba(255,255,255,0.85);"></div></div><div class="demo-meta"><div class="demo-name">PILL</div><div class="demo-token">--radius-pill</div></div></div>
+                    </div>
+                </section>
+
+                <!-- Shadows -->
+                <section class="doc-section" id="shadows">
+                    <p class="doc-eyebrow">05 · Foundations</p>
+                    <h2 class="doc-h2">Elevation</h2>
+                    <p class="doc-body mt-4">Neumorphic shadow pairs — light from top-left, shadow bottom-right. Use raised for active surfaces, debossed for recessed wells.</p>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-8">
+                        <div class="demo-card"><div class="demo-stage"><div style="width:5rem; height:5rem; background:#EAEAEA; border-radius:0.75rem; box-shadow:2px 2px 4px rgba(0,0,0,0.08), -2px -2px 4px rgba(255,255,255,0.7);"></div></div><div class="demo-meta"><div class="demo-name">Raised SM</div><div class="demo-token">.raised-panel (sm)</div></div></div>
+                        <div class="demo-card"><div class="demo-stage"><div style="width:5rem; height:5rem; background:#EAEAEA; border-radius:0.75rem; box-shadow:4px 4px 8px rgba(0,0,0,0.10), -4px -4px 8px rgba(255,255,255,0.85);"></div></div><div class="demo-meta"><div class="demo-name">Raised MD</div><div class="demo-token">.raised-panel (md)</div></div></div>
+                        <div class="demo-card"><div class="demo-stage"><div style="width:5rem; height:5rem; background:#EAEAEA; border-radius:0.75rem; box-shadow:6px 6px 12px rgba(0,0,0,0.15), -6px -6px 12px rgba(255,255,255,0.9);"></div></div><div class="demo-meta"><div class="demo-name">Raised LG</div><div class="demo-token">.raised-panel</div></div></div>
+                        <div class="demo-card"><div class="demo-stage"><div style="width:5rem; height:5rem; background:#EAEAEA; border-radius:0.75rem; box-shadow:inset 2px 2px 4px rgba(0,0,0,0.10), inset -2px -2px 4px rgba(255,255,255,0.75);"></div></div><div class="demo-meta"><div class="demo-name">Debossed SM</div><div class="demo-token">.stamped-cell</div></div></div>
+                        <div class="demo-card"><div class="demo-stage"><div style="width:5rem; height:5rem; background:#D1D1D1; border-radius:0.75rem; box-shadow:inset 3px 3px 6px rgba(0,0,0,0.15), inset -3px -3px 6px rgba(255,255,255,0.9);"></div></div><div class="demo-meta"><div class="demo-name">Debossed MD</div><div class="demo-token">.hardware-switch[selected]</div></div></div>
+                        <div class="demo-card"><div class="demo-stage"><div style="width:5rem; height:5rem; background:#EAEAEA; border-radius:0.75rem; box-shadow:inset 4px 4px 8px rgba(0,0,0,0.12), inset -4px -4px 8px rgba(255,255,255,0.9);"></div></div><div class="demo-meta"><div class="demo-name">Debossed LG</div><div class="demo-token">.debossed-panel</div></div></div>
+                    </div>
+                </section>
+
+                <!-- ─── COMPONENTS ─── -->
+
+                <section class="doc-section" id="stat-tile">
+                    <p class="doc-eyebrow">Component · Plastic</p>
+                    <h2 class="doc-h2">Stat tile</h2>
+                    <p class="doc-body mt-4">Raised neumorphic tile with a tabular-numeric headline and mono caption. Use for KPI metrics. Numerals are tabular so columns align.</p>
+                    <div class="demo-grid">
+                        <div class="stat-tile">
+                            <div class="num">27</div>
+                            <div class="lbl">Graph Nodes</div>
+                        </div>
+                        <div class="demo-card">
+                            <div class="demo-meta"><div class="demo-name">.stat-tile</div><div class="demo-token">stat-tile .num · .lbl</div></div>
+                            <div class="font-display text-sm text-gov-ink/70">Use for dataset counts, KPI metrics, framework parameters. Place 3–5 in a row.</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="doc-section" id="spec-card">
+                    <p class="doc-eyebrow">Component · Plastic</p>
+                    <h2 class="doc-h2">Spec card</h2>
+                    <p class="doc-body mt-4">Domain / capability specimen card. Mono code, display title, bulleted technologies, LED dot, and a TRL gauge bar. Layout matches the system architecture's <em class="font-editorial italic text-2xl">technical readiness level</em> framing.</p>
+                    <div class="demo-grid">
+                        <article class="spec-card">
+                            <div class="flex items-start justify-between">
+                                <div>
+                                    <div class="code">DOM-HPT</div>
+                                    <h3 class="title">Human Performance</h3>
+                                </div>
+                                <span class="led-dot green" aria-hidden="true"></span>
+                            </div>
+                            <ul>
+                                <li>Personal Intelligent Agent</li>
+                                <li>VR &amp; augmented reality</li>
+                                <li>Nootropics &amp; prosthetics</li>
+                            </ul>
+                            <div class="gauge"><span>TRL 6</span><div class="gauge-track"><div class="gauge-fill" style="width:72%"></div></div></div>
+                        </article>
+                        <div class="demo-card">
+                            <div class="demo-meta"><div class="demo-name">.spec-card</div><div class="demo-token">spec-card · .code .title ul .gauge .led-dot</div></div>
+                            <div class="font-display text-sm text-gov-ink/70">LED color follows status. Gauge fill supports <span class="font-mono text-xs">.gauge-fill.amber</span> and <span class="font-mono text-xs">.gauge-fill.red</span> for caution / blocker states.</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="doc-section" id="gauge">
+                    <p class="doc-eyebrow">Component · Plastic</p>
+                    <h2 class="doc-h2">Gauge bar</h2>
+                    <p class="doc-body mt-4">Debossed track with raised gradient fill. Use for readiness, progress, or any 0–100 value.</p>
+                    <div class="raised-panel rounded-xl p-6 mt-8 space-y-4">
+                        <div class="gauge"><span>TRL 6 · Green</span><div class="gauge-track"><div class="gauge-fill" style="width:72%"></div></div></div>
+                        <div class="gauge"><span>TRL 4 · Amber</span><div class="gauge-track"><div class="gauge-fill amber" style="width:48%"></div></div></div>
+                        <div class="gauge"><span>TRL 2 · Red</span><div class="gauge-track"><div class="gauge-fill red" style="width:25%"></div></div></div>
+                    </div>
+                </section>
+
+                <section class="doc-section" id="hardware-switch">
+                    <p class="doc-eyebrow">Component · Plastic</p>
+                    <h2 class="doc-h2">Hardware switch (tab)</h2>
+                    <p class="doc-body mt-4">A button that visually depresses when active. Indicator LED turns green. Full WAI-ARIA <span class="font-mono text-xs">role="tab"</span> + arrow-key navigation built into <span class="font-mono text-xs">tabs.js</span>.</p>
+                    <div class="raised-panel p-4 rounded-xl flex gap-4 overflow-x-auto no-select mt-8">
+                        <button type="button" class="tab-btn-a hardware-switch px-6 py-4 rounded-lg font-mono font-bold text-sm tracking-widest uppercase flex flex-col items-center min-w-[140px]" aria-selected="true">
+                            <span class="indicator" aria-hidden="true"></span>
+                            <span>01 Active</span>
+                            <span class="block text-[10px] tracking-[0.15em] text-gov-ink/60 mt-1 normal-case font-normal">Pressed state</span>
+                        </button>
+                        <button type="button" class="tab-btn-a hardware-switch px-6 py-4 rounded-lg font-mono font-bold text-sm tracking-widest uppercase flex flex-col items-center min-w-[140px]" aria-selected="false">
+                            <span class="indicator" aria-hidden="true"></span>
+                            <span>02 Inactive</span>
+                            <span class="block text-[10px] tracking-[0.15em] text-gov-ink/60 mt-1 normal-case font-normal">Default</span>
+                        </button>
+                    </div>
+                </section>
+
+                <section class="doc-section" id="toggle-switch">
+                    <p class="doc-eyebrow">Component · Plastic</p>
+                    <h2 class="doc-h2">Toggle switch</h2>
+                    <p class="doc-body mt-4">Rocker-style on/off control. Use for boolean settings where the user is committing a state, not picking an option.</p>
+                    <div class="raised-panel p-6 rounded-xl flex gap-8 mt-8">
+                        <div class="flex flex-col items-center"><div class="toggle-switch" role="switch" aria-checked="true"><div class="knob"></div></div><div class="control-label">On</div></div>
+                        <div class="flex flex-col items-center"><div class="toggle-switch" role="switch" aria-checked="false"><div class="knob"></div></div><div class="control-label">Off</div></div>
+                    </div>
+                </section>
+
+                <section class="doc-section" id="large-dial">
+                    <p class="doc-eyebrow">Component · Plastic</p>
+                    <h2 class="doc-h2">Dial</h2>
+                    <p class="doc-body mt-4">Rotary indicator with a metallic indicator line. Set rotation via the <span class="font-mono text-xs">--dial-angle</span> custom property.</p>
+                    <div class="raised-panel p-6 rounded-xl flex gap-8 mt-8">
+                        <div class="flex flex-col items-center"><div class="large-dial" style="--dial-angle: -45deg"></div><div class="control-label">-4dB</div></div>
+                        <div class="flex flex-col items-center"><div class="large-dial" style="--dial-angle: 25deg"></div><div class="control-label">+1dB</div></div>
+                        <div class="flex flex-col items-center"><div class="large-dial" style="--dial-angle: 80deg"></div><div class="control-label">+6dB</div></div>
+                    </div>
+                </section>
+
+                <section class="doc-section" id="counter">
+                    <p class="doc-eyebrow">Component · Plastic</p>
+                    <h2 class="doc-h2">Counter display</h2>
+                    <p class="doc-body mt-4">LCD-style readout. Dark chassis, phosphor-green digits, inset bezel. Tabular numerals built in.</p>
+                    <div class="raised-panel p-6 rounded-xl flex gap-4 mt-8">
+                        <div class="flex flex-col items-center"><div class="counter-display">07.31</div><div class="control-label">Domains · Edges</div></div>
+                        <div class="flex flex-col items-center"><div class="counter-display">02:09</div><div class="control-label">Datum · 2009</div></div>
+                    </div>
+                </section>
+
+                <section class="doc-section" id="stamped-table">
+                    <p class="doc-eyebrow">Component · Plastic</p>
+                    <h2 class="doc-h2">Stamped table</h2>
+                    <p class="doc-body mt-4">Tabular data where each cell is its own debossed well. Use for structured framework data — IDs, descriptions, status.</p>
+                    <div class="overflow-x-auto mt-8">
+                        <table class="stamped-table w-full text-left font-mono">
+                            <thead>
+                                <tr class="font-bold uppercase text-xs tracking-widest text-gov-ink/55">
+                                    <th class="stamped-header w-1/4 rounded-tl-lg">ID</th>
+                                    <th class="stamped-header w-1/2">Description</th>
+                                    <th class="stamped-header w-1/4 rounded-tr-lg text-right">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-sm font-semibold text-gov-ink/85">
+                                <tr><td class="stamped-cell">SPEC-01</td><td class="stamped-cell">First row example.</td><td class="stamped-cell text-right text-green-600">PASS</td></tr>
+                                <tr><td class="stamped-cell">SPEC-02</td><td class="stamped-cell">Second row example.</td><td class="stamped-cell text-right text-green-600">PASS</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section class="doc-section" id="heatmap">
+                    <p class="doc-eyebrow">Component · Plastic</p>
+                    <h2 class="doc-h2">Heatmap</h2>
+                    <p class="doc-body mt-4">N×N intensity matrix. Four steps: h0 (none) through h3 (high). Semantic <span class="font-mono text-xs">&lt;table&gt;</span> with row/col headers — accessible to screen readers.</p>
+                    <table class="heatmap mt-8" style="max-width:32rem">
+                        <thead>
+                            <tr>
+                                <td class="hcell hhead" aria-hidden="true">·</td>
+                                <th scope="col" class="hcell hhead">A</th>
+                                <th scope="col" class="hcell hhead">B</th>
+                                <th scope="col" class="hcell hhead">C</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><th scope="row" class="hcell hrow">A</th><td class="hcell h0">·</td><td class="hcell h1">1</td><td class="hcell h3">3</td></tr>
+                            <tr><th scope="row" class="hcell hrow">B</th><td class="hcell h1">1</td><td class="hcell h0">·</td><td class="hcell h2">2</td></tr>
+                            <tr><th scope="row" class="hcell hrow">C</th><td class="hcell h3">3</td><td class="hcell h2">2</td><td class="hcell h0">·</td></tr>
+                        </tbody>
+                    </table>
+                </section>
+
+                <section class="doc-section" id="status-ticker">
+                    <p class="doc-eyebrow">Component · Plastic</p>
+                    <h2 class="doc-h2">Status ticker</h2>
+                    <p class="doc-body mt-4">Inverted-dark telemetry strip with pulsing LIVE indicator and scrolling marquee. Respects <span class="font-mono text-xs">prefers-reduced-motion</span>: track freezes, LED stops pulsing.</p>
+                    <div class="status-ticker mt-8 rounded-md overflow-hidden">
+                        <span class="live">Live</span>
+                        <div class="marquee">
+                            <div class="track">Field 1<span class="sep">·</span>Field 2<span class="sep">·</span>Field 3<span class="sep">·</span>Field 4<span class="sep">·</span>Field 5<span class="sep">·</span>Field 6</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Manila components -->
+
+                <section class="doc-section" id="folder-tab">
+                    <p class="doc-eyebrow">Component · Manila</p>
+                    <h2 class="doc-h2">Folder tab</h2>
+                    <p class="doc-body mt-4">Manila folder file-divider tab. Active tab depresses 2px and removes its top margin to merge with the folder body.</p>
+                    <div class="manila p-4" style="background:#7B8C98; padding:1rem 1rem 0 1rem;">
+                        <div class="flex items-end px-4 gap-2" role="tablist">
+                            <button type="button" class="folder-tab" aria-selected="true">Active Tab</button>
+                            <button type="button" class="folder-tab" aria-selected="false">Inactive</button>
+                        </div>
+                        <div class="bg-manila p-6" style="background:#F4EFE6; background-image:radial-gradient(#2A4B7C 0.5px, transparent 0.5px); background-size:8px 8px; border:2px solid #2A4B7C; min-height:80px;">
+                            <span class="font-mono text-xs text-gov-blue-ink/60">Folder body</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="doc-section" id="classification-sidebar">
+                    <p class="doc-eyebrow">Component · Manila</p>
+                    <h2 class="doc-h2">Classification sidebar</h2>
+                    <p class="doc-body mt-4">Definition-list sidebar with metadata. Use to anchor a folder pane with reference data (form ID, classification, originator, datum).</p>
+                    <div class="mt-8" style="max-width:18rem">
+                        <aside class="classification-sidebar">
+                            <dl>
+                                <dt>Klassifikation</dt><dd>Unclassified · Reference</dd>
+                                <dt>Form</dt><dd>FS-2030 / Charter</dd>
+                                <dt>Originator</dt><dd>US Army NSRDEC</dd>
+                                <dt>Datum</dt><dd>02 · 2009</dd>
+                            </dl>
+                        </aside>
+                    </div>
+                </section>
+
+                <section class="doc-section" id="invoice-table">
+                    <p class="doc-eyebrow">Component · Manila</p>
+                    <h2 class="doc-h2">Invoice table</h2>
+                    <p class="doc-body mt-4">Bordered table on manila. Use for structured archival data with status column.</p>
+                    <div class="p-6 mt-8" style="background:#F4EFE6; background-image:radial-gradient(#2A4B7C 0.5px, transparent 0.5px); background-size:8px 8px; border:2px solid #2A4B7C;">
+                        <table class="invoice-table font-mono" style="background:#F4EFE6; color:#2A4B7C;">
+                            <thead style="background:rgba(42,75,124,0.1);">
+                                <tr><th class="text-left">Scope</th><th class="text-left">Details</th><th class="text-center">Status</th></tr>
+                            </thead>
+                            <tbody class="text-sm">
+                                <tr><td>Lead</td><td>Example row content</td><td class="text-center">[ VERIFIED ]</td></tr>
+                                <tr><td>Intent</td><td>Second row content</td><td class="text-center">[ ADVISORY ]</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section class="doc-section" id="signature-block">
+                    <p class="doc-eyebrow">Component · Manila</p>
+                    <h2 class="doc-h2">Signature block</h2>
+                    <p class="doc-body mt-4">3-column signature lines with mono labels. Closes any official folder pane.</p>
+                    <div class="p-6 mt-8" style="background:#F4EFE6; color:#2A4B7C; border:1px solid #2A4B7C;">
+                        <div class="signature-block">
+                            <div class="sig-cell"><div class="sig-line"></div><div class="sig-label">Originator</div></div>
+                            <div class="sig-cell"><div class="sig-line"></div><div class="sig-label">Authority</div></div>
+                            <div class="sig-cell"><div class="sig-line"></div><div class="sig-label">Date / Datum</div></div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="doc-section" id="barcode-row">
+                    <p class="doc-eyebrow">Component · Manila</p>
+                    <h2 class="doc-h2">Barcode row</h2>
+                    <p class="doc-body mt-4">Repeating linear-gradient barcode with serial label. No payload — visual chrome only.</p>
+                    <div class="mt-8">
+                        <div class="barcode-row">
+                            <span>Serial</span>
+                            <span>NSRDEC · FS2030 · 00 · DEMO</span>
+                            <div class="barcode flex-1"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="doc-section" id="photo-card">
+                    <p class="doc-eyebrow">Component · Manila</p>
+                    <h2 class="doc-h2">Photo card</h2>
+                    <p class="doc-body mt-4">45° hatch-pattern placeholder with mono caption. Use as figure reference inside folder panes.</p>
+                    <div class="grid grid-cols-3 gap-4 mt-8" style="max-width:34rem;">
+                        <div class="photo-card"><div class="img" aria-hidden="true"></div><div class="caption">Fig. 1 · A</div></div>
+                        <div class="photo-card"><div class="img" aria-hidden="true"></div><div class="caption">Fig. 2 · B</div></div>
+                        <div class="photo-card"><div class="img" aria-hidden="true"></div><div class="caption">Fig. 3 · C</div></div>
+                    </div>
+                </section>
+
+                <section class="doc-section" id="margin-note">
+                    <p class="doc-eyebrow">Component · Manila</p>
+                    <h2 class="doc-h2">Margin note</h2>
+                    <p class="doc-body mt-4">Red-pen annotation or blue-stamp marker. Use sparingly for editorial commentary on a folder pane.</p>
+                    <div class="flex gap-6 mt-8 p-6" style="background:#F4EFE6; border:1px solid #2A4B7C;">
+                        <span class="margin-note" style="transform:rotate(-2deg)">See § 04 — Domains</span>
+                        <span class="margin-note blue">Annex A — full list</span>
+                    </div>
+                </section>
+
+                <section class="doc-section" id="stamp">
+                    <p class="doc-eyebrow">Component · Manila</p>
+                    <h2 class="doc-h2">Stamp</h2>
+                    <p class="doc-body mt-4">Static (gallery) or interactive (click-applied) red/blue stamp. Comes in rectangular and circular variants.</p>
+                    <div class="stamp-gallery mt-8">
+                        <div class="stamp-static r-neg-6">Classified</div>
+                        <div class="stamp-static r-3">Archived</div>
+                        <div class="stamp-static blue r-neg-12">For Reference</div>
+                        <div class="stamp-static circle r-neg-6">FS-2030<br>NSRDEC</div>
+                    </div>
+                </section>
+
+                <!-- Footer -->
+                <section class="doc-section">
+                    <p class="doc-eyebrow">End of catalogue</p>
+                    <h2 class="doc-h2">Use the system</h2>
+                    <div class="grid md:grid-cols-2 gap-4 mt-8">
+                        <a href="/" class="raised-panel rounded-xl p-5">
+                            <div class="font-mono text-[10px] uppercase tracking-widest text-gov-ink/60 font-bold mb-2">Back to the dossier</div>
+                            <div class="font-display text-xl font-bold text-gov-ink/85">Future Soldier 2030</div>
+                            <div class="font-mono text-xs text-gov-ink/65 mt-2">See the system in context →</div>
+                        </a>
+                        <a href="https://github.com/augustave/SOLDIER-1" target="_blank" rel="noopener" class="raised-panel rounded-xl p-5">
+                            <div class="font-mono text-[10px] uppercase tracking-widest text-gov-ink/60 font-bold mb-2">Source</div>
+                            <div class="font-display text-xl font-bold text-gov-ink/85">augustave/SOLDIER-1</div>
+                            <div class="font-mono text-xs text-gov-ink/65 mt-2">View on GitHub →</div>
+                        </a>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="max-w-6xl mx-auto px-4 md:px-8 py-6 font-mono text-xs uppercase tracking-widest text-gov-ink/65 font-bold flex flex-col md:flex-row md:justify-between gap-2 border-t-2 border-gov-plastic-dark">
+        <span>Design System Reference · v1.0</span>
+        <span class="text-gov-ink/55 normal-case tracking-normal font-normal text-[11px]">Design exercise · not affiliated with DoD, US Army, or NSRDEC · public source: d2409ad840e3.pdf (2009)</span>
+        <span>Build 899A-231450</span>
+    </footer>
+
+</body>
+</html>
