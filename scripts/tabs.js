@@ -1,4 +1,5 @@
 import { playClick, playRustle } from './audio.js';
+import { analytics } from './analytics.js';
 
 function wireTabGroup({ navSelector, tabSelector, panePrefix, onActivate }) {
     const nav = document.querySelector(navSelector);
@@ -44,12 +45,12 @@ export function initTabs() {
         navSelector: '#nav-a',
         tabSelector: '.tab-btn-a',
         panePrefix: 'tab-a-',
-        onActivate: () => playClick(),
+        onActivate: (target) => { playClick(); analytics.tabChange('A', target); },
     });
     wireTabGroup({
         navSelector: '#nav-b',
         tabSelector: '.tab-btn-b',
         panePrefix: 'tab-b-',
-        onActivate: () => playRustle(),
+        onActivate: (target) => { playRustle(); analytics.tabChange('B', target); },
     });
 }

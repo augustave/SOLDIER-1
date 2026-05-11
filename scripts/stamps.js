@@ -1,4 +1,5 @@
 import { playStamp } from './audio.js';
+import { analytics } from './analytics.js';
 
 const STAMP_TEXTS = ['APPROVED', 'FILED', 'VERIFIED', 'RECEIVED', 'VOID', 'CLASSIFIED'];
 
@@ -28,6 +29,7 @@ export function initStamps() {
             surface.appendChild(stamp);
 
             playStamp();
+            analytics.stampApplied(text);
             if (live) live.textContent = `Stamped ${text}`;
         });
     });

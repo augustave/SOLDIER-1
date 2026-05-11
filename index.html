@@ -729,22 +729,22 @@
 
             <!-- Conversion / exits -->
             <section aria-label="Next steps" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 border-t-2 border-gov-plastic-dark pt-8">
-                <a href="mailto:taoconrad@gmail.com?subject=Future%20Soldier%20Design%20System" class="raised-panel rounded-xl p-5 hover:translate-y-[-2px] transition-transform">
+                <a href="mailto:taoconrad@gmail.com?subject=Future%20Soldier%20Design%20System" data-track="inquire-mailto" class="raised-panel rounded-xl p-5 hover:translate-y-[-2px] transition-transform">
                     <div class="font-mono text-[10px] uppercase tracking-widest text-gov-ink/60 font-bold mb-2">01 · Inquire</div>
                     <div class="font-display text-xl font-bold text-gov-ink/85">Request case study</div>
                     <div class="font-mono text-xs text-gov-ink/65 mt-2">taoconrad@gmail.com →</div>
                 </a>
-                <a href="https://github.com/augustave/SOLDIER-1" target="_blank" rel="noopener" class="raised-panel rounded-xl p-5 hover:translate-y-[-2px] transition-transform">
+                <a href="https://github.com/augustave/SOLDIER-1" target="_blank" rel="noopener" data-track="inspect-github" class="raised-panel rounded-xl p-5 hover:translate-y-[-2px] transition-transform">
                     <div class="font-mono text-[10px] uppercase tracking-widest text-gov-ink/60 font-bold mb-2">02 · Inspect</div>
                     <div class="font-display text-xl font-bold text-gov-ink/85">View source on GitHub</div>
                     <div class="font-mono text-xs text-gov-ink/65 mt-2">augustave/SOLDIER-1 →</div>
                 </a>
-                <a href="/dossier.pdf" download class="raised-panel rounded-xl p-5 hover:translate-y-[-2px] transition-transform">
+                <a href="/dossier.pdf" download data-track="archive-pdf" class="raised-panel rounded-xl p-5 hover:translate-y-[-2px] transition-transform">
                     <div class="font-mono text-[10px] uppercase tracking-widest text-gov-ink/60 font-bold mb-2">03 · Archive</div>
                     <div class="font-display text-xl font-bold text-gov-ink/85">Download dossier (PDF)</div>
                     <div class="font-mono text-xs text-gov-ink/65 mt-2">7 pages · Letter · 1.5 MB ↓</div>
                 </a>
-                <a href="/system" class="raised-panel rounded-xl p-5 hover:translate-y-[-2px] transition-transform">
+                <a href="/system" data-track="examine-system" class="raised-panel rounded-xl p-5 hover:translate-y-[-2px] transition-transform">
                     <div class="font-mono text-[10px] uppercase tracking-widest text-gov-ink/60 font-bold mb-2">04 · Examine</div>
                     <div class="font-display text-xl font-bold text-gov-ink/85">Design system</div>
                     <div class="font-mono text-xs text-gov-ink/65 mt-2">Tokens · components →</div>
@@ -1111,6 +1111,13 @@
         </div>
     </div>
 
-    <script type="module" src="scripts/main.js?v=9"></script>
+    <!-- Vercel Analytics (privacy-friendly, no cookies) -->
+    <script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+    <script defer src="/_vercel/speed-insights/script.js"></script>
+
+    <script type="module" src="scripts/main.js?v=11"></script>
 </body>
 </html>

@@ -1,4 +1,5 @@
 import { isMuted, toggleMuted } from './audio.js';
+import { analytics } from './analytics.js';
 
 export function initMuteToggle() {
     const btn = document.getElementById('btn-mute');
@@ -11,7 +12,8 @@ export function initMuteToggle() {
     }
 
     btn.addEventListener('click', () => {
-        toggleMuted();
+        const muted = toggleMuted();
+        analytics.muteToggle(muted);
         render();
     });
 
