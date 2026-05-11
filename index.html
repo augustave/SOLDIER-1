@@ -9,7 +9,8 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=VT323&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/fontsource/css/redaction-50@latest/index.css" rel="stylesheet">
 
     <script>
         tailwind.config = {
@@ -26,17 +27,19 @@
                         'gov-red-stamp':   '#D32F2F',
                     },
                     fontFamily: {
-                        'mono':    ['"Geist Mono"', 'ui-monospace', 'monospace'],
-                        'display': ['"Space Grotesk"', 'system-ui', 'sans-serif'],
+                        'mono':      ['"VT323"', 'ui-monospace', 'monospace'],
+                        'display':   ['"Space Grotesk"', 'system-ui', 'sans-serif'],
+                        'serif':     ['"Redaction 50"', 'Georgia', 'serif'],
+                        'editorial': ['"Instrument Serif"', 'Georgia', 'serif'],
                     }
                 }
             }
         }
     </script>
 
-    <link rel="stylesheet" href="styles/shared.css?v=5">
-    <link rel="stylesheet" href="styles/doctrine-a.css?v=5">
-    <link rel="stylesheet" href="styles/doctrine-b.css?v=5">
+    <link rel="stylesheet" href="styles/shared.css?v=6">
+    <link rel="stylesheet" href="styles/doctrine-a.css?v=6">
+    <link rel="stylesheet" href="styles/doctrine-b.css?v=6">
 </head>
 <body class="bg-gray-800 antialiased min-h-screen pt-12">
 
@@ -67,7 +70,7 @@
 
             <header class="flex flex-col md:flex-row justify-between items-start md:items-end border-b-4 border-gov-plastic-dark pb-6">
                 <div>
-                    <h1 class="font-display display-tight text-5xl md:text-7xl font-black uppercase text-gov-ink/85 leading-none">FUTURE SOLDIER</h1>
+                    <h1 class="font-serif text-6xl md:text-8xl font-bold text-gov-ink/85 leading-[0.95] tracking-tight">Future Soldier</h1>
                     <p class="font-display text-3xl md:text-4xl font-bold uppercase tracking-tight text-gov-ink/50 mt-[-5px]">2030 Initiative · NSRDEC</p>
                 </div>
                 <div class="mt-4 md:mt-0 font-mono text-xs uppercase tracking-widest text-gov-ink/40 font-bold text-right">
@@ -129,14 +132,14 @@
                     <div class="flex items-start gap-8 border-b-2 border-white pb-8">
                         <span class="font-display text-8xl md:text-[120px] font-black embossed-text tracking-tighter leading-none mt-[-10px]" aria-hidden="true">03</span>
                         <div>
-                            <h2 class="font-display display-tight text-4xl md:text-6xl font-black uppercase text-gov-ink/85 mb-4">Initiative Charter</h2>
+                            <h2 class="font-serif text-5xl md:text-7xl font-bold text-gov-ink/85 mb-4 leading-[0.95] tracking-tight">Initiative Charter</h2>
                             <p class="font-mono text-sm font-bold uppercase tracking-widest text-gov-ink/50 bg-gov-plastic-dark px-3 py-1 inline-block rounded">Concept Framework — Not Doctrine</p>
                         </div>
                     </div>
 
-                    <p class="font-display text-lg md:text-xl text-gov-ink/70 max-w-3xl leading-relaxed">
+                    <p class="font-editorial italic text-2xl md:text-3xl text-gov-ink/75 max-w-3xl leading-snug">
                         A conceptual capability framework developed to identify what soldiers will require in future combat
-                        environments — intended to <span class="font-bold text-gov-ink">guide investment priorities</span>,
+                        environments — intended to <span class="not-italic font-bold text-gov-ink">guide investment priorities</span>,
                         stimulate technical dialogue, and evaluate technology trade-offs across the warfighter system.
                     </p>
 
@@ -263,7 +266,7 @@
                     <div class="flex items-start gap-8 border-b-2 border-white pb-8">
                         <span class="font-display text-8xl md:text-[120px] font-black embossed-text tracking-tighter leading-none mt-[-10px]" aria-hidden="true">04</span>
                         <div>
-                            <h2 class="font-display display-tight text-4xl md:text-6xl font-black uppercase text-gov-ink/85 mb-4">Capability Domains</h2>
+                            <h2 class="font-serif text-5xl md:text-7xl font-bold text-gov-ink/85 mb-4 leading-[0.95] tracking-tight">Capability Domains</h2>
                             <p class="font-mono text-sm font-bold uppercase tracking-widest text-gov-ink/50 bg-gov-plastic-dark px-3 py-1 inline-block rounded">Seven Functional Areas</p>
                         </div>
                     </div>
@@ -441,7 +444,7 @@
                     <div class="flex items-start gap-8 border-b-2 border-white pb-8">
                         <span class="font-display text-8xl md:text-[120px] font-black embossed-text tracking-tighter leading-none mt-[-10px]" aria-hidden="true">05</span>
                         <div>
-                            <h2 class="font-display display-tight text-4xl md:text-6xl font-black uppercase text-gov-ink/85 mb-4">Integration Matrix</h2>
+                            <h2 class="font-serif text-5xl md:text-7xl font-bold text-gov-ink/85 mb-4 leading-[0.95] tracking-tight">Integration Matrix</h2>
                             <p class="font-mono text-sm font-bold uppercase tracking-widest text-gov-ink/50 bg-gov-plastic-dark px-3 py-1 inline-block rounded">Cross-Domain Linkages</p>
                         </div>
                     </div>
@@ -641,12 +644,12 @@
                         </div>
                     </div>
                     <div>
-                        <div class="font-mono text-[10px] uppercase tracking-widest text-gov-ink/40 font-bold mb-3">Mono · Geist Mono</div>
+                        <div class="font-mono text-[10px] uppercase tracking-widest text-gov-ink/40 font-bold mb-3">Mono · VT323</div>
                         <div class="space-y-3 font-mono">
-                            <div class="text-2xl font-bold text-gov-ink/80">DOM-0123456789</div>
-                            <div class="text-base font-bold text-gov-ink/75">DOM-NSRDEC-2009</div>
-                            <div class="text-xs font-bold uppercase tracking-widest text-gov-ink/60">Eyebrow · Caption · 12px</div>
-                            <div class="text-[10px] uppercase tracking-widest text-gov-ink/45">Micro Tag · 10px</div>
+                            <div class="text-3xl text-gov-ink/80">DOM-0123456789</div>
+                            <div class="text-xl text-gov-ink/75">SYS://NSRDEC-2009</div>
+                            <div class="text-sm uppercase tracking-widest text-gov-ink/60">Eyebrow · Caption · 14px</div>
+                            <div class="text-xs uppercase tracking-widest text-gov-ink/45">Micro Tag · 12px</div>
                         </div>
                     </div>
                 </div>
@@ -717,7 +720,7 @@
                         <p class="font-display text-[10px] uppercase tracking-widest font-bold">Form FS-2030<br>NSRDEC Soldier Sys. Domain</p>
                     </div>
                     <div class="w-1/3 text-center">
-                        <h1 class="font-display display-tight text-4xl md:text-5xl font-black uppercase leading-none">FUTURE SOLDIER</h1>
+                        <h1 class="font-serif text-5xl md:text-6xl font-bold leading-[0.95] tracking-tight">Future Soldier</h1>
                         <p class="font-display text-xl font-bold uppercase tracking-widest mt-2 border-t border-gov-blue-ink pt-2 inline-block">2030 Initiative</p>
                     </div>
                     <div class="w-1/3 text-right">
@@ -730,7 +733,7 @@
                 <section id="tab-b-03" role="tabpanel" aria-labelledby="tab-b-btn-03" tabindex="0" class="stamp-surface cursor-crosshair">
 
                     <div class="mb-12">
-                        <h2 class="font-display display-tight text-6xl md:text-8xl font-black uppercase leading-none mb-4">03. Initiative<br>Charter</h2>
+                        <h2 class="font-serif text-6xl md:text-8xl font-bold leading-[0.95] tracking-tight mb-4">03. Initiative<br>Charter</h2>
                         <div class="dotted-line-wrap font-mono text-sm font-bold uppercase w-full md:w-1/2">
                             <span>Klassifikation:</span>
                             <span class="dotted-line" aria-hidden="true"></span>
@@ -834,7 +837,7 @@
                 <section id="tab-b-04" role="tabpanel" aria-labelledby="tab-b-btn-04" tabindex="0" hidden class="stamp-surface cursor-crosshair">
 
                     <div class="mb-12">
-                        <h2 class="font-display display-tight text-6xl md:text-8xl font-black uppercase leading-none mb-4">04. Capability<br>Domains</h2>
+                        <h2 class="font-serif text-6xl md:text-8xl font-bold leading-[0.95] tracking-tight mb-4">04. Capability<br>Domains</h2>
                         <div class="dotted-line-wrap font-mono text-sm font-bold uppercase w-full md:w-1/2">
                             <span>Klassifikation:</span>
                             <span class="dotted-line" aria-hidden="true"></span>
@@ -951,7 +954,7 @@
                 <section id="tab-b-05" role="tabpanel" aria-labelledby="tab-b-btn-05" tabindex="0" hidden class="stamp-surface cursor-crosshair">
 
                     <div class="mb-12">
-                        <h2 class="font-display display-tight text-6xl md:text-8xl font-black uppercase leading-none mb-4">05. Integration<br>Matrix</h2>
+                        <h2 class="font-serif text-6xl md:text-8xl font-bold leading-[0.95] tracking-tight mb-4">05. Integration<br>Matrix</h2>
                         <div class="dotted-line-wrap font-mono text-sm font-bold uppercase w-full md:w-1/2">
                             <span>Klassifikation:</span>
                             <span class="dotted-line" aria-hidden="true"></span>
