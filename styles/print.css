@@ -1,0 +1,228 @@
+/* === Print stylesheet ===
+   Renders the dossier as a credible photocopied artifact.
+   Hides interactive chrome, expands all tabs, and unifies on the
+   Archival Record (manila) doctrine — which is the right material
+   metaphor for paper output. */
+
+@media print {
+
+    /* ── Hide all interactive chrome ── */
+    .mode-switcher,
+    .status-ticker,
+    .skip-link,
+    #stamp-live-region,
+    nav[role="tablist"],
+    [aria-label="Next steps"],
+    [data-no-stamp].absolute,           /* "Click the folder area to stamp" hint */
+    .binder-gutter,                     /* Removes physical gutter — print is flat */
+    .red-stamp-mark                     /* User-applied interactive stamps */
+    { display: none !important; }
+
+    /* ── Page setup ── */
+    @page {
+        size: Letter;
+        margin: 0.75in 0.65in;
+    }
+    @page :first {
+        margin-top: 0.5in;
+    }
+
+    html, body {
+        background: #FFFFFF !important;
+        color: #111314 !important;
+        font-size: 10.5pt;
+        line-height: 1.45;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        padding-top: 0 !important;
+    }
+
+    body {
+        font-family: 'Space Grotesk', Georgia, serif !important;
+    }
+
+    /* ── Doctrine A: hide entirely. Print uses Doctrine B's archival treatment. ── */
+    #doctrine-a { display: none !important; }
+
+    /* ── Force Doctrine B visible (it may be hidden via .hidden) ── */
+    #doctrine-b {
+        display: block !important;
+        background: #FFFFFF !important;
+        color: #111314 !important;
+        padding: 0 !important;
+        min-height: 0 !important;
+    }
+    #doctrine-b .max-w-6xl { max-width: 100% !important; margin: 0 !important; }
+
+    /* ── Manila texture → simple paper ── */
+    .bg-manila-texture {
+        background: #FFFFFF !important;
+        background-image: none !important;
+        border: 1.5pt solid #111314 !important;
+        padding: 24pt !important;
+        box-shadow: none !important;
+    }
+
+    /* ── Expand all tab panels (was: only active visible) ── */
+    [role="tabpanel"][hidden],
+    [role="tabpanel"] {
+        display: block !important;
+    }
+    [role="tabpanel"][hidden] {
+        page-break-before: always;
+    }
+
+    /* ── Typography ── */
+    h1, h2, h3, h4 {
+        color: #111314 !important;
+        page-break-after: avoid;
+    }
+    h2.font-serif {
+        font-family: 'Redaction 50', Georgia, serif !important;
+        font-size: 26pt !important;
+        margin-top: 0 !important;
+        margin-bottom: 12pt !important;
+    }
+
+    /* ── Tables ── */
+    table {
+        page-break-inside: avoid;
+        width: 100% !important;
+        border-collapse: collapse !important;
+        margin: 8pt 0 !important;
+    }
+    .invoice-table {
+        background: transparent !important;
+    }
+    .invoice-table th,
+    .invoice-table td {
+        border: 0.75pt solid #111314 !important;
+        padding: 6pt 8pt !important;
+        font-size: 9pt !important;
+    }
+    .invoice-table thead {
+        background: #EEEEEE !important;
+    }
+
+    /* ── Sidebar becomes a flat list in print ── */
+    .classification-sidebar {
+        background: transparent !important;
+        border: 0.75pt solid #111314 !important;
+        padding: 10pt !important;
+        font-size: 9pt !important;
+        page-break-inside: avoid;
+    }
+
+    /* ── Signature block keeps its rule but flattens ── */
+    .signature-block {
+        page-break-inside: avoid;
+        margin-top: 18pt !important;
+    }
+
+    /* ── Margin notes: print as small red marginalia, no rotation ── */
+    .margin-note {
+        opacity: 1 !important;
+        background: transparent !important;
+        border-color: #B71C1C !important;
+        color: #B71C1C !important;
+        transform: none !important;
+        font-size: 8pt !important;
+        page-break-inside: avoid;
+    }
+
+    /* ── Barcode strip ── */
+    .barcode-row {
+        page-break-inside: avoid;
+        margin-top: 18pt !important;
+        font-size: 7.5pt !important;
+    }
+
+    /* ── Photo cards: keep as placeholder boxes ── */
+    .photo-card { page-break-inside: avoid; }
+
+    /* ── Disclosure footer always prints, on every page ── */
+    footer {
+        page-break-inside: avoid;
+        font-size: 7.5pt !important;
+        color: #555 !important;
+        border-top: 0.5pt solid #999 !important;
+        margin-top: 18pt !important;
+        padding-top: 8pt !important;
+    }
+
+    /* ── Mono needs to be a real mono in print (not pixel) ── */
+    .font-mono,
+    .font-mono * {
+        font-family: 'Geist Mono', 'Courier New', monospace !important;
+    }
+
+    /* ── Architecture SVG: print at modest size ── */
+    .arch-grid {
+        aspect-ratio: auto !important;
+        page-break-inside: avoid;
+    }
+    .arch-node {
+        background: transparent !important;
+        border: 0.5pt solid #111314 !important;
+        box-shadow: none !important;
+    }
+
+    /* ── Stamp gallery prints as static row, no rotation ── */
+    .stamp-gallery {
+        background: transparent !important;
+        border: 0.5pt dashed #555 !important;
+        page-break-inside: avoid;
+    }
+    .stamp-static {
+        opacity: 1 !important;
+        transform: rotate(0deg) !important;
+        font-size: 10pt !important;
+    }
+
+    /* ── Force links to show URL ── */
+    a[href^="http"]::after {
+        content: " (" attr(href) ")";
+        font-size: 8pt;
+        color: #555;
+    }
+    a[href^="#"]::after,
+    a[href^="mailto"]::after {
+        content: "";
+    }
+
+    /* ── Hide tab indicators and audio chrome ── */
+    .indicator, .led-dot, .led-strip,
+    .toggle-switch, .large-dial, .dial,
+    .gauge-track, .gauge-fill,
+    .control-cluster,
+    .counter-display {
+        display: none !important;
+    }
+
+    /* ── Spec cards in print: flatten to bordered blocks ── */
+    .spec-card {
+        background: transparent !important;
+        border: 0.5pt solid #111314 !important;
+        box-shadow: none !important;
+        page-break-inside: avoid;
+    }
+
+    /* ── Stat tiles flatten ── */
+    .stat-tile {
+        background: transparent !important;
+        border: 0.5pt solid #111314 !important;
+        box-shadow: none !important;
+    }
+
+    /* ── Heatmap prints with real borders ── */
+    .heatmap th, .heatmap td {
+        border: 0.4pt solid #555 !important;
+        box-shadow: none !important;
+    }
+    .heatmap .h3 { background: #999 !important; color: #fff !important; }
+    .heatmap .h2 { background: #ccc !important; }
+    .heatmap .h1 { background: #e5e5e5 !important; }
+
+    /* ── Folder tabs hidden (no longer needed in linear paper) ── */
+    .folder-tab { display: none !important; }
+}

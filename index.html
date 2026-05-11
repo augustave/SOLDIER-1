@@ -57,9 +57,10 @@
         }
     </script>
 
-    <link rel="stylesheet" href="styles/shared.css?v=8">
-    <link rel="stylesheet" href="styles/doctrine-a.css?v=8">
-    <link rel="stylesheet" href="styles/doctrine-b.css?v=8">
+    <link rel="stylesheet" href="styles/shared.css?v=10">
+    <link rel="stylesheet" href="styles/doctrine-a.css?v=10">
+    <link rel="stylesheet" href="styles/doctrine-b.css?v=10">
+    <link rel="stylesheet" href="styles/print.css?v=10" media="print">
 </head>
 <body class="bg-gray-800 antialiased min-h-screen pt-12">
 
@@ -727,8 +728,8 @@
             </section>
 
             <!-- Conversion / exits -->
-            <section aria-label="Next steps" class="grid md:grid-cols-3 gap-4 border-t-2 border-gov-plastic-dark pt-8">
-                <a href="mailto:taoconrad@gmail.com?subject=Future%20Soldier%20Design%20System" class="raised-panel rounded-xl p-5 hover:translate-y-[-2px] transition-transform group">
+            <section aria-label="Next steps" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 border-t-2 border-gov-plastic-dark pt-8">
+                <a href="mailto:taoconrad@gmail.com?subject=Future%20Soldier%20Design%20System" class="raised-panel rounded-xl p-5 hover:translate-y-[-2px] transition-transform">
                     <div class="font-mono text-[10px] uppercase tracking-widest text-gov-ink/60 font-bold mb-2">01 · Inquire</div>
                     <div class="font-display text-xl font-bold text-gov-ink/85">Request case study</div>
                     <div class="font-mono text-xs text-gov-ink/65 mt-2">taoconrad@gmail.com →</div>
@@ -738,8 +739,13 @@
                     <div class="font-display text-xl font-bold text-gov-ink/85">View source on GitHub</div>
                     <div class="font-mono text-xs text-gov-ink/65 mt-2">augustave/SOLDIER-1 →</div>
                 </a>
+                <a href="/dossier.pdf" download class="raised-panel rounded-xl p-5 hover:translate-y-[-2px] transition-transform">
+                    <div class="font-mono text-[10px] uppercase tracking-widest text-gov-ink/60 font-bold mb-2">03 · Archive</div>
+                    <div class="font-display text-xl font-bold text-gov-ink/85">Download dossier (PDF)</div>
+                    <div class="font-mono text-xs text-gov-ink/65 mt-2">7 pages · Letter · 1.5 MB ↓</div>
+                </a>
                 <a href="#tokens-specimen" class="raised-panel rounded-xl p-5 hover:translate-y-[-2px] transition-transform">
-                    <div class="font-mono text-[10px] uppercase tracking-widest text-gov-ink/60 font-bold mb-2">03 · Examine</div>
+                    <div class="font-mono text-[10px] uppercase tracking-widest text-gov-ink/60 font-bold mb-2">04 · Examine</div>
                     <div class="font-display text-xl font-bold text-gov-ink/85">Design tokens</div>
                     <div class="font-mono text-xs text-gov-ink/65 mt-2">Jump to specimen ↓</div>
                 </a>
@@ -759,7 +765,7 @@
     <div id="doctrine-b" hidden class="min-h-screen bg-gov-slate text-gov-blue-ink font-display p-4 md:p-8 no-select">
         <div class="max-w-6xl mx-auto mt-8">
 
-            <div class="flex items-end px-4 gap-2" id="nav-b" role="tablist" aria-label="Future Soldier 2030 sections">
+            <div class="flex items-end px-4 gap-2 overflow-x-auto no-scrollbar" id="nav-b" role="tablist" aria-label="Future Soldier 2030 sections">
                 <button type="button" role="tab" id="tab-b-btn-03" aria-controls="tab-b-03" aria-selected="true" tabindex="0"
                         data-target="03" class="tab-btn-b folder-tab">Ref: 03-Charter</button>
                 <button type="button" role="tab" id="tab-b-btn-04" aria-controls="tab-b-04" aria-selected="false" tabindex="-1"
@@ -777,19 +783,19 @@
                     <div class="binder-hole"></div>
                 </div>
 
-                <div data-no-stamp class="absolute top-4 right-4 font-mono text-[10px] uppercase font-bold text-gov-red-stamp border border-gov-red-stamp px-2 py-1 rotate-3 opacity-70 pointer-events-none z-50">
+                <div data-no-stamp class="hidden md:block absolute top-4 right-4 font-mono text-[10px] uppercase font-bold text-gov-red-stamp border border-gov-red-stamp px-2 py-1 rotate-3 opacity-70 pointer-events-none z-50">
                     Click the folder area to stamp
                 </div>
 
-                <div data-no-stamp class="flex justify-between items-start mb-12 border-b-2 border-gov-blue-ink pb-8">
-                    <div class="w-1/3">
+                <div data-no-stamp class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-2 items-start md:items-end mb-12 border-b-2 border-gov-blue-ink pb-8">
+                    <div class="md:text-left">
                         <p class="font-display text-[10px] uppercase tracking-widest font-bold">Form FS-2030<br>NSRDEC Soldier Sys. Domain</p>
                     </div>
-                    <div class="w-1/3 text-center">
+                    <div class="md:text-center">
                         <p class="font-serif text-5xl md:text-6xl font-bold leading-[0.95] tracking-tight" role="heading" aria-level="2">Future Soldier</p>
                         <p class="font-display text-xl font-bold uppercase tracking-widest mt-2 border-t border-gov-blue-ink pt-2 inline-block">2030 Initiative</p>
                     </div>
-                    <div class="w-1/3 text-right">
+                    <div class="md:text-right">
                         <p class="font-display text-xs font-bold uppercase tracking-widest text-gov-blue-ink/70 mb-2">Datum</p>
                         <span class="font-mono text-2xl font-bold tracking-widest border-2 border-gov-blue-ink px-2 py-1 inline-block">02|2009</span>
                     </div>
@@ -1105,6 +1111,6 @@
         </div>
     </div>
 
-    <script type="module" src="scripts/main.js?v=8"></script>
+    <script type="module" src="scripts/main.js?v=9"></script>
 </body>
 </html>

@@ -7,6 +7,9 @@ html {
 
 .no-select { user-select: none; }
 
+.no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
 /* === Skip link === */
 .skip-link {
     position: fixed;
@@ -43,12 +46,22 @@ html {
     color: #EAEAEA;
     z-index: 100;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    gap: 1rem;
-    padding: 0.5rem;
+    align-items: center;
+    gap: 0.5rem 1rem;
+    padding: 0.5rem 0.75rem;
     font-family: 'VT323', monospace;
-    font-size: 0.75rem;
+    font-size: 0.85rem;
     text-transform: uppercase;
+}
+@media (max-width: 640px) {
+    .mode-switcher {
+        font-size: 0.75rem;
+        padding: 0.35rem 0.5rem;
+        gap: 0.25rem 0.6rem;
+    }
+    .mode-switcher .ml-auto { margin-left: 0 !important; }
 }
 .mode-btn {
     padding: 4px 12px;
