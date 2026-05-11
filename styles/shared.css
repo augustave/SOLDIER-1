@@ -1,0 +1,50 @@
+html {
+    font-synthesis: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+.no-select { user-select: none; }
+
+.sr-only {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0,0,0,0);
+    white-space: nowrap; border: 0;
+}
+
+.mode-switcher {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: #111314;
+    color: #EAEAEA;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 0.5rem;
+    font-family: 'Geist Mono', monospace;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+}
+.mode-btn {
+    padding: 4px 12px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    text-transform: inherit;
+}
+.mode-btn[aria-pressed="true"] { border-color: #EAEAEA; font-weight: bold; }
+.mode-btn:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        transition-duration: 0.001ms !important;
+        transform: none !important;
+    }
+}

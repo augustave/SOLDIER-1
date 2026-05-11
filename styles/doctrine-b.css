@@ -1,0 +1,314 @@
+.bg-manila-texture {
+    background-color: #F4EFE6;
+    background-image: radial-gradient(#2A4B7C 0.5px, transparent 0.5px);
+    background-size: 8px 8px;
+}
+
+.folder-tab {
+    border: 2px solid #2A4B7C;
+    border-bottom: none;
+    border-radius: 8px 8px 0 0;
+    background-color: #E6DECC;
+    transition: transform 0.2s, background-color 0.2s, opacity 0.2s;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    padding: 0.75rem 2rem;
+    margin-top: 0.5rem;
+    opacity: 0.7;
+    color: inherit;
+    font: inherit;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-weight: 700;
+    font-family: 'Geist Mono', monospace;
+    font-size: 0.875rem;
+}
+.folder-tab:hover { opacity: 1; }
+.folder-tab[aria-selected="true"] {
+    background-color: #F4EFE6;
+    z-index: 10;
+    transform: translateY(2px);
+    padding: 1rem 2rem 2px 2rem;
+    margin-top: 0;
+    opacity: 1;
+}
+.folder-tab:focus-visible {
+    outline: 2px solid #D32F2F;
+    outline-offset: 2px;
+}
+
+.invoice-table { border-collapse: collapse; width: 100%; }
+.invoice-table th,
+.invoice-table td {
+    border: 1px solid #2A4B7C;
+    padding: 12px 16px;
+}
+
+.dotted-line-wrap {
+    display: flex;
+    align-items: baseline;
+}
+.dotted-line {
+    border-bottom: 2px dotted #2A4B7C;
+    flex: 1 1 auto;
+    margin: 0 8px;
+    align-self: flex-end;
+    padding-bottom: 2px;
+}
+
+.stamp-surface {
+    position: relative;
+}
+
+.red-stamp-mark {
+    color: #D32F2F;
+    border: 4px solid #D32F2F;
+    padding: 4px 16px;
+    font-family: 'Geist Mono', monospace;
+    font-weight: 700;
+    text-transform: uppercase;
+    position: absolute;
+    pointer-events: none;
+    opacity: 0.85;
+    mix-blend-mode: multiply;
+    font-size: 2rem;
+    z-index: 50;
+    border-radius: 4px;
+}
+
+/* === Margin annotation (red pen / blue stamp) === */
+.margin-note {
+    color: #D32F2F;
+    font-family: 'Geist Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 1.5px dashed #D32F2F;
+    padding: 0.35rem 0.6rem;
+    opacity: 0.75;
+    background: rgba(244,239,230,0.8);
+    display: inline-block;
+}
+.margin-note.blue {
+    color: #2A4B7C;
+    border-color: #2A4B7C;
+    border-style: solid;
+    opacity: 0.85;
+}
+
+/* === Pre-printed barcode strip === */
+.barcode {
+    height: 44px;
+    background-image: repeating-linear-gradient(
+        90deg,
+        #2A4B7C 0, #2A4B7C 1px,
+        transparent 1px, transparent 3px,
+        #2A4B7C 3px, #2A4B7C 5px,
+        transparent 5px, transparent 7px,
+        #2A4B7C 7px, #2A4B7C 10px,
+        transparent 10px, transparent 12px,
+        #2A4B7C 12px, #2A4B7C 14px,
+        transparent 14px, transparent 18px
+    );
+    border-top: 1px solid #2A4B7C;
+    border-bottom: 1px solid #2A4B7C;
+}
+.barcode-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-family: 'Geist Mono', monospace;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #2A4B7C;
+    border: 1px solid #2A4B7C;
+    padding: 0.5rem;
+    background: #F4EFE6;
+}
+
+/* === Signature block === */
+.signature-block {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 2px double #2A4B7C;
+}
+.signature-block .sig-cell .sig-line {
+    border-bottom: 1px solid #2A4B7C;
+    height: 2rem;
+    margin-bottom: 0.5rem;
+}
+.signature-block .sig-cell .sig-label {
+    font-family: 'Geist Mono', monospace;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(42,75,124,0.7);
+}
+
+/* === Classification sidebar === */
+.classification-sidebar {
+    background: #E6DECC;
+    border: 2px solid #2A4B7C;
+    padding: 1rem;
+    font-family: 'Geist Mono', monospace;
+    font-size: 0.7rem;
+}
+.classification-sidebar dt {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: rgba(42,75,124,0.65);
+    margin-top: 0.5rem;
+}
+.classification-sidebar dt:first-child { margin-top: 0; }
+.classification-sidebar dd {
+    margin: 0 0 0.25rem 0;
+    color: #2A4B7C;
+    font-weight: 600;
+}
+
+/* === Spec ledger row (key/value) === */
+.spec-row {
+    display: grid;
+    grid-template-columns: 12rem 1fr;
+    gap: 1rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px dotted rgba(42,75,124,0.5);
+    font-family: 'Geist Mono', monospace;
+    font-size: 0.8rem;
+}
+.spec-row .k {
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-weight: 700;
+    color: rgba(42,75,124,0.7);
+    font-size: 0.7rem;
+}
+
+/* === Binder gutter (3-hole punch) === */
+.binder-gutter {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 2.5rem;
+    background: linear-gradient(90deg, rgba(42,75,124,0.08) 0, rgba(42,75,124,0) 100%);
+    border-right: 1px dashed rgba(42,75,124,0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 4rem 0;
+    pointer-events: none;
+    z-index: 1;
+}
+.binder-hole {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 9999px;
+    background: #7B8C98;
+    box-shadow:
+        inset 2px 2px 4px rgba(0,0,0,0.4),
+        inset -1px -1px 2px rgba(255,255,255,0.15),
+        0 0 0 1px rgba(42,75,124,0.4);
+}
+
+/* === Stamp gallery (static, pre-applied) === */
+.stamp-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 2rem 1.5rem;
+    padding: 2rem 1rem;
+    background: #E6DECC;
+    border: 1px dashed #2A4B7C;
+    position: relative;
+    min-height: 220px;
+}
+.stamp-static {
+    color: #D32F2F;
+    border: 3px solid #D32F2F;
+    padding: 4px 14px;
+    font-family: 'Geist Mono', monospace;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1.25rem;
+    border-radius: 4px;
+    opacity: 0.82;
+    mix-blend-mode: multiply;
+    justify-self: center;
+    align-self: center;
+}
+.stamp-static.blue {
+    color: #2A4B7C;
+    border-color: #2A4B7C;
+}
+.stamp-static.r-neg-6 { transform: rotate(-6deg); }
+.stamp-static.r-3    { transform: rotate(3deg); }
+.stamp-static.r-neg-12 { transform: rotate(-12deg); }
+.stamp-static.r-8    { transform: rotate(8deg); }
+.stamp-static.r-neg-2 { transform: rotate(-2deg); }
+.stamp-static.r-15    { transform: rotate(15deg); }
+.stamp-static.circle {
+    border-radius: 9999px;
+    padding: 1.5rem 1rem;
+    font-size: 0.75rem;
+    width: 110px; height: 110px;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center;
+    line-height: 1.1;
+    border-width: 3px;
+}
+
+/* === Index card / library catalogue === */
+.index-card {
+    background: #F4EFE6;
+    border: 1px solid #2A4B7C;
+    padding: 1rem 1.25rem;
+    background-image:
+        linear-gradient(transparent 0, transparent 1.6rem, rgba(42,75,124,0.18) 1.6rem, rgba(42,75,124,0.18) calc(1.6rem + 1px), transparent calc(1.6rem + 1px));
+    background-size: 100% 1.6rem;
+    background-position: 0 0.5rem;
+    font-family: 'Geist Mono', monospace;
+    font-size: 0.8rem;
+    line-height: 1.6rem;
+    color: #2A4B7C;
+}
+.index-card .ic-head {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    border-bottom: 2px solid #2A4B7C;
+    padding-bottom: 0.25rem;
+    margin-bottom: 0.5rem;
+}
+
+/* === Photo card (placeholder w/ stamp) === */
+.photo-card {
+    background: #E6DECC;
+    border: 1px solid #2A4B7C;
+    padding: 0.5rem;
+    position: relative;
+}
+.photo-card .img {
+    background:
+        repeating-linear-gradient(45deg, rgba(42,75,124,0.15) 0 1px, transparent 1px 8px),
+        #C7BBA1;
+    height: 140px;
+    border: 1px solid rgba(42,75,124,0.4);
+}
+.photo-card .caption {
+    font-family: 'Geist Mono', monospace;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #2A4B7C;
+    margin-top: 0.4rem;
+    text-align: center;
+}

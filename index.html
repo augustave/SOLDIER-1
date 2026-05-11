@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Future Soldier 2030 — NSRDEC Capability Framework</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'gov-slate':       '#7B8C98',
+                        'gov-manila':      '#F4EFE6',
+                        'gov-manila-dark': '#E6DECC',
+                        'gov-ink':         '#111314',
+                        'gov-plastic':     '#EAEAEA',
+                        'gov-plastic-dark':'#D1D1D1',
+                        'gov-blue-ink':    '#2A4B7C',
+                        'gov-red-stamp':   '#D32F2F',
+                    },
+                    fontFamily: {
+                        'mono':    ['"Geist Mono"', 'ui-monospace', 'monospace'],
+                        'display': ['"Space Grotesk"', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="styles/shared.css?v=5">
+    <link rel="stylesheet" href="styles/doctrine-a.css?v=5">
+    <link rel="stylesheet" href="styles/doctrine-b.css?v=5">
+</head>
+<body class="bg-gray-800 antialiased min-h-screen pt-12">
+
+    <div id="stamp-live-region" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+    <div class="mode-switcher" role="group" aria-label="Visual doctrine">
+        <span class="opacity-50 mr-4" aria-hidden="true">System Override:</span>
+        <button id="btn-mode-a" class="mode-btn" type="button" aria-pressed="true">Doctrine A: Civic Plastic</button>
+        <button id="btn-mode-b" class="mode-btn" type="button" aria-pressed="false">Doctrine B: Archival Record</button>
+    </div>
+
+    <!-- ==========================================
+         DOCTRINE A — CIVIC PLASTIC
+         ========================================== -->
+    <div id="doctrine-a" class="min-h-screen bg-plastic-texture text-gov-ink font-display">
+
+        <!-- System status ticker -->
+        <div class="status-ticker" aria-label="System telemetry">
+            <span class="live" aria-hidden="true">Live</span>
+            <div class="marquee">
+                <div class="track" aria-live="off">
+                    Nodes 27<span class="sep">·</span>Edges 31<span class="sep">·</span>Domains 07<span class="sep">·</span>TRL Range 3–6<span class="sep">·</span>Orig NSRDEC<span class="sep">·</span>Rev 1.0<span class="sep">·</span>Datum 02|2009<span class="sep">·</span>Status Nominal<span class="sep">·</span>Bus Green<span class="sep">·</span>Nodes 27<span class="sep">·</span>Edges 31<span class="sep">·</span>Domains 07<span class="sep">·</span>TRL Range 3–6<span class="sep">·</span>Orig NSRDEC<span class="sep">·</span>Rev 1.0<span class="sep">·</span>Datum 02|2009<span class="sep">·</span>Status Nominal<span class="sep">·</span>Bus Green
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-6xl mx-auto space-y-12 p-4 md:p-8">
+
+            <header class="flex flex-col md:flex-row justify-between items-start md:items-end border-b-4 border-gov-plastic-dark pb-6">
+                <div>
+                    <h1 class="font-display display-tight text-5xl md:text-7xl font-black uppercase text-gov-ink/85 leading-none">FUTURE SOLDIER</h1>
+                    <p class="font-display text-3xl md:text-4xl font-bold uppercase tracking-tight text-gov-ink/50 mt-[-5px]">2030 Initiative · NSRDEC</p>
+                </div>
+                <div class="mt-4 md:mt-0 font-mono text-xs uppercase tracking-widest text-gov-ink/40 font-bold text-right">
+                    Doc ID: NSRDEC-2009-02<br>
+                    Source: d2409ad840e3.pdf
+                </div>
+            </header>
+
+            <!-- KPI Stat Strip -->
+            <section aria-label="Initiative metrics" class="grid grid-cols-2 md:grid-cols-5 gap-4">
+                <div class="stat-tile">
+                    <div class="num">01</div>
+                    <div class="lbl">Initiative</div>
+                </div>
+                <div class="stat-tile">
+                    <div class="num">03</div>
+                    <div class="lbl">Lead Orgs</div>
+                </div>
+                <div class="stat-tile">
+                    <div class="num">07</div>
+                    <div class="lbl">Domains</div>
+                </div>
+                <div class="stat-tile">
+                    <div class="num">27</div>
+                    <div class="lbl">Graph Nodes</div>
+                </div>
+                <div class="stat-tile">
+                    <div class="num">31</div>
+                    <div class="lbl">Edges</div>
+                </div>
+            </section>
+
+            <nav class="raised-panel p-4 rounded-xl flex gap-4 overflow-x-auto no-select"
+                 id="nav-a" role="tablist" aria-label="Future Soldier 2030 sections">
+                <button type="button" role="tab" id="tab-a-btn-03" aria-controls="tab-a-03" aria-selected="true" tabindex="0"
+                        data-target="03"
+                        class="tab-btn-a hardware-switch px-6 py-4 rounded-lg font-mono font-bold text-sm tracking-widest uppercase flex flex-col items-center min-w-[120px]">
+                    <span class="indicator" aria-hidden="true"></span>
+                    03 Charter
+                </button>
+                <button type="button" role="tab" id="tab-a-btn-04" aria-controls="tab-a-04" aria-selected="false" tabindex="-1"
+                        data-target="04"
+                        class="tab-btn-a hardware-switch px-6 py-4 rounded-lg font-mono font-bold text-sm tracking-widest uppercase flex flex-col items-center min-w-[120px]">
+                    <span class="indicator" aria-hidden="true"></span>
+                    04 Domains
+                </button>
+                <button type="button" role="tab" id="tab-a-btn-05" aria-controls="tab-a-05" aria-selected="false" tabindex="-1"
+                        data-target="05"
+                        class="tab-btn-a hardware-switch px-6 py-4 rounded-lg font-mono font-bold text-sm tracking-widest uppercase flex flex-col items-center min-w-[120px]">
+                    <span class="indicator" aria-hidden="true"></span>
+                    05 Matrix
+                </button>
+            </nav>
+
+            <main class="debossed-panel rounded-2xl p-8 md:p-12 min-h-[500px] space-y-12">
+
+                <!-- ===== TAB 03 ===== -->
+                <section id="tab-a-03" role="tabpanel" aria-labelledby="tab-a-btn-03" tabindex="0" class="space-y-12">
+                    <div class="flex items-start gap-8 border-b-2 border-white pb-8">
+                        <span class="font-display text-8xl md:text-[120px] font-black embossed-text tracking-tighter leading-none mt-[-10px]" aria-hidden="true">03</span>
+                        <div>
+                            <h2 class="font-display display-tight text-4xl md:text-6xl font-black uppercase text-gov-ink/85 mb-4">Initiative Charter</h2>
+                            <p class="font-mono text-sm font-bold uppercase tracking-widest text-gov-ink/50 bg-gov-plastic-dark px-3 py-1 inline-block rounded">Concept Framework — Not Doctrine</p>
+                        </div>
+                    </div>
+
+                    <p class="font-display text-lg md:text-xl text-gov-ink/70 max-w-3xl leading-relaxed">
+                        A conceptual capability framework developed to identify what soldiers will require in future combat
+                        environments — intended to <span class="font-bold text-gov-ink">guide investment priorities</span>,
+                        stimulate technical dialogue, and evaluate technology trade-offs across the warfighter system.
+                    </p>
+
+                    <div class="overflow-x-auto">
+                        <table class="stamped-table w-full text-left font-mono">
+                            <thead>
+                                <tr class="font-bold uppercase text-xs tracking-widest text-gov-ink/50">
+                                    <th scope="col" class="stamped-header w-1/4 rounded-tl-lg">Org ID</th>
+                                    <th scope="col" class="stamped-header w-1/2">Role / Description</th>
+                                    <th scope="col" class="stamped-header w-1/4 rounded-tr-lg text-right">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-sm font-semibold text-gov-ink/80">
+                                <tr>
+                                    <td class="stamped-cell rounded-bl-lg">NSRDEC</td>
+                                    <td class="stamped-cell">US Army Natick Soldier RD&amp;E Center. Heads RDECOM Soldier System Integration Domain.</td>
+                                    <td class="stamped-cell text-right text-green-600">LEAD</td>
+                                </tr>
+                                <tr>
+                                    <td class="stamped-cell rounded-bl-lg">RDECOM</td>
+                                    <td class="stamped-cell">Research, Development &amp; Engineering Command. Contributing RDECs across domains.</td>
+                                    <td class="stamped-cell text-right text-green-600">CONTRIB</td>
+                                </tr>
+                                <tr>
+                                    <td class="stamped-cell rounded-bl-lg">PEO-Soldier</td>
+                                    <td class="stamped-cell">Program Executive Office Soldier. Provides program-level input and Knowledge Centers.</td>
+                                    <td class="stamped-cell text-right text-green-600">CONTRIB</td>
+                                </tr>
+                                <tr>
+                                    <td class="stamped-cell rounded-bl-lg">INTENT</td>
+                                    <td class="stamped-cell">Guides investment priorities, stimulates dialogue, evaluates technology trade-offs.</td>
+                                    <td class="stamped-cell text-right text-gov-ink font-black">ADVISORY</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Control cluster -->
+                    <div>
+                        <h3 class="font-display text-2xl font-black uppercase tracking-tight text-gov-ink/80 mb-4">Operations Console</h3>
+                        <div class="control-cluster">
+                            <div class="flex flex-col items-center">
+                                <div class="toggle-switch" role="switch" aria-checked="true" tabindex="0" aria-label="System power"><div class="knob"></div></div>
+                                <div class="control-label">Sys Power</div>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <div class="toggle-switch" role="switch" aria-checked="true" tabindex="0" aria-label="Cognitive net"><div class="knob"></div></div>
+                                <div class="control-label">Cog Net</div>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <div class="toggle-switch" role="switch" aria-checked="false" tabindex="0" aria-label="CBRN"><div class="knob"></div></div>
+                                <div class="control-label">CBRN Mode</div>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <div class="toggle-switch" role="switch" aria-checked="true" tabindex="0" aria-label="Stealth"><div class="knob"></div></div>
+                                <div class="control-label">Stealth TX</div>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <div class="large-dial" style="--dial-angle: -45deg" aria-hidden="true"></div>
+                                <div class="control-label">Gain · -4dB</div>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <div class="large-dial" style="--dial-angle: 80deg" aria-hidden="true"></div>
+                                <div class="control-label">Visor · 180°</div>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <div class="large-dial" style="--dial-angle: 25deg" aria-hidden="true"></div>
+                                <div class="control-label">Load · 38kg</div>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <div class="counter-display">07.31</div>
+                                <div class="control-label">Domains · Edges</div>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <div class="counter-display">02:09</div>
+                                <div class="control-label">Datum · 2009</div>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <div class="led-strip">
+                                    <span class="led-dot green" aria-hidden="true"></span>
+                                    <span class="led-dot green" aria-hidden="true"></span>
+                                    <span class="led-dot green" aria-hidden="true"></span>
+                                    <span class="led-dot amber" aria-hidden="true"></span>
+                                    <span class="led-dot green" aria-hidden="true"></span>
+                                    <span class="led-dot green" aria-hidden="true"></span>
+                                    <span class="led-dot red" aria-hidden="true"></span>
+                                </div>
+                                <div class="control-label">Domain TRL Bus</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Signature plate -->
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="sig-plate">
+                            <div class="font-mono text-[10px] uppercase tracking-widest font-bold text-gov-ink/50 mb-2">Authority — Lead</div>
+                            <div class="sig-line"></div>
+                            <div class="flex items-center justify-between">
+                                <div class="font-mono text-xs font-bold text-gov-ink/70">NSRDEC</div>
+                                <div class="dial" style="--dial-angle: 35deg" aria-hidden="true"></div>
+                            </div>
+                        </div>
+                        <div class="sig-plate">
+                            <div class="font-mono text-[10px] uppercase tracking-widest font-bold text-gov-ink/50 mb-2">Authority — Contrib</div>
+                            <div class="sig-line"></div>
+                            <div class="flex items-center justify-between">
+                                <div class="font-mono text-xs font-bold text-gov-ink/70">RDECOM</div>
+                                <div class="dial" style="--dial-angle: -20deg" aria-hidden="true"></div>
+                            </div>
+                        </div>
+                        <div class="sig-plate">
+                            <div class="font-mono text-[10px] uppercase tracking-widest font-bold text-gov-ink/50 mb-2">Authority — Contrib</div>
+                            <div class="sig-line"></div>
+                            <div class="flex items-center justify-between">
+                                <div class="font-mono text-xs font-bold text-gov-ink/70">PEO-SOLDIER</div>
+                                <div class="dial" style="--dial-angle: 60deg" aria-hidden="true"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ===== TAB 04 ===== -->
+                <section id="tab-a-04" role="tabpanel" aria-labelledby="tab-a-btn-04" tabindex="0" hidden class="space-y-12">
+                    <div class="flex items-start gap-8 border-b-2 border-white pb-8">
+                        <span class="font-display text-8xl md:text-[120px] font-black embossed-text tracking-tighter leading-none mt-[-10px]" aria-hidden="true">04</span>
+                        <div>
+                            <h2 class="font-display display-tight text-4xl md:text-6xl font-black uppercase text-gov-ink/85 mb-4">Capability Domains</h2>
+                            <p class="font-mono text-sm font-bold uppercase tracking-widest text-gov-ink/50 bg-gov-plastic-dark px-3 py-1 inline-block rounded">Seven Functional Areas</p>
+                        </div>
+                    </div>
+
+                    <!-- System architecture diagram -->
+                    <div>
+                        <h3 class="font-display text-2xl font-black uppercase tracking-tight text-gov-ink/80 mb-4">Soldier-as-System Topology</h3>
+                        <div class="arch-grid">
+                            <svg class="arch-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                                <g stroke="#B0B0B0" stroke-width="0.4" stroke-dasharray="1.2 1.4" fill="none">
+                                    <line x1="17" y1="17" x2="50" y2="50"/>
+                                    <line x1="50" y1="17" x2="50" y2="50"/>
+                                    <line x1="83" y1="17" x2="50" y2="50"/>
+                                    <line x1="17" y1="50" x2="50" y2="50"/>
+                                    <line x1="83" y1="50" x2="50" y2="50"/>
+                                    <line x1="17" y1="83" x2="50" y2="50"/>
+                                    <line x1="50" y1="83" x2="50" y2="50"/>
+                                    <line x1="83" y1="83" x2="50" y2="50"/>
+                                </g>
+                            </svg>
+                            <div class="arch-node"><div class="code">DOM-HPT</div>Human Perf.</div>
+                            <div class="arch-node"><div class="code">DOM-PROT</div>Protection</div>
+                            <div class="arch-node"><div class="code">DOM-LETH</div>Lethality</div>
+                            <div class="arch-node"><div class="code">DOM-NET</div>Network</div>
+                            <div class="arch-node center"><div class="code">ENTITY</div>Warfighter</div>
+                            <div class="arch-node"><div class="code">DOM-SENS</div>Sensors</div>
+                            <div class="arch-node"><div class="code">DOM-MOB</div>Mobility</div>
+                            <div class="arch-node"><div class="code">DOM-PWR</div>Power</div>
+                            <div class="arch-node"><div class="code">CONCEPT</div>FS-2030</div>
+                        </div>
+                    </div>
+
+                    <!-- Domain Spec Cards -->
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                        <article class="spec-card">
+                            <div class="flex items-start justify-between">
+                                <div>
+                                    <div class="code">DOM-HPT</div>
+                                    <h3 class="title">Human Performance &amp; Training</h3>
+                                </div>
+                                <span class="led-dot green" aria-hidden="true"></span>
+                            </div>
+                            <ul>
+                                <li>Personal Intelligent Agent (PIA)</li>
+                                <li>Immersive VR &amp; augmented reality</li>
+                                <li>Nootropics &amp; prosthetic augmentation</li>
+                            </ul>
+                            <div class="gauge"><span>TRL 6</span><div class="gauge-track"><div class="gauge-fill" style="width:72%"></div></div></div>
+                        </article>
+
+                        <article class="spec-card">
+                            <div class="flex items-start justify-between">
+                                <div>
+                                    <div class="code">DOM-PROT</div>
+                                    <h3 class="title">Soldier Protection</h3>
+                                </div>
+                                <span class="led-dot green" aria-hidden="true"></span>
+                            </div>
+                            <ul>
+                                <li>Multifunctional "second skin" ensemble</li>
+                                <li>Reactive CBRN &amp; flame barrier</li>
+                                <li>Autonomous trauma care</li>
+                            </ul>
+                            <div class="gauge"><span>TRL 5</span><div class="gauge-track"><div class="gauge-fill amber" style="width:58%"></div></div></div>
+                        </article>
+
+                        <article class="spec-card">
+                            <div class="flex items-start justify-between">
+                                <div>
+                                    <div class="code">DOM-LETH</div>
+                                    <h3 class="title">Lethality</h3>
+                                </div>
+                                <span class="led-dot amber" aria-hidden="true"></span>
+                            </div>
+                            <ul>
+                                <li>Caseless kinetic rifle</li>
+                                <li>Air-bursting HE munitions</li>
+                                <li>Virtual trigger via headgear</li>
+                            </ul>
+                            <div class="gauge"><span>TRL 4</span><div class="gauge-track"><div class="gauge-fill amber" style="width:45%"></div></div></div>
+                        </article>
+
+                        <article class="spec-card">
+                            <div class="flex items-start justify-between">
+                                <div>
+                                    <div class="code">DOM-MOB</div>
+                                    <h3 class="title">Mobility &amp; Logistics</h3>
+                                </div>
+                                <span class="led-dot green" aria-hidden="true"></span>
+                            </div>
+                            <ul>
+                                <li>Lower Body Unit (LBU) exoskeleton</li>
+                                <li>Mission Enhancement Chassis (MAC)</li>
+                                <li>Load augmentation, urban &amp; breach</li>
+                            </ul>
+                            <div class="gauge"><span>TRL 6</span><div class="gauge-track"><div class="gauge-fill" style="width:70%"></div></div></div>
+                        </article>
+
+                        <article class="spec-card">
+                            <div class="flex items-start justify-between">
+                                <div>
+                                    <div class="code">DOM-NET</div>
+                                    <h3 class="title">Soldier Network</h3>
+                                </div>
+                                <span class="led-dot green" aria-hidden="true"></span>
+                            </div>
+                            <ul>
+                                <li>Cognitive networks &amp; SDR</li>
+                                <li>Conformal nano-antenna arrays</li>
+                                <li>Multi-band secure transmission</li>
+                            </ul>
+                            <div class="gauge"><span>TRL 5</span><div class="gauge-track"><div class="gauge-fill amber" style="width:62%"></div></div></div>
+                        </article>
+
+                        <article class="spec-card">
+                            <div class="flex items-start justify-between">
+                                <div>
+                                    <div class="code">DOM-SENS</div>
+                                    <h3 class="title">Soldier Sensors</h3>
+                                </div>
+                                <span class="led-dot green" aria-hidden="true"></span>
+                            </div>
+                            <ul>
+                                <li>180° visor &amp; 360° hyper-spectral fusion</li>
+                                <li>Biometric facial recognition</li>
+                                <li>Autonomous swarm robotics</li>
+                            </ul>
+                            <div class="gauge"><span>TRL 5</span><div class="gauge-track"><div class="gauge-fill amber" style="width:55%"></div></div></div>
+                        </article>
+
+                        <article class="spec-card lg:col-start-2">
+                            <div class="flex items-start justify-between">
+                                <div>
+                                    <div class="code">DOM-PWR</div>
+                                    <h3 class="title">Soldier Power &amp; Energy</h3>
+                                </div>
+                                <span class="led-dot red" aria-hidden="true"></span>
+                            </div>
+                            <ul>
+                                <li>Multi-fuel hybrid generator</li>
+                                <li>Polymeric nano-fiber batteries</li>
+                                <li>Wireless magnetic resonance transfer</li>
+                            </ul>
+                            <div class="gauge"><span>TRL 3</span><div class="gauge-track"><div class="gauge-fill red" style="width:32%"></div></div></div>
+                        </article>
+
+                    </div>
+
+                    <!-- Full domain table -->
+                    <div class="overflow-x-auto">
+                        <table class="stamped-table w-full text-left font-mono">
+                            <thead>
+                                <tr class="font-bold uppercase text-xs tracking-widest text-gov-ink/50">
+                                    <th scope="col" class="stamped-header w-1/4 rounded-tl-lg">Domain</th>
+                                    <th scope="col" class="stamped-header w-1/2">Representative Technologies</th>
+                                    <th scope="col" class="stamped-header w-1/4 rounded-tr-lg text-right">State</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-sm font-semibold text-gov-ink/80">
+                                <tr><td class="stamped-cell">HPT</td><td class="stamped-cell">Personal Intelligent Agent (PIA), immersive VR/AR training, nootropics &amp; prosthetics.</td><td class="stamped-cell text-right text-green-600">ACTIVE</td></tr>
+                                <tr><td class="stamped-cell">PROT</td><td class="stamped-cell">Form-fitting "second skin" ensemble: ballistic, blast, reactive flame &amp; CBRN.</td><td class="stamped-cell text-right text-green-600">ACTIVE</td></tr>
+                                <tr><td class="stamped-cell">LETH</td><td class="stamped-cell">Lightweight low-recoil platform; caseless kinetic &amp; air-bursting HE munitions.</td><td class="stamped-cell text-right text-green-600">ACTIVE</td></tr>
+                                <tr><td class="stamped-cell">MOB</td><td class="stamped-cell">Modular Lower Body Unit (LBU) exoskeleton + Mission Enhancement Chassis (MAC).</td><td class="stamped-cell text-right text-green-600">ACTIVE</td></tr>
+                                <tr><td class="stamped-cell">NET</td><td class="stamped-cell">Cognitive networks, software-defined radio, distributed conformal nano-antennas.</td><td class="stamped-cell text-right text-green-600">ACTIVE</td></tr>
+                                <tr><td class="stamped-cell">SENS</td><td class="stamped-cell">180° visor display, 360° hyper-spectral fusion, biometric ID, swarm robotics.</td><td class="stamped-cell text-right text-green-600">ACTIVE</td></tr>
+                                <tr><td class="stamped-cell">PWR</td><td class="stamped-cell">Multi-fuel hybrid generator, nano-fiber batteries, wireless magnetic resonance.</td><td class="stamped-cell text-right text-green-600">ACTIVE</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- ===== TAB 05 ===== -->
+                <section id="tab-a-05" role="tabpanel" aria-labelledby="tab-a-btn-05" tabindex="0" hidden class="space-y-12">
+                    <div class="flex items-start gap-8 border-b-2 border-white pb-8">
+                        <span class="font-display text-8xl md:text-[120px] font-black embossed-text tracking-tighter leading-none mt-[-10px]" aria-hidden="true">05</span>
+                        <div>
+                            <h2 class="font-display display-tight text-4xl md:text-6xl font-black uppercase text-gov-ink/85 mb-4">Integration Matrix</h2>
+                            <p class="font-mono text-sm font-bold uppercase tracking-widest text-gov-ink/50 bg-gov-plastic-dark px-3 py-1 inline-block rounded">Cross-Domain Linkages</p>
+                        </div>
+                    </div>
+
+                    <!-- Edge couplings -->
+                    <div class="overflow-x-auto">
+                        <table class="stamped-table w-full text-left font-mono">
+                            <thead>
+                                <tr class="font-bold uppercase text-xs tracking-widest text-gov-ink/50">
+                                    <th scope="col" class="stamped-header w-1/4 rounded-tl-lg">Edge</th>
+                                    <th scope="col" class="stamped-header w-1/2">Coupling</th>
+                                    <th scope="col" class="stamped-header w-1/4 rounded-tr-lg text-right">Index</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-sm font-semibold text-gov-ink/80">
+                                <tr><td class="stamped-cell">Visor → Rifle</td><td class="stamped-cell">Headgear visor displays the virtual aim point for the caseless kinetic platform.</td><td class="stamped-cell text-right text-gov-ink font-black">1:1</td></tr>
+                                <tr><td class="stamped-cell">Ensemble → Antenna</td><td class="stamped-cell">Conformal nano-antennas embedded into the protective ensemble for cognitive net.</td><td class="stamped-cell text-right text-gov-ink font-black">1:1</td></tr>
+                                <tr><td class="stamped-cell">LBU → Generator</td><td class="stamped-cell">Exoskeleton drawn from central body-mounted multi-fuel hybrid generator.</td><td class="stamped-cell text-right text-gov-ink font-black">1:1</td></tr>
+                                <tr><td class="stamped-cell">PIA → Warfighter</td><td class="stamped-cell">Personal Intelligent Agent monitors physiological state and cognitive load.</td><td class="stamped-cell text-right text-gov-ink font-black">1:1</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Capability interaction heatmap -->
+                    <div>
+                        <h3 class="font-display text-2xl font-black uppercase tracking-tight text-gov-ink/80 mb-4">Domain Interaction Heatmap</h3>
+                        <div class="heatmap">
+                            <div class="hcell hhead">·</div>
+                            <div class="hcell hhead">HPT</div>
+                            <div class="hcell hhead">PROT</div>
+                            <div class="hcell hhead">LETH</div>
+                            <div class="hcell hhead">MOB</div>
+                            <div class="hcell hhead">NET</div>
+                            <div class="hcell hhead">SENS</div>
+                            <div class="hcell hhead">PWR</div>
+
+                            <div class="hcell hrow">HPT</div>
+                            <div class="hcell h0">·</div><div class="hcell h1">1</div><div class="hcell h1">1</div><div class="hcell h1">1</div><div class="hcell h2">2</div><div class="hcell h3">3</div><div class="hcell h1">1</div>
+
+                            <div class="hcell hrow">PROT</div>
+                            <div class="hcell h1">1</div><div class="hcell h0">·</div><div class="hcell h2">2</div><div class="hcell h1">1</div><div class="hcell h3">3</div><div class="hcell h1">1</div><div class="hcell h2">2</div>
+
+                            <div class="hcell hrow">LETH</div>
+                            <div class="hcell h1">1</div><div class="hcell h2">2</div><div class="hcell h0">·</div><div class="hcell h1">1</div><div class="hcell h1">1</div><div class="hcell h3">3</div><div class="hcell h2">2</div>
+
+                            <div class="hcell hrow">MOB</div>
+                            <div class="hcell h1">1</div><div class="hcell h1">1</div><div class="hcell h1">1</div><div class="hcell h0">·</div><div class="hcell h1">1</div><div class="hcell h1">1</div><div class="hcell h3">3</div>
+
+                            <div class="hcell hrow">NET</div>
+                            <div class="hcell h2">2</div><div class="hcell h3">3</div><div class="hcell h1">1</div><div class="hcell h1">1</div><div class="hcell h0">·</div><div class="hcell h2">2</div><div class="hcell h1">1</div>
+
+                            <div class="hcell hrow">SENS</div>
+                            <div class="hcell h3">3</div><div class="hcell h1">1</div><div class="hcell h3">3</div><div class="hcell h1">1</div><div class="hcell h2">2</div><div class="hcell h0">·</div><div class="hcell h1">1</div>
+
+                            <div class="hcell hrow">PWR</div>
+                            <div class="hcell h1">1</div><div class="hcell h2">2</div><div class="hcell h2">2</div><div class="hcell h3">3</div><div class="hcell h1">1</div><div class="hcell h1">1</div><div class="hcell h0">·</div>
+                        </div>
+                        <div class="font-mono text-[10px] uppercase tracking-widest text-gov-ink/40 font-bold mt-3">
+                            Scale: 0 (none) · 1 (low) · 2 (med) · 3 (high coupling)
+                        </div>
+                    </div>
+
+                    <!-- Node Inventory -->
+                    <div>
+                        <h3 class="font-display text-2xl font-black uppercase tracking-tight text-gov-ink/80 mb-4">Node Inventory — 27 Entities</h3>
+                        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-3 font-mono text-xs">
+                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/40 font-bold">ORG</span> · NSRDEC</div>
+                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/40 font-bold">ORG</span> · RDECOM</div>
+                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/40 font-bold">ORG</span> · PEO-Soldier</div>
+                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/40 font-bold">CONCEPT</span> · Future Soldier 2030</div>
+                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/40 font-bold">ENTITY</span> · Warfighter</div>
+                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/40 font-bold">DOMAIN</span> · HPT</div>
+                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/40 font-bold">DOMAIN</span> · Protection</div>
+                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/40 font-bold">DOMAIN</span> · Lethality</div>
+                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/40 font-bold">DOMAIN</span> · Mobility</div>
+                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/40 font-bold">DOMAIN</span> · Network</div>
+                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/40 font-bold">DOMAIN</span> · Sensors</div>
+                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/40 font-bold">DOMAIN</span> · Power</div>
+                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/40 font-bold">TECH</span> · PIA</div>
+                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/40 font-bold">TECH</span> · VR/AR</div>
+                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/40 font-bold">TECH</span> · Nootropics</div>
+                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/40 font-bold">SYS</span> · Ensemble</div>
+                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/40 font-bold">SYS</span> · CBRN Barrier</div>
+                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/40 font-bold">WPN</span> · Caseless Rifle</div>
+                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/40 font-bold">WPN</span> · Air-Burst Munitions</div>
+                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/40 font-bold">SYS</span> · LBU Exoskeleton</div>
+                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/40 font-bold">SYS</span> · MAC Chassis</div>
+                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/40 font-bold">SYS</span> · Cognitive Nets</div>
+                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/40 font-bold">SYS</span> · Nano-Antennas</div>
+                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/40 font-bold">SYS</span> · Visor Display</div>
+                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/40 font-bold">SYS</span> · Biometric ID</div>
+                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/40 font-bold">SYS</span> · Swarm Robotics</div>
+                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/40 font-bold">SYS</span> · Hybrid Generator</div>
+                        </div>
+                    </div>
+
+                    <!-- Edge Ledger -->
+                    <div>
+                        <h3 class="font-display text-2xl font-black uppercase tracking-tight text-gov-ink/80 mb-4">Edge Ledger — Selected Relations</h3>
+                        <div class="grid md:grid-cols-2 gap-2 font-mono text-xs text-gov-ink/75">
+                            <div class="stamped-cell"><span class="font-black text-gov-ink/50">leadsDevelopmentOf</span> · NSRDEC → FS2030</div>
+                            <div class="stamped-cell"><span class="font-black text-gov-ink/50">contributesTo</span> · RDECOM → FS2030</div>
+                            <div class="stamped-cell"><span class="font-black text-gov-ink/50">contributesTo</span> · PEO-Soldier → FS2030</div>
+                            <div class="stamped-cell"><span class="font-black text-gov-ink/50">definesCoreArea</span> · FS2030 → HPT</div>
+                            <div class="stamped-cell"><span class="font-black text-gov-ink/50">definesCoreArea</span> · FS2030 → Protection</div>
+                            <div class="stamped-cell"><span class="font-black text-gov-ink/50">definesCoreArea</span> · FS2030 → Lethality</div>
+                            <div class="stamped-cell"><span class="font-black text-gov-ink/50">utilizes</span> · HPT → PIA</div>
+                            <div class="stamped-cell"><span class="font-black text-gov-ink/50">utilizes</span> · HPT → VR/AR</div>
+                            <div class="stamped-cell"><span class="font-black text-gov-ink/50">monitorsStateOf</span> · PIA → Warfighter</div>
+                            <div class="stamped-cell"><span class="font-black text-gov-ink/50">implementedVia</span> · Protection → Ensemble</div>
+                            <div class="stamped-cell"><span class="font-black text-gov-ink/50">providesInherent</span> · Ensemble → CBRN</div>
+                            <div class="stamped-cell"><span class="font-black text-gov-ink/50">wornBy</span> · Ensemble → Warfighter</div>
+                            <div class="stamped-cell"><span class="font-black text-gov-ink/50">deploys</span> · Lethality → Caseless Rifle</div>
+                            <div class="stamped-cell"><span class="font-black text-gov-ink/50">deploys</span> · Lethality → Air-Burst</div>
+                            <div class="stamped-cell"><span class="font-black text-gov-ink/50">requires</span> · Mobility → LBU</div>
+                            <div class="stamped-cell"><span class="font-black text-gov-ink/50">interlocksWith</span> · LBU → MAC</div>
+                            <div class="stamped-cell"><span class="font-black text-gov-ink/50">supportsLoadFor</span> · LBU → Warfighter</div>
+                            <div class="stamped-cell"><span class="font-black text-gov-ink/50">operatesVia</span> · Network → Cognitive Nets</div>
+                            <div class="stamped-cell"><span class="font-black text-gov-ink/50">transmitsThrough</span> · Cognitive Nets → Antennas</div>
+                            <div class="stamped-cell"><span class="font-black text-gov-ink/50">integrates</span> · Sensors → Visor</div>
+                            <div class="stamped-cell"><span class="font-black text-gov-ink/50">integrates</span> · Sensors → Biometric</div>
+                            <div class="stamped-cell"><span class="font-black text-gov-ink/50">tasks</span> · Sensors → Swarm Robots</div>
+                            <div class="stamped-cell"><span class="font-black text-gov-ink/50">generatesFrom</span> · Power → Hybrid Generator</div>
+                            <div class="stamped-cell"><span class="font-black text-gov-ink/50">distributesVia</span> · Generator → Wireless</div>
+                            <div class="stamped-cell"><span class="font-black text-gov-ink/50">displaysAimPointFor</span> · Visor → Caseless Rifle</div>
+                            <div class="stamped-cell"><span class="font-black text-gov-ink/50">embeds</span> · Ensemble → Antennas</div>
+                            <div class="stamped-cell"><span class="font-black text-gov-ink/50">poweredBy</span> · LBU → Hybrid Generator</div>
+                        </div>
+                    </div>
+                </section>
+
+            </main>
+
+            <!-- Design token specimen -->
+            <section aria-label="Design tokens" class="space-y-6 border-t-4 border-gov-plastic-dark pt-8">
+                <div class="flex items-baseline justify-between">
+                    <h2 class="font-display text-3xl md:text-4xl font-black uppercase tracking-tight text-gov-ink/80">Token Specimen</h2>
+                    <span class="font-mono text-[10px] uppercase tracking-widest text-gov-ink/40 font-bold">Civic Plastic · v1.0</span>
+                </div>
+
+                <!-- Color tokens -->
+                <div>
+                    <div class="font-mono text-[10px] uppercase tracking-widest text-gov-ink/40 font-bold mb-3">Color Tokens</div>
+                    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-3">
+                        <div class="swatch-row">
+                            <div class="swatch" style="background:#EAEAEA"></div>
+                            <div class="swatch-label">Plastic</div>
+                            <div class="swatch-hex">#EAEAEA</div>
+                        </div>
+                        <div class="swatch-row">
+                            <div class="swatch" style="background:#D1D1D1"></div>
+                            <div class="swatch-label">Plastic Dark</div>
+                            <div class="swatch-hex">#D1D1D1</div>
+                        </div>
+                        <div class="swatch-row">
+                            <div class="swatch" style="background:#111314"></div>
+                            <div class="swatch-label">Ink</div>
+                            <div class="swatch-hex">#111314</div>
+                        </div>
+                        <div class="swatch-row">
+                            <div class="swatch" style="background:#7B8C98"></div>
+                            <div class="swatch-label">Slate</div>
+                            <div class="swatch-hex">#7B8C98</div>
+                        </div>
+                        <div class="swatch-row">
+                            <div class="swatch" style="background:#F4EFE6"></div>
+                            <div class="swatch-label">Manila</div>
+                            <div class="swatch-hex">#F4EFE6</div>
+                        </div>
+                        <div class="swatch-row">
+                            <div class="swatch" style="background:#E6DECC"></div>
+                            <div class="swatch-label">Manila Dark</div>
+                            <div class="swatch-hex">#E6DECC</div>
+                        </div>
+                        <div class="swatch-row">
+                            <div class="swatch" style="background:#2A4B7C"></div>
+                            <div class="swatch-label">Blue Ink</div>
+                            <div class="swatch-hex">#2A4B7C</div>
+                        </div>
+                        <div class="swatch-row">
+                            <div class="swatch" style="background:#D32F2F"></div>
+                            <div class="swatch-label">Red Stamp</div>
+                            <div class="swatch-hex">#D32F2F</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Type ramp -->
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <div class="font-mono text-[10px] uppercase tracking-widest text-gov-ink/40 font-bold mb-3">Display · Space Grotesk</div>
+                        <div class="space-y-3">
+                            <div class="font-display font-black text-6xl leading-none tracking-tighter text-gov-ink/85">Aa 72px</div>
+                            <div class="font-display font-black text-4xl leading-none tracking-tight text-gov-ink/80">Aa 36px</div>
+                            <div class="font-display font-bold text-2xl text-gov-ink/75">Aa 24px</div>
+                            <div class="font-display text-base text-gov-ink/70">Aa 16px · body</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="font-mono text-[10px] uppercase tracking-widest text-gov-ink/40 font-bold mb-3">Mono · Geist Mono</div>
+                        <div class="space-y-3 font-mono">
+                            <div class="text-2xl font-bold text-gov-ink/80">DOM-0123456789</div>
+                            <div class="text-base font-bold text-gov-ink/75">DOM-NSRDEC-2009</div>
+                            <div class="text-xs font-bold uppercase tracking-widest text-gov-ink/60">Eyebrow · Caption · 12px</div>
+                            <div class="text-[10px] uppercase tracking-widest text-gov-ink/45">Micro Tag · 10px</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Component anatomy -->
+                <div>
+                    <div class="font-mono text-[10px] uppercase tracking-widest text-gov-ink/40 font-bold mb-3">Primitive Anatomy</div>
+                    <div class="grid md:grid-cols-4 gap-4">
+                        <div class="raised-panel p-4 rounded-xl">
+                            <div class="swatch-label mb-2">Raised Panel</div>
+                            <div class="text-[10px] font-mono text-gov-ink/55">Box-shadow 6/12</div>
+                        </div>
+                        <div class="debossed-panel p-4 rounded-xl">
+                            <div class="swatch-label mb-2">Debossed Panel</div>
+                            <div class="text-[10px] font-mono text-gov-ink/55">Inset 4/8</div>
+                        </div>
+                        <div class="stat-tile">
+                            <div class="num" style="font-size:1.5rem">A</div>
+                            <div class="lbl">Stat Tile</div>
+                        </div>
+                        <div class="spec-card">
+                            <div class="code">SPEC</div>
+                            <div class="title" style="font-size:1rem">Spec Card</div>
+                            <div class="gauge"><span>50%</span><div class="gauge-track"><div class="gauge-fill" style="width:50%"></div></div></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="font-mono text-xs uppercase tracking-widest text-gov-ink/40 font-bold flex justify-between border-t-2 border-gov-plastic-dark pt-4">
+                <span>Civic Plastic · v1.0</span>
+                <span>NSRDEC RDECOM · 02|2009</span>
+                <span>Hardware Build 899A-231450</span>
+            </footer>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         DOCTRINE B — ARCHIVAL RECORD
+         ========================================== -->
+    <div id="doctrine-b" hidden class="min-h-screen bg-gov-slate text-gov-blue-ink font-display p-4 md:p-8 no-select">
+        <div class="max-w-6xl mx-auto mt-8">
+
+            <div class="flex items-end px-4 gap-2" id="nav-b" role="tablist" aria-label="Future Soldier 2030 sections">
+                <button type="button" role="tab" id="tab-b-btn-03" aria-controls="tab-b-03" aria-selected="true" tabindex="0"
+                        data-target="03" class="tab-btn-b folder-tab">Ref: 03-Charter</button>
+                <button type="button" role="tab" id="tab-b-btn-04" aria-controls="tab-b-04" aria-selected="false" tabindex="-1"
+                        data-target="04" class="tab-btn-b folder-tab">Ref: 04-Domains</button>
+                <button type="button" role="tab" id="tab-b-btn-05" aria-controls="tab-b-05" aria-selected="false" tabindex="-1"
+                        data-target="05" class="tab-btn-b folder-tab">Ref: 05-Matrix</button>
+            </div>
+
+            <div class="bg-manila-texture border-2 border-gov-blue-ink p-6 md:p-12 md:pl-16 relative overflow-hidden shadow-2xl min-h-[700px]">
+
+                <!-- 3-hole binder gutter -->
+                <div class="binder-gutter" aria-hidden="true">
+                    <div class="binder-hole"></div>
+                    <div class="binder-hole"></div>
+                    <div class="binder-hole"></div>
+                </div>
+
+                <div data-no-stamp class="absolute top-4 right-4 font-mono text-[10px] uppercase font-bold text-gov-red-stamp border border-gov-red-stamp px-2 py-1 rotate-3 opacity-70 pointer-events-none z-50">
+                    Click the folder area to stamp
+                </div>
+
+                <div data-no-stamp class="flex justify-between items-start mb-12 border-b-2 border-gov-blue-ink pb-8">
+                    <div class="w-1/3">
+                        <p class="font-display text-[10px] uppercase tracking-widest font-bold">Form FS-2030<br>NSRDEC Soldier Sys. Domain</p>
+                    </div>
+                    <div class="w-1/3 text-center">
+                        <h1 class="font-display display-tight text-4xl md:text-5xl font-black uppercase leading-none">FUTURE SOLDIER</h1>
+                        <p class="font-display text-xl font-bold uppercase tracking-widest mt-2 border-t border-gov-blue-ink pt-2 inline-block">2030 Initiative</p>
+                    </div>
+                    <div class="w-1/3 text-right">
+                        <p class="font-display text-xs font-bold uppercase tracking-widest text-gov-blue-ink/70 mb-2">Datum</p>
+                        <span class="font-mono text-2xl font-bold tracking-widest border-2 border-gov-blue-ink px-2 py-1 inline-block">02|2009</span>
+                    </div>
+                </div>
+
+                <!-- ===== TAB b-03 ===== -->
+                <section id="tab-b-03" role="tabpanel" aria-labelledby="tab-b-btn-03" tabindex="0" class="stamp-surface cursor-crosshair">
+
+                    <div class="mb-12">
+                        <h2 class="font-display display-tight text-6xl md:text-8xl font-black uppercase leading-none mb-4">03. Initiative<br>Charter</h2>
+                        <div class="dotted-line-wrap font-mono text-sm font-bold uppercase w-full md:w-1/2">
+                            <span>Klassifikation:</span>
+                            <span class="dotted-line" aria-hidden="true"></span>
+                            <span>Concept Framework</span>
+                        </div>
+                    </div>
+
+                    <div data-no-stamp class="grid md:grid-cols-[1fr_18rem] gap-8">
+                        <div class="space-y-8 relative">
+                            <p class="font-display text-base md:text-lg leading-relaxed max-w-2xl">
+                                The Future Soldier 2030 Initiative is a conceptual capability framework — <span class="font-bold">not established doctrine</span> —
+                                developed to identify what soldiers will require in future combat environments and to guide investment,
+                                stimulate technical dialogue, and evaluate trade-offs across the warfighter system.
+                            </p>
+
+                            <table class="invoice-table bg-gov-manila font-mono relative z-10">
+                                <thead class="bg-gov-blue-ink/10">
+                                    <tr>
+                                        <th scope="col" class="w-1/6 text-center">Umfang (Scope)</th>
+                                        <th scope="col" class="text-left">Verzeichnungsbogen (Details)</th>
+                                        <th scope="col" class="w-1/6 text-center">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-sm font-semibold">
+                                    <tr>
+                                        <td class="text-center py-6">Lead Org</td>
+                                        <td class="py-6 leading-relaxed">
+                                            NSRDEC leads development as RDECOM's Soldier System Integration Domain head.
+                                            Additional input from contributing RDECs, PEO-Soldier, and designated Knowledge Centers.
+                                        </td>
+                                        <td class="text-center py-6">[ LEAD ]</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center py-6">Intent</td>
+                                        <td class="py-6 leading-relaxed">
+                                            Not established doctrine. Guides investment priorities, stimulates dialogue,
+                                            and evaluates technological trade-offs for the future warfighter.
+                                        </td>
+                                        <td class="text-center py-6">[ ADVISORY ]</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center py-6">Outcome</td>
+                                        <td class="py-6 leading-relaxed">
+                                            Seven cross-cutting functional domains, 27 entity nodes, 31 documented relationships
+                                            forming the integrated soldier-as-a-system architecture.
+                                        </td>
+                                        <td class="text-center py-6">[ VERIFIED ]</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <div class="absolute top-2 right-0 margin-note">
+                                See § 04 — Domains
+                            </div>
+
+                            <div class="signature-block">
+                                <div class="sig-cell">
+                                    <div class="sig-line"></div>
+                                    <div class="sig-label">Originator (NSRDEC)</div>
+                                </div>
+                                <div class="sig-cell">
+                                    <div class="sig-line"></div>
+                                    <div class="sig-label">Domain Authority</div>
+                                </div>
+                                <div class="sig-cell">
+                                    <div class="sig-line"></div>
+                                    <div class="sig-label">Date / Datum</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <aside class="classification-sidebar self-start">
+                            <dl>
+                                <dt>Klassifikation</dt>
+                                <dd>Unclassified · For Reference</dd>
+                                <dt>Form</dt>
+                                <dd>FS-2030 / Charter</dd>
+                                <dt>Originator</dt>
+                                <dd>US Army NSRDEC</dd>
+                                <dt>Domain Lead</dt>
+                                <dd>Soldier System Integration</dd>
+                                <dt>Datum</dt>
+                                <dd>02 · 2009</dd>
+                                <dt>Source</dt>
+                                <dd>d2409ad840e3.pdf</dd>
+                                <dt>Revision</dt>
+                                <dd>Rev. 1.0</dd>
+                            </dl>
+                            <div class="mt-4 margin-note blue">Charter superseded by FY+10 review</div>
+                        </aside>
+                    </div>
+
+                    <div data-no-stamp class="barcode-row mt-10">
+                        <span>SERIAL</span>
+                        <span>NSRDEC · FS2030 · 03 · CHARTER</span>
+                        <div class="barcode flex-1"></div>
+                    </div>
+                </section>
+
+                <!-- ===== TAB b-04 ===== -->
+                <section id="tab-b-04" role="tabpanel" aria-labelledby="tab-b-btn-04" tabindex="0" hidden class="stamp-surface cursor-crosshair">
+
+                    <div class="mb-12">
+                        <h2 class="font-display display-tight text-6xl md:text-8xl font-black uppercase leading-none mb-4">04. Capability<br>Domains</h2>
+                        <div class="dotted-line-wrap font-mono text-sm font-bold uppercase w-full md:w-1/2">
+                            <span>Klassifikation:</span>
+                            <span class="dotted-line" aria-hidden="true"></span>
+                            <span>Seven Functional Areas</span>
+                        </div>
+                    </div>
+
+                    <div data-no-stamp class="grid md:grid-cols-[1fr_18rem] gap-8">
+                        <div class="space-y-8 relative">
+
+                            <table class="invoice-table bg-gov-manila font-mono relative z-10">
+                                <thead class="bg-gov-blue-ink/10">
+                                    <tr>
+                                        <th scope="col" class="w-1/6 text-center">Domain</th>
+                                        <th scope="col" class="text-left">Capability Synopsis</th>
+                                        <th scope="col" class="w-1/6 text-center">Clearance</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-sm font-semibold">
+                                    <tr><td class="text-center py-4">HPT</td><td class="py-4 leading-relaxed">PIA paired with each warfighter; immersive VR/AR training; embedded physiological sensors; nootropic and prosthetic enhancement.</td><td class="text-center py-4">UNRESTRICTED</td></tr>
+                                    <tr><td class="text-center py-4">PROT</td><td class="py-4 leading-relaxed">Multifunctional "second-skin" ensemble. Ballistic, blast, reactive flame, CBRN. Autonomous trauma care &amp; microclimate control.</td><td class="text-center py-4">UNRESTRICTED</td></tr>
+                                    <tr><td class="text-center py-4">LETH</td><td class="py-4 leading-relaxed">Lightweight low-recoil platform firing caseless kinetic and air-bursting HE munitions. Sighting integrated to headgear.</td><td class="text-center py-4">UNRESTRICTED</td></tr>
+                                    <tr><td class="text-center py-4">MOB</td><td class="py-4 leading-relaxed">Modular LBU exoskeleton + Mission Enhancement Chassis (MAC) for urban search-and-rescue, breaching, and load carriage.</td><td class="text-center py-4">UNRESTRICTED</td></tr>
+                                    <tr><td class="text-center py-4">NET</td><td class="py-4 leading-relaxed">Cognitive networks &amp; software-defined radio. Secure multi-band transmission through distributed conformal nano-antennas.</td><td class="text-center py-4">UNRESTRICTED</td></tr>
+                                    <tr><td class="text-center py-4">SENS</td><td class="py-4 leading-relaxed">180° visor display, 360° hyper-spectral fusion, biometric ID, 3D audio queuing, autonomous swarming robotics.</td><td class="text-center py-4">UNRESTRICTED</td></tr>
+                                    <tr><td class="text-center py-4">PWR</td><td class="py-4 leading-relaxed">Hybrid multi-fuel generator + polymeric nano-fiber batteries + magnetic-resonance wireless transfer.</td><td class="text-center py-4">UNRESTRICTED</td></tr>
+                                </tbody>
+                            </table>
+
+                            <!-- Stamp gallery -->
+                            <div>
+                                <h3 class="font-display text-2xl font-black uppercase tracking-tight mb-4">Classification Stamp Library</h3>
+                                <div class="stamp-gallery" data-no-stamp>
+                                    <div class="stamp-static r-neg-6">Classified</div>
+                                    <div class="stamp-static r-3">Archived</div>
+                                    <div class="stamp-static blue r-neg-12">For Reference</div>
+                                    <div class="stamp-static r-8">Approved</div>
+                                    <div class="stamp-static blue r-neg-2">Filed · §04</div>
+                                    <div class="stamp-static r-15">Verified</div>
+                                    <div class="stamp-static circle r-neg-6">FS-2030<br>NSRDEC</div>
+                                    <div class="stamp-static circle blue r-3">DOM<br>×7</div>
+                                </div>
+                            </div>
+
+                            <!-- Index card -->
+                            <div>
+                                <h3 class="font-display text-2xl font-black uppercase tracking-tight mb-4">Card Catalogue · Domain Index</h3>
+                                <div class="index-card" data-no-stamp>
+                                    <div class="ic-head">Index · § 04 · Capability Domains</div>
+                                    <div>HPT · Human Performance &amp; Training . . . . . . . . . . p. 04-A</div>
+                                    <div>PROT · Soldier Protection . . . . . . . . . . . . . . . . . . . . p. 04-B</div>
+                                    <div>LETH · Lethality . . . . . . . . . . . . . . . . . . . . . . . . . . . p. 04-C</div>
+                                    <div>MOB · Mobility &amp; Logistics . . . . . . . . . . . . . . . . . p. 04-D</div>
+                                    <div>NET · Soldier Network . . . . . . . . . . . . . . . . . . . . . . p. 04-E</div>
+                                    <div>SENS · Soldier Sensors . . . . . . . . . . . . . . . . . . . . . . p. 04-F</div>
+                                    <div>PWR · Soldier Power &amp; Energy . . . . . . . . . . . . . . p. 04-G</div>
+                                </div>
+                            </div>
+
+                            <!-- Photo placeholders -->
+                            <div class="grid grid-cols-3 gap-4 mt-8">
+                                <div class="photo-card">
+                                    <div class="img" aria-hidden="true"></div>
+                                    <div class="caption">FIG. 4-A · Ensemble</div>
+                                </div>
+                                <div class="photo-card">
+                                    <div class="img" aria-hidden="true"></div>
+                                    <div class="caption">FIG. 4-B · LBU Exoskeleton</div>
+                                </div>
+                                <div class="photo-card">
+                                    <div class="img" aria-hidden="true"></div>
+                                    <div class="caption">FIG. 4-C · Visor</div>
+                                </div>
+                            </div>
+
+                            <div class="absolute top-32 -right-6 margin-note rotate-2">Cross-ref figs to § 05</div>
+
+                            <div class="signature-block">
+                                <div class="sig-cell"><div class="sig-line"></div><div class="sig-label">Technical Reviewer</div></div>
+                                <div class="sig-cell"><div class="sig-line"></div><div class="sig-label">Domain Authority</div></div>
+                                <div class="sig-cell"><div class="sig-line"></div><div class="sig-label">Date / Datum</div></div>
+                            </div>
+                        </div>
+
+                        <aside class="classification-sidebar self-start">
+                            <dl>
+                                <dt>Section</dt>
+                                <dd>§ 04 · Capability Domains</dd>
+                                <dt>Domain Count</dt>
+                                <dd>07</dd>
+                                <dt>Lead Tech (HPT)</dt>
+                                <dd>Personal Intelligent Agent</dd>
+                                <dt>Lead Tech (Prot)</dt>
+                                <dd>Multifunctional Ensemble</dd>
+                                <dt>Lead Tech (Mob)</dt>
+                                <dd>LBU Exoskeleton + MAC</dd>
+                                <dt>Critical Risk</dt>
+                                <dd>Power &amp; energy density</dd>
+                                <dt>TRL Range</dt>
+                                <dd>3 – 6</dd>
+                            </dl>
+                            <div class="mt-4 margin-note">Verify TRL before contract</div>
+                        </aside>
+                    </div>
+
+                    <div data-no-stamp class="barcode-row mt-10">
+                        <span>SERIAL</span>
+                        <span>NSRDEC · FS2030 · 04 · DOMAINS</span>
+                        <div class="barcode flex-1"></div>
+                    </div>
+                </section>
+
+                <!-- ===== TAB b-05 ===== -->
+                <section id="tab-b-05" role="tabpanel" aria-labelledby="tab-b-btn-05" tabindex="0" hidden class="stamp-surface cursor-crosshair">
+
+                    <div class="mb-12">
+                        <h2 class="font-display display-tight text-6xl md:text-8xl font-black uppercase leading-none mb-4">05. Integration<br>Matrix</h2>
+                        <div class="dotted-line-wrap font-mono text-sm font-bold uppercase w-full md:w-1/2">
+                            <span>Klassifikation:</span>
+                            <span class="dotted-line" aria-hidden="true"></span>
+                            <span>Cross-Domain Couplings</span>
+                        </div>
+                    </div>
+
+                    <div data-no-stamp class="grid md:grid-cols-[1fr_18rem] gap-8">
+                        <div class="space-y-8 relative">
+
+                            <table class="invoice-table bg-gov-manila font-mono relative z-10">
+                                <thead class="bg-gov-blue-ink/10">
+                                    <tr>
+                                        <th scope="col" class="w-1/6 text-center">Edge</th>
+                                        <th scope="col" class="text-left">Coupling</th>
+                                        <th scope="col" class="w-1/6 text-center">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-sm font-semibold">
+                                    <tr><td class="text-center py-6">Visor ↔ Rifle</td><td class="py-6 leading-relaxed">Sighting integrated to headgear display — virtual trigger and forward-observer capability tied to caseless kinetic rifle.</td><td class="text-center py-6">[ COUPLED ]</td></tr>
+                                    <tr><td class="text-center py-6">Ensemble ↔ Net</td><td class="py-6 leading-relaxed">Distributed conformal nano-antenna arrays embedded into the protective ensemble; supports cognitive net &amp; multi-band TX.</td><td class="text-center py-6">[ COUPLED ]</td></tr>
+                                    <tr><td class="text-center py-6">LBU ↔ Power</td><td class="py-6 leading-relaxed">Exoskeleton augmentation drawn from central hybrid generator via magnetic-resonance wireless transfer.</td><td class="text-center py-6">[ COUPLED ]</td></tr>
+                                    <tr><td class="text-center py-6">PIA ↔ Warfighter</td><td class="py-6 leading-relaxed">Personal Intelligent Agent monitors physiological state and cognitive load; mediates data presented to the warfighter.</td><td class="text-center py-6">[ COUPLED ]</td></tr>
+                                </tbody>
+                            </table>
+
+                            <div>
+                                <h3 class="font-display text-2xl font-black uppercase tracking-tight mb-4">Selected Graph Edges</h3>
+                                <div>
+                                    <div class="spec-row"><span class="k">leadsDevelopmentOf</span><span>Organization: NSRDEC → Concept: Future Soldier 2030</span></div>
+                                    <div class="spec-row"><span class="k">contributesTo</span><span>Organization: RDECOM → Concept: Future Soldier 2030</span></div>
+                                    <div class="spec-row"><span class="k">contributesTo</span><span>Organization: PEO-Soldier → Concept: Future Soldier 2030</span></div>
+                                    <div class="spec-row"><span class="k">definesCoreArea</span><span>Concept: FS2030 → Domain: HPT · Protection · Lethality · Mobility · Network · Sensors · Power</span></div>
+                                    <div class="spec-row"><span class="k">utilizes</span><span>Domain: HPT → Technology: PIA · VR/AR</span></div>
+                                    <div class="spec-row"><span class="k">monitorsStateOf</span><span>Technology: PIA → Entity: Warfighter</span></div>
+                                    <div class="spec-row"><span class="k">implementedVia</span><span>Domain: Protection → System: Multifunctional Ensemble</span></div>
+                                    <div class="spec-row"><span class="k">providesInherent</span><span>System: Ensemble → System: Reactive CBRN &amp; Flame Barrier</span></div>
+                                    <div class="spec-row"><span class="k">interlocksWith</span><span>System: LBU → System: Mission Enhancement Chassis</span></div>
+                                    <div class="spec-row"><span class="k">transmitsThrough</span><span>System: Cognitive Nets → System: Conformal Nano-Antennas</span></div>
+                                    <div class="spec-row"><span class="k">displaysAimPointFor</span><span>System: Visor → Weapon: Caseless Kinetic Rifle</span></div>
+                                    <div class="spec-row"><span class="k">embeds</span><span>System: Ensemble → System: Nano-Antennas</span></div>
+                                    <div class="spec-row"><span class="k">poweredBy</span><span>System: LBU → System: Hybrid Generator</span></div>
+                                </div>
+                            </div>
+
+                            <div class="absolute top-1 -right-6 margin-note rotate-2">31 edges total — see annex</div>
+
+                            <div class="signature-block">
+                                <div class="sig-cell"><div class="sig-line"></div><div class="sig-label">Integration Auth.</div></div>
+                                <div class="sig-cell"><div class="sig-line"></div><div class="sig-label">Domain Authority</div></div>
+                                <div class="sig-cell"><div class="sig-line"></div><div class="sig-label">Date / Datum</div></div>
+                            </div>
+                        </div>
+
+                        <aside class="classification-sidebar self-start">
+                            <dl>
+                                <dt>Section</dt>
+                                <dd>§ 05 · Integration Matrix</dd>
+                                <dt>Node Count</dt>
+                                <dd>27</dd>
+                                <dt>Edge Count</dt>
+                                <dd>31</dd>
+                                <dt>Graph Format</dt>
+                                <dd>Mermaid · JSON</dd>
+                                <dt>Critical Coupling</dt>
+                                <dd>Visor → Caseless Rifle</dd>
+                                <dt>Power Backbone</dt>
+                                <dd>LBU ← Hybrid Generator</dd>
+                            </dl>
+                            <div class="mt-4 margin-note blue">Annex A — full edge list</div>
+                        </aside>
+                    </div>
+
+                    <div data-no-stamp class="barcode-row mt-10">
+                        <span>SERIAL</span>
+                        <span>NSRDEC · FS2030 · 05 · MATRIX</span>
+                        <div class="barcode flex-1"></div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="scripts/main.js"></script>
+</body>
+</html>

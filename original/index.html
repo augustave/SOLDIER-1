@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Brutalist x Forensic Design Specs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..900&family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'gov-slate': '#7B8C98',
+                        'gov-manila': '#F4EFE6',
+                        'gov-manila-dark': '#E6DECC',
+                        'gov-ink': '#111314',
+                        'gov-plastic': '#EAEAEA',
+                        'gov-plastic-dark': '#D1D1D1',
+                        'gov-blue-ink': '#2A4B7C',
+                        'gov-red-stamp': '#D32F2F',
+                    },
+                    fontFamily: {
+                        'ibm': ['"JetBrains Mono"', 'monospace'],
+                        'public': ['"Bricolage Grotesque"', 'sans-serif'],
+                        'archivo': ['"Bricolage Grotesque"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Shared */
+        .no-select { user-select: none; }
+
+        /* --- Doctrine A: Civic Plastic --- */
+        .bg-plastic-texture { background-color: #EAEAEA; }
+
+        .embossed-text {
+            color: #EAEAEA;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2), -1px -1px 2px rgba(255,255,255,0.9);
+        }
+        .debossed-panel {
+            box-shadow: inset 4px 4px 8px rgba(0,0,0,0.12), inset -4px -4px 8px rgba(255,255,255,0.9);
+            background: #EAEAEA;
+        }
+        .raised-panel {
+            box-shadow: 6px 6px 12px rgba(0,0,0,0.15), -6px -6px 12px rgba(255,255,255,0.9);
+            background: #EAEAEA;
+        }
+
+        /* Hardware Switch Nav */
+        .hardware-switch {
+            box-shadow: 4px 4px 8px rgba(0,0,0,0.1), -4px -4px 8px rgba(255,255,255,0.8);
+            transition: all 0.1s ease;
+        }
+        .hardware-switch.active {
+            box-shadow: inset 3px 3px 6px rgba(0,0,0,0.15), inset -3px -3px 6px rgba(255,255,255,0.9);
+            background-color: #D1D1D1;
+            transform: translateY(2px);
+        }
+
+        /* Stamped Metal Table */
+        .stamped-table { border-collapse: separate; border-spacing: 4px; }
+        .stamped-cell {
+            box-shadow: inset 2px 2px 4px rgba(0,0,0,0.1), inset -2px -2px 4px rgba(255,255,255,0.8);
+            background: #EAEAEA;
+            padding: 16px;
+        }
+        .stamped-header {
+            box-shadow: 2px 2px 4px rgba(0,0,0,0.05), -2px -2px 4px rgba(255,255,255,0.5);
+            background: #D1D1D1;
+            padding: 12px;
+        }
+
+        /* --- Doctrine B: Archival Record --- */
+        .bg-manila-texture {
+            background-color: #F4EFE6;
+            background-image: radial-gradient(#2A4B7C 0.5px, transparent 0.5px);
+            background-size: 8px 8px;
+        }
+
+        /* File Folders */
+        .folder-tab {
+            border: 2px solid #2A4B7C;
+            border-bottom: none;
+            border-radius: 8px 8px 0 0;
+            background-color: #E6DECC;
+            transition: transform 0.2s, background-color 0.2s;
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+        }
+        .folder-tab.active {
+            background-color: #F4EFE6;
+            z-index: 10;
+            transform: translateY(2px);
+            padding-bottom: 2px; /* Covers the border below */
+        }
+
+        /* Invoice Table */
+        .invoice-table { border-collapse: collapse; width: 100%; }
+        .invoice-table th, .invoice-table td {
+            border: 1px solid #2A4B7C;
+            padding: 12px 16px;
+        }
+        .dotted-line {
+            border-bottom: 2px dotted #2A4B7C;
+            flex-grow: 1;
+            margin: 0 8px;
+            position: relative;
+            top: -4px;
+        }
+
+        /* Interactive Stamp */
+        .red-stamp-mark {
+            color: #D32F2F;
+            border: 4px solid #D32F2F;
+            padding: 4px 16px;
+            font-family: "IBM Plex Mono", monospace;
+            font-weight: 700;
+            text-transform: uppercase;
+            position: absolute;
+            pointer-events: none;
+            opacity: 0.85;
+            mix-blend-mode: multiply;
+            font-size: 2rem;
+            z-index: 50;
+            border-radius: 4px;
+        }
+
+        /* Global Mode Switcher */
+        .mode-switcher {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            background: #111314;
+            color: #EAEAEA;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            padding: 0.5rem;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+        }
+        .mode-btn { padding: 4px 12px; cursor: pointer; border: 1px solid transparent; }
+        .mode-btn.active { border-color: #EAEAEA; font-weight: bold; }
+    </style>
+</head>
+<body class="bg-gray-800 antialiased min-h-screen pt-12">
+
+    <!-- OVERRIDE TOGGLE -->
+    <div class="mode-switcher">
+        <span class="opacity-50 mr-4">System Override:</span>
+        <button id="btn-mode-a" class="mode-btn active" onclick="switchMode('A')">Doctrine A: Civic Plastic</button>
+        <button id="btn-mode-b" class="mode-btn" onclick="switchMode('B')">Doctrine B: Archival Record</button>
+    </div>
+
+    <!-- ==========================================
+         DOCTRINE A: CIVIC PLASTIC (FULL PAGE)
+         ========================================== -->
+    <div id="doctrine-a" class="min-h-screen bg-plastic-texture text-gov-ink font-public p-4 md:p-8">
+        <div class="max-w-6xl mx-auto space-y-12">
+
+            <!-- Global Header -->
+            <header class="flex flex-col md:flex-row justify-between items-start md:items-end border-b-4 border-gov-plastic-dark pb-6">
+                <div>
+                    <h1 class="font-public text-5xl md:text-7xl font-black uppercase tracking-tighter text-gov-ink/80 leading-none">CT DOSSIER</h1>
+                    <h2 class="font-public text-3xl md:text-4xl font-bold uppercase tracking-tight text-gov-ink/50 mt-[-5px]">Ebenz Augustave</h2>
+                </div>
+                <div class="mt-4 md:mt-0 font-ibm text-xs uppercase tracking-widest text-gov-ink/40 font-bold text-right">
+                    Hardware ID: 899A-231450<br>
+                    Status: Online
+                </div>
+            </header>
+
+            <!-- Hardware Navigation -->
+            <nav class="raised-panel p-4 rounded-xl flex gap-4 overflow-x-auto no-select" id="nav-a">
+                <div onclick="switchTabA('03')" class="tab-btn-a hardware-switch active px-6 py-4 rounded-lg cursor-pointer font-ibm font-bold text-sm tracking-widest uppercase flex flex-col items-center min-w-[120px]" data-target="03">
+                    <span class="indicator w-3 h-3 rounded-full bg-green-500 shadow-inner mb-2"></span>
+                    03 Method
+                </div>
+                <div onclick="switchTabA('04')" class="tab-btn-a hardware-switch px-6 py-4 rounded-lg cursor-pointer font-ibm font-bold text-sm tracking-widest uppercase flex flex-col items-center min-w-[120px]" data-target="04">
+                    <span class="indicator w-3 h-3 rounded-full bg-gov-ink/20 shadow-inner mb-2"></span>
+                    04 Systems
+                </div>
+                <div onclick="switchTabA('05')" class="tab-btn-a hardware-switch px-6 py-4 rounded-lg cursor-pointer font-ibm font-bold text-sm tracking-widest uppercase flex flex-col items-center min-w-[120px]" data-target="05">
+                    <span class="indicator w-3 h-3 rounded-full bg-gov-ink/20 shadow-inner mb-2"></span>
+                    05 Matrix
+                </div>
+            </nav>
+
+            <!-- Main Content Area -->
+            <main class="debossed-panel rounded-2xl p-8 md:p-12 min-h-[500px]" id="content-a">
+
+                <!-- TAB 03 -->
+                <div id="tab-a-03" class="tab-pane-a">
+                    <div class="flex items-start gap-8 mb-12 border-b-2 border-white pb-8">
+                        <span class="font-public text-8xl md:text-[120px] font-black embossed-text tracking-tighter leading-none mt-[-10px]">03</span>
+                        <div>
+                            <h3 class="font-public text-4xl md:text-6xl font-black uppercase tracking-tight text-gov-ink/80 mb-4">Operating Method</h3>
+                            <p class="font-ibm text-sm font-bold uppercase tracking-widest text-gov-ink/50 bg-gov-plastic-dark px-3 py-1 inline-block rounded">How I Work</p>
+                        </div>
+                    </div>
+                    <!-- Stamped Metal Data Table -->
+                    <div class="overflow-x-auto">
+                        <table class="stamped-table w-full text-left font-ibm">
+                            <thead>
+                                <tr class="font-bold uppercase text-xs tracking-widest text-gov-ink/50">
+                                    <th class="stamped-header w-1/4 rounded-tl-lg">Component ID</th>
+                                    <th class="stamped-header w-1/2">Technical Specification</th>
+                                    <th class="stamped-header w-1/4 rounded-tr-lg text-right">Verification</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-sm font-semibold text-gov-ink/80">
+                                <tr>
+                                    <td class="stamped-cell rounded-bl-lg">PROC-01</td>
+                                    <td class="stamped-cell">Turn difficult systems into clear interfaces. Evidence over claims.</td>
+                                    <td class="stamped-cell text-right text-green-600">PASS</td>
+                                </tr>
+                                <tr>
+                                    <td class="stamped-cell rounded-bl-lg">PROC-02</td>
+                                    <td class="stamped-cell">Working artifacts over slide decks. Design holds up under scrutiny.</td>
+                                    <td class="stamped-cell text-right text-green-600">PASS</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- TAB 04 -->
+                <div id="tab-a-04" class="tab-pane-a hidden">
+                    <div class="flex items-start gap-8 mb-12 border-b-2 border-white pb-8">
+                        <span class="font-public text-8xl md:text-[120px] font-black embossed-text tracking-tighter leading-none mt-[-10px]">04</span>
+                        <div>
+                            <h3 class="font-public text-4xl md:text-6xl font-black uppercase tracking-tight text-gov-ink/80 mb-4">Selected Systems</h3>
+                            <p class="font-ibm text-sm font-bold uppercase tracking-widest text-gov-ink/50 bg-gov-plastic-dark px-3 py-1 inline-block rounded">Where the work shows up</p>
+                        </div>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="stamped-table w-full text-left font-ibm">
+                            <thead>
+                                <tr class="font-bold uppercase text-xs tracking-widest text-gov-ink/50">
+                                    <th class="stamped-header w-1/4 rounded-tl-lg">Environment</th>
+                                    <th class="stamped-header w-1/2">Deployment Focus</th>
+                                    <th class="stamped-header w-1/4 rounded-tr-lg text-right">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-sm font-semibold text-gov-ink/80">
+                                <tr>
+                                    <td class="stamped-cell rounded-bl-lg">Artifact Gen</td>
+                                    <td class="stamped-cell">Documentation and verifiable evidence logs.</td>
+                                    <td class="stamped-cell text-right text-green-600">ACTIVE</td>
+                                </tr>
+                                <tr>
+                                    <td class="stamped-cell rounded-bl-lg">Eng. Handoff</td>
+                                    <td class="stamped-cell">Specs that survive contact with developers and procurement.</td>
+                                    <td class="stamped-cell text-right text-green-600">ACTIVE</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- TAB 05 -->
+                <div id="tab-a-05" class="tab-pane-a hidden">
+                    <div class="flex items-start gap-8 mb-12 border-b-2 border-white pb-8">
+                        <span class="font-public text-8xl md:text-[120px] font-black embossed-text tracking-tighter leading-none mt-[-10px]">05</span>
+                        <div>
+                            <h3 class="font-public text-4xl md:text-6xl font-black uppercase tracking-tight text-gov-ink/80 mb-4">Role Matrix</h3>
+                            <p class="font-ibm text-sm font-bold uppercase tracking-widest text-gov-ink/50 bg-gov-plastic-dark px-3 py-1 inline-block rounded">Interactive Fit Lens</p>
+                        </div>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="stamped-table w-full text-left font-ibm">
+                            <thead>
+                                <tr class="font-bold uppercase text-xs tracking-widest text-gov-ink/50">
+                                    <th class="stamped-header w-1/4 rounded-tl-lg">Vector</th>
+                                    <th class="stamped-header w-1/2">Skill Alignment</th>
+                                    <th class="stamped-header w-1/4 rounded-tr-lg text-right">Match</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-sm font-semibold text-gov-ink/80">
+                                <tr>
+                                    <td class="stamped-cell rounded-bl-lg">Strategy</td>
+                                    <td class="stamped-cell">Systematic operational planning & execution.</td>
+                                    <td class="stamped-cell text-right text-gov-ink font-black">98%</td>
+                                </tr>
+                                <tr>
+                                    <td class="stamped-cell rounded-bl-lg">Design</td>
+                                    <td class="stamped-cell">Utilitarian interface structures and forensic aesthetics.</td>
+                                    <td class="stamped-cell text-right text-gov-ink font-black">100%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         DOCTRINE B: ARCHIVAL RECORD (FULL PAGE)
+         ========================================== -->
+    <div id="doctrine-b" class="hidden min-h-screen bg-gov-slate text-gov-blue-ink font-public p-4 md:p-8 no-select">
+        <div class="max-w-6xl mx-auto mt-8">
+
+            <!-- Folder Tabs Navigation -->
+            <div class="flex items-end px-4 gap-2" id="nav-b">
+                <div onclick="switchTabB('03')" class="tab-btn-b folder-tab active px-8 py-4 font-ibm font-bold text-sm tracking-widest uppercase" data-target="03">
+                    Ref: 03-Method
+                </div>
+                <div onclick="switchTabB('04')" class="tab-btn-b folder-tab px-8 py-3 font-ibm font-bold text-sm tracking-widest uppercase mt-2 opacity-70 hover:opacity-100" data-target="04">
+                    Ref: 04-Systems
+                </div>
+                <div onclick="switchTabB('05')" class="tab-btn-b folder-tab px-8 py-3 font-ibm font-bold text-sm tracking-widest uppercase mt-2 opacity-70 hover:opacity-100" data-target="05">
+                    Ref: 05-Matrix
+                </div>
+            </div>
+
+            <!-- Folder Contents (Clickable for stamps) -->
+            <div class="bg-manila-texture border-2 border-gov-blue-ink p-8 md:p-16 relative overflow-hidden shadow-2xl cursor-crosshair min-h-[700px]" onclick="addStamp(event)">
+
+                <!-- Instruction Overlay -->
+                <div class="absolute top-4 right-4 font-ibm text-[10px] uppercase font-bold text-gov-red-stamp border border-gov-red-stamp px-2 py-1 rotate-3 opacity-50 pointer-events-none z-50">
+                    Click anywhere to stamp
+                </div>
+
+                <!-- Invoice Header -->
+                <div class="flex justify-between items-start mb-16 border-b-2 border-gov-blue-ink pb-8">
+                    <div class="w-1/3">
+                        <p class="font-public text-[10px] uppercase tracking-widest font-bold">Form 11 1-34<br>Archival Division</p>
+                    </div>
+                    <div class="w-1/3 text-center">
+                        <h1 class="font-public text-4xl md:text-5xl font-black uppercase tracking-tighter leading-none">CT DOSSIER</h1>
+                        <h2 class="font-public text-xl font-bold uppercase tracking-widest mt-2 border-t border-gov-blue-ink pt-2 inline-block">Ebenz Augustave</h2>
+                    </div>
+                    <div class="w-1/3 text-right">
+                        <p class="font-public text-xs font-bold uppercase tracking-widest text-gov-blue-ink/70 mb-2">Datum</p>
+                        <span class="font-ibm text-2xl font-bold tracking-widest border-2 border-gov-blue-ink px-2 py-1 inline-block">26|01|2026</span>
+                    </div>
+                </div>
+
+                <!-- Document Body Tabs -->
+                <div id="content-b">
+
+                    <!-- TAB 03 -->
+                    <div id="tab-b-03" class="tab-pane-b">
+                        <div class="mb-16">
+                            <h3 class="font-public text-6xl md:text-8xl font-black uppercase tracking-tighter leading-none mb-4">03. Operating<br>Method</h3>
+                            <div class="flex font-ibm text-sm font-bold uppercase w-full md:w-1/2">
+                                <span class="mr-2">Klassifikation:</span>
+                                <div class="dotted-line">How I Work</div>
+                            </div>
+                        </div>
+                        <table class="invoice-table bg-gov-manila font-ibm relative z-10">
+                            <thead class="bg-gov-blue-ink/10">
+                                <tr>
+                                    <th class="w-1/6 text-center">Umfang (Scope)</th>
+                                    <th class="text-left">Verzeichnungsbogen (Details)</th>
+                                    <th class="w-1/6 text-center">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-sm font-semibold">
+                                <tr>
+                                    <td class="text-center py-8">Evidence</td>
+                                    <td class="py-8 leading-relaxed">
+                                        Turn difficult systems into clear interfaces.<br>
+                                        Evidence over claims, working artifacts over slide decks.
+                                    </td>
+                                    <td class="text-center py-8">[ VERIFIED ]</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center py-8">Artifacts</td>
+                                    <td class="py-8 leading-relaxed">
+                                        Design that holds up under technical scrutiny.<br>
+                                        Stories that survive contact with engineers and procurement.
+                                    </td>
+                                    <td class="text-center py-8">[ VERIFIED ]</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- TAB 04 -->
+                    <div id="tab-b-04" class="tab-pane-b hidden">
+                        <div class="mb-16">
+                            <h3 class="font-public text-6xl md:text-8xl font-black uppercase tracking-tighter leading-none mb-4">04. Selected<br>Systems</h3>
+                            <div class="flex font-ibm text-sm font-bold uppercase w-full md:w-1/2">
+                                <span class="mr-2">Klassifikation:</span>
+                                <div class="dotted-line">Where the work shows up</div>
+                            </div>
+                        </div>
+                        <table class="invoice-table bg-gov-manila font-ibm relative z-10">
+                            <thead class="bg-gov-blue-ink/10">
+                                <tr>
+                                    <th class="w-1/6 text-center">System / Ort</th>
+                                    <th class="text-left">Implementation Details</th>
+                                    <th class="w-1/6 text-center">Clearance</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-sm font-semibold">
+                                <tr>
+                                    <td class="text-center py-8">Digital UI</td>
+                                    <td class="py-8 leading-relaxed">
+                                        Translation of complex operational requirements into resilient front-end systems.<br>
+                                        Strict adherence to accessibility and physical design metaphors.
+                                    </td>
+                                    <td class="text-center py-8">UNRESTRICTED</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- TAB 05 -->
+                    <div id="tab-b-05" class="tab-pane-b hidden">
+                        <div class="mb-16">
+                            <h3 class="font-public text-6xl md:text-8xl font-black uppercase tracking-tighter leading-none mb-4">05. Role<br>Matrix</h3>
+                            <div class="flex font-ibm text-sm font-bold uppercase w-full md:w-1/2">
+                                <span class="mr-2">Klassifikation:</span>
+                                <div class="dotted-line">Interactive Fit Lens</div>
+                            </div>
+                        </div>
+                        <table class="invoice-table bg-gov-manila font-ibm relative z-10">
+                            <thead class="bg-gov-blue-ink/10">
+                                <tr>
+                                    <th class="w-1/6 text-center">Parameter</th>
+                                    <th class="text-left">Evaluation Criterion</th>
+                                    <th class="w-1/6 text-center">Index Score</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-sm font-semibold">
+                                <tr>
+                                    <td class="text-center py-8">Capacity</td>
+                                    <td class="py-8 leading-relaxed">
+                                        Ability to parse bureaucratic overhead into streamlined civic experiences.
+                                    </td>
+                                    <td class="text-center py-8">NOMINAL</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Logic for Interactions -->
+    <script>
+        // --- WEB AUDIO API ENGINE ---
+        let audioCtx;
+
+        // Initialize on first interaction to bypass browser autoplay blocks
+        function initAudio() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+        }
+
+        // Heavy mechanical hardware click (Doctrine A)
+        function playClick() {
+            initAudio();
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+
+            osc.type = 'square';
+            osc.frequency.setValueAtTime(400, audioCtx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(100, audioCtx.currentTime + 0.05);
+
+            gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
+
+            osc.start();
+            osc.stop(audioCtx.currentTime + 0.05);
+        }
+
+        // Heavy rubber stamp thud (Doctrine B)
+        function playStampSound() {
+            initAudio();
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(120, audioCtx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(30, audioCtx.currentTime + 0.15);
+
+            gain.gain.setValueAtTime(0.8, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.15);
+
+            osc.start();
+            osc.stop(audioCtx.currentTime + 0.15);
+        }
+
+        // Paper shuffle/folder rustle (Doctrine B)
+        function playRustle() {
+            initAudio();
+            const bufferSize = audioCtx.sampleRate * 0.1; // 100ms noise burst
+            const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+            const data = buffer.getChannelData(0);
+            for (let i = 0; i < bufferSize; i++) {
+                data[i] = Math.random() * 2 - 1;
+            }
+
+            const noise = audioCtx.createBufferSource();
+            noise.buffer = buffer;
+
+            const filter = audioCtx.createBiquadFilter();
+            filter.type = 'lowpass';
+            filter.frequency.value = 800; // Muffle it to sound like heavy paper
+
+            const gain = audioCtx.createGain();
+
+            noise.connect(filter);
+            filter.connect(gain);
+            gain.connect(audioCtx.destination);
+
+            gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
+
+            noise.start();
+        }
+
+        // --- SYSTEM LOGIC ---
+
+        function switchMode(mode) {
+            document.getElementById('doctrine-a').classList.toggle('hidden', mode !== 'A');
+            document.getElementById('doctrine-b').classList.toggle('hidden', mode !== 'B');
+
+            document.getElementById('btn-mode-a').classList.toggle('active', mode === 'A');
+            document.getElementById('btn-mode-b').classList.toggle('active', mode === 'B');
+        }
+
+        function switchTabA(tabId) {
+            document.querySelectorAll('.tab-btn-a').forEach(btn => {
+                const target = btn.getAttribute('data-target');
+                if (target === tabId) {
+                    btn.classList.add('active');
+                    btn.querySelector('.indicator').classList.remove('bg-gov-ink/20');
+                    btn.querySelector('.indicator').classList.add('bg-green-500');
+                } else {
+                    btn.classList.remove('active');
+                    btn.querySelector('.indicator').classList.add('bg-gov-ink/20');
+                    btn.querySelector('.indicator').classList.remove('bg-green-500');
+                }
+            });
+            document.querySelectorAll('.tab-pane-a').forEach(pane => {
+                pane.classList.add('hidden');
+            });
+            document.getElementById('tab-a-' + tabId).classList.remove('hidden');
+        }
+
+        function switchTabB(tabId) {
+            document.querySelectorAll('.tab-btn-b').forEach(btn => {
+                const target = btn.getAttribute('data-target');
+                if (target === tabId) {
+                    btn.classList.add('active', 'py-4');
+                    btn.classList.remove('py-3', 'opacity-70', 'hover:opacity-100', 'mt-2');
+                } else {
+                    btn.classList.remove('active', 'py-4');
+                    btn.classList.add('py-3', 'opacity-70', 'hover:opacity-100', 'mt-2');
+                }
+            });
+            document.querySelectorAll('.tab-pane-b').forEach(pane => {
+                pane.classList.add('hidden');
+            });
+            document.getElementById('tab-b-' + tabId).classList.remove('hidden');
+        }
+
+        const stampTexts = ["APPROVED", "FILED", "VERIFIED", "RECEIVED", "VOID", "CLASSIFIED"];
+        function addStamp(event) {
+            // Prevent stamping if clicking the nav tabs or interacting with the table directly
+            if(event.target.closest('.folder-tab') || event.target.closest('.invoice-table')) return;
+
+            // Trigger the native Web Audio heavy thud
+            playStampSound();
+
+            const container = event.currentTarget;
+            const stamp = document.createElement('div');
+
+            const randomText = stampTexts[Math.floor(Math.random() * stampTexts.length)];
+            const randomRotation = (Math.random() * 40) - 20; // Between -20 and 20 degrees
+
+            stamp.className = 'red-stamp-mark';
+            stamp.innerText = randomText;
+
+            // Get coordinates relative to the container
+            const rect = container.getBoundingClientRect();
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
+
+            stamp.style.left = `${x}px`;
+            stamp.style.top = `${y}px`;
+            stamp.style.transform = `translate(-50%, -50%) rotate(${randomRotation}deg)`;
+
+            container.appendChild(stamp);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+.DS_Store
+.vercel
+node_modules
+*.log
+
+# Local scratch / inspiration assets
+FONT-INSP/
