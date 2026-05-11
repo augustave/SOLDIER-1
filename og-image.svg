@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <radialGradient id="plastic" cx="50%" cy="40%" r="80%">
+      <stop offset="0%" stop-color="#F2F2F2"/>
+      <stop offset="100%" stop-color="#DADADA"/>
+    </radialGradient>
+    <filter id="emboss">
+      <feGaussianBlur stdDeviation="2"/>
+    </filter>
+  </defs>
+
+  <!-- Plastic background -->
+  <rect width="1200" height="630" fill="url(#plastic)"/>
+
+  <!-- Top status bar -->
+  <rect x="0" y="0" width="1200" height="44" fill="#111314"/>
+  <circle cx="40" cy="22" r="5" fill="#22c55e"/>
+  <text x="60" y="28" font-family="ui-monospace, monospace" font-size="14" font-weight="700" fill="#EAEAEA" letter-spacing="3">LIVE</text>
+  <text x="140" y="28" font-family="ui-monospace, monospace" font-size="12" font-weight="500" fill="#EAEAEA" letter-spacing="3" opacity="0.85">
+    NODES 27 · EDGES 31 · DOMAINS 07 · TRL RANGE 3–6 · ORIG NSRDEC · REV 1.0 · STATUS NOMINAL
+  </text>
+
+  <!-- Eyebrow -->
+  <text x="80" y="120" font-family="ui-monospace, monospace" font-size="14" font-weight="700" fill="#111314" letter-spacing="4" opacity="0.7">
+    DESIGN-DOCTRINE STUDY · PUBLIC-DOMAIN SOURCE · 2026
+  </text>
+
+  <!-- Hero — stencil approximation via heavy condensed sans -->
+  <text x="80" y="270" font-family="Impact, 'Arial Black', sans-serif" font-size="160" font-weight="900" fill="#111314" letter-spacing="-4" opacity="0.85">FUTURE</text>
+  <text x="80" y="400" font-family="Impact, 'Arial Black', sans-serif" font-size="160" font-weight="900" fill="#111314" letter-spacing="-4" opacity="0.85">SOLDIER</text>
+
+  <!-- Subhead -->
+  <text x="80" y="455" font-family="-apple-system, system-ui, sans-serif" font-size="28" font-weight="700" fill="#111314" opacity="0.6" letter-spacing="-0.5">
+    2030 INITIATIVE · NSRDEC
+  </text>
+
+  <!-- KPI strip — five raised tiles -->
+  <g transform="translate(80, 510)">
+    <g>
+      <rect x="0" y="0" width="200" height="90" rx="14" fill="#EAEAEA" stroke="#CFCFCF" stroke-width="1"/>
+      <text x="20" y="55" font-family="-apple-system, sans-serif" font-size="44" font-weight="900" fill="#111314" opacity="0.85" letter-spacing="-2">27</text>
+      <text x="20" y="78" font-family="ui-monospace, monospace" font-size="11" font-weight="700" fill="#111314" opacity="0.55" letter-spacing="2">GRAPH NODES</text>
+    </g>
+    <g transform="translate(220, 0)">
+      <rect x="0" y="0" width="200" height="90" rx="14" fill="#EAEAEA" stroke="#CFCFCF" stroke-width="1"/>
+      <text x="20" y="55" font-family="-apple-system, sans-serif" font-size="44" font-weight="900" fill="#111314" opacity="0.85" letter-spacing="-2">31</text>
+      <text x="20" y="78" font-family="ui-monospace, monospace" font-size="11" font-weight="700" fill="#111314" opacity="0.55" letter-spacing="2">EDGES</text>
+    </g>
+    <g transform="translate(440, 0)">
+      <rect x="0" y="0" width="200" height="90" rx="14" fill="#EAEAEA" stroke="#CFCFCF" stroke-width="1"/>
+      <text x="20" y="55" font-family="-apple-system, sans-serif" font-size="44" font-weight="900" fill="#111314" opacity="0.85" letter-spacing="-2">07</text>
+      <text x="20" y="78" font-family="ui-monospace, monospace" font-size="11" font-weight="700" fill="#111314" opacity="0.55" letter-spacing="2">DOMAINS</text>
+    </g>
+  </g>
+
+  <!-- Doc ID -->
+  <text x="1100" y="120" text-anchor="end" font-family="ui-monospace, monospace" font-size="13" font-weight="700" fill="#111314" opacity="0.65" letter-spacing="2">DOC ID: NSRDEC-2009-02</text>
+  <text x="1100" y="140" text-anchor="end" font-family="ui-monospace, monospace" font-size="13" font-weight="700" fill="#111314" opacity="0.65" letter-spacing="2">soldier-1.vercel.app</text>
+</svg>

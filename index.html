@@ -3,7 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Future Soldier 2030 — NSRDEC Capability Framework</title>
+    <title>Future Soldier 2030 — NSRDEC Capability Framework · Design Doctrine Study</title>
+    <meta name="description" content="A dual-doctrine brand system applied to the 2009 NSRDEC Future Soldier 2030 capability framework. Design exercise — not affiliated with any government agency.">
+    <meta name="author" content="Tao Conrad">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Future Soldier 2030 · Design Doctrine Study">
+    <meta property="og:description" content="A dual-doctrine brand system — Civic Plastic + Archival Record — applied to the 2009 NSRDEC capability framework as a design exercise.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://soldier-1.vercel.app/">
+    <meta property="og:image" content="https://soldier-1.vercel.app/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Future Soldier 2030 dossier hero in stencil typography on a neumorphic plastic surface">
+
+    <!-- Twitter card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Future Soldier 2030 · Design Doctrine Study">
+    <meta name="twitter:description" content="A dual-doctrine brand system applied to a 2009 public NSRDEC capability framework. Design exercise.">
+    <meta name="twitter:image" content="https://soldier-1.vercel.app/og-image.png">
 
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -38,11 +57,13 @@
         }
     </script>
 
-    <link rel="stylesheet" href="styles/shared.css?v=7">
-    <link rel="stylesheet" href="styles/doctrine-a.css?v=7">
-    <link rel="stylesheet" href="styles/doctrine-b.css?v=7">
+    <link rel="stylesheet" href="styles/shared.css?v=8">
+    <link rel="stylesheet" href="styles/doctrine-a.css?v=8">
+    <link rel="stylesheet" href="styles/doctrine-b.css?v=8">
 </head>
 <body class="bg-gray-800 antialiased min-h-screen pt-12">
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <div id="stamp-live-region" class="sr-only" aria-live="polite" aria-atomic="true"></div>
 
@@ -50,11 +71,13 @@
         <span class="opacity-50 mr-4" aria-hidden="true">System Override:</span>
         <button id="btn-mode-a" class="mode-btn" type="button" aria-pressed="true">Doctrine A: Civic Plastic</button>
         <button id="btn-mode-b" class="mode-btn" type="button" aria-pressed="false">Doctrine B: Archival Record</button>
+        <button id="btn-mute" class="mode-btn ml-auto" type="button" aria-pressed="false" aria-label="Toggle interface sound effects">Sound · On</button>
     </div>
 
     <!-- ==========================================
          DOCTRINE A — CIVIC PLASTIC
          ========================================== -->
+    <div id="main-content" tabindex="-1"></div>
     <div id="doctrine-a" class="min-h-screen bg-plastic-texture text-gov-ink font-display">
 
         <!-- System status ticker -->
@@ -71,10 +94,14 @@
 
             <header class="flex flex-col md:flex-row justify-between items-start md:items-end border-b-4 border-gov-plastic-dark pb-6">
                 <div>
+                    <p class="font-mono text-[11px] uppercase tracking-[0.25em] text-gov-ink/65 font-bold mb-3">Design-Doctrine Study · Public-Domain Source · 2026</p>
                     <h1 class="font-stencil text-7xl md:text-9xl font-black uppercase text-gov-ink/85 leading-[0.9] tracking-tight">Future Soldier</h1>
-                    <p class="font-display text-3xl md:text-4xl font-bold uppercase tracking-tight text-gov-ink/50 mt-[-5px]">2030 Initiative · NSRDEC</p>
+                    <p class="font-display text-3xl md:text-4xl font-bold uppercase tracking-tight text-gov-ink/70 mt-[-5px]">2030 Initiative · NSRDEC</p>
+                    <p class="font-display text-base md:text-lg text-gov-ink/75 mt-4 max-w-2xl leading-relaxed">
+                        A dual-doctrine brand system applied to the 2009 NSRDEC Future Soldier 2030 capability framework — built as a design exercise to demonstrate dual material logic across one dataset.
+                    </p>
                 </div>
-                <div class="mt-4 md:mt-0 font-mono text-xs uppercase tracking-widest text-gov-ink/40 font-bold text-right">
+                <div class="mt-4 md:mt-0 font-mono text-xs uppercase tracking-widest text-gov-ink/65 font-bold text-right">
                     Doc ID: NSRDEC-2009-02<br>
                     Source: d2409ad840e3.pdf
                 </div>
@@ -108,21 +135,24 @@
                  id="nav-a" role="tablist" aria-label="Future Soldier 2030 sections">
                 <button type="button" role="tab" id="tab-a-btn-03" aria-controls="tab-a-03" aria-selected="true" tabindex="0"
                         data-target="03"
-                        class="tab-btn-a hardware-switch px-6 py-4 rounded-lg font-mono font-bold text-sm tracking-widest uppercase flex flex-col items-center min-w-[120px]">
+                        class="tab-btn-a hardware-switch px-6 py-4 rounded-lg font-mono font-bold text-sm tracking-widest uppercase flex flex-col items-center min-w-[140px]">
                     <span class="indicator" aria-hidden="true"></span>
-                    03 Charter
+                    <span>03 Charter</span>
+                    <span class="block text-[10px] tracking-[0.15em] text-gov-ink/60 mt-1 normal-case font-normal">Who &amp; Why</span>
                 </button>
                 <button type="button" role="tab" id="tab-a-btn-04" aria-controls="tab-a-04" aria-selected="false" tabindex="-1"
                         data-target="04"
-                        class="tab-btn-a hardware-switch px-6 py-4 rounded-lg font-mono font-bold text-sm tracking-widest uppercase flex flex-col items-center min-w-[120px]">
+                        class="tab-btn-a hardware-switch px-6 py-4 rounded-lg font-mono font-bold text-sm tracking-widest uppercase flex flex-col items-center min-w-[140px]">
                     <span class="indicator" aria-hidden="true"></span>
-                    04 Domains
+                    <span>04 Domains</span>
+                    <span class="block text-[10px] tracking-[0.15em] text-gov-ink/60 mt-1 normal-case font-normal">What</span>
                 </button>
                 <button type="button" role="tab" id="tab-a-btn-05" aria-controls="tab-a-05" aria-selected="false" tabindex="-1"
                         data-target="05"
-                        class="tab-btn-a hardware-switch px-6 py-4 rounded-lg font-mono font-bold text-sm tracking-widest uppercase flex flex-col items-center min-w-[120px]">
+                        class="tab-btn-a hardware-switch px-6 py-4 rounded-lg font-mono font-bold text-sm tracking-widest uppercase flex flex-col items-center min-w-[140px]">
                     <span class="indicator" aria-hidden="true"></span>
-                    05 Matrix
+                    <span>05 Matrix</span>
+                    <span class="block text-[10px] tracking-[0.15em] text-gov-ink/60 mt-1 normal-case font-normal">Connections</span>
                 </button>
             </nav>
 
@@ -134,7 +164,7 @@
                         <span class="font-display text-8xl md:text-[120px] font-black embossed-text tracking-tighter leading-none mt-[-10px]" aria-hidden="true">03</span>
                         <div>
                             <h2 class="font-stencil text-5xl md:text-7xl font-black uppercase text-gov-ink/85 mb-4 leading-[0.9] tracking-tight">Initiative Charter</h2>
-                            <p class="font-mono text-sm font-bold uppercase tracking-widest text-gov-ink/50 bg-gov-plastic-dark px-3 py-1 inline-block rounded">Concept Framework — Not Doctrine</p>
+                            <p class="font-mono text-sm font-bold uppercase tracking-widest text-gov-ink/65 bg-gov-plastic-dark px-3 py-1 inline-block rounded">Concept Framework — Not Doctrine</p>
                         </div>
                     </div>
 
@@ -147,7 +177,7 @@
                     <div class="overflow-x-auto">
                         <table class="stamped-table w-full text-left font-mono">
                             <thead>
-                                <tr class="font-bold uppercase text-xs tracking-widest text-gov-ink/50">
+                                <tr class="font-bold uppercase text-xs tracking-widest text-gov-ink/65">
                                     <th scope="col" class="stamped-header w-1/4 rounded-tl-lg">Org ID</th>
                                     <th scope="col" class="stamped-header w-1/2">Role / Description</th>
                                     <th scope="col" class="stamped-header w-1/4 rounded-tr-lg text-right">Status</th>
@@ -236,7 +266,7 @@
                     <!-- Signature plate -->
                     <div class="grid md:grid-cols-3 gap-6">
                         <div class="sig-plate">
-                            <div class="font-mono text-[10px] uppercase tracking-widest font-bold text-gov-ink/50 mb-2">Authority — Lead</div>
+                            <div class="font-mono text-[10px] uppercase tracking-widest font-bold text-gov-ink/65 mb-2">Authority — Lead</div>
                             <div class="sig-line"></div>
                             <div class="flex items-center justify-between">
                                 <div class="font-mono text-xs font-bold text-gov-ink/70">NSRDEC</div>
@@ -244,7 +274,7 @@
                             </div>
                         </div>
                         <div class="sig-plate">
-                            <div class="font-mono text-[10px] uppercase tracking-widest font-bold text-gov-ink/50 mb-2">Authority — Contrib</div>
+                            <div class="font-mono text-[10px] uppercase tracking-widest font-bold text-gov-ink/65 mb-2">Authority — Contrib</div>
                             <div class="sig-line"></div>
                             <div class="flex items-center justify-between">
                                 <div class="font-mono text-xs font-bold text-gov-ink/70">RDECOM</div>
@@ -252,7 +282,7 @@
                             </div>
                         </div>
                         <div class="sig-plate">
-                            <div class="font-mono text-[10px] uppercase tracking-widest font-bold text-gov-ink/50 mb-2">Authority — Contrib</div>
+                            <div class="font-mono text-[10px] uppercase tracking-widest font-bold text-gov-ink/65 mb-2">Authority — Contrib</div>
                             <div class="sig-line"></div>
                             <div class="flex items-center justify-between">
                                 <div class="font-mono text-xs font-bold text-gov-ink/70">PEO-SOLDIER</div>
@@ -268,7 +298,7 @@
                         <span class="font-display text-8xl md:text-[120px] font-black embossed-text tracking-tighter leading-none mt-[-10px]" aria-hidden="true">04</span>
                         <div>
                             <h2 class="font-stencil text-5xl md:text-7xl font-black uppercase text-gov-ink/85 mb-4 leading-[0.9] tracking-tight">Capability Domains</h2>
-                            <p class="font-mono text-sm font-bold uppercase tracking-widest text-gov-ink/50 bg-gov-plastic-dark px-3 py-1 inline-block rounded">Seven Functional Areas</p>
+                            <p class="font-mono text-sm font-bold uppercase tracking-widest text-gov-ink/65 bg-gov-plastic-dark px-3 py-1 inline-block rounded">Seven Functional Areas</p>
                         </div>
                     </div>
 
@@ -276,7 +306,9 @@
                     <div>
                         <h3 class="font-display text-2xl font-black uppercase tracking-tight text-gov-ink/80 mb-4">Soldier-as-System Topology</h3>
                         <div class="arch-grid">
-                            <svg class="arch-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                            <svg class="arch-lines" viewBox="0 0 100 100" preserveAspectRatio="none" role="img" aria-labelledby="arch-title arch-desc">
+                                <title id="arch-title">Soldier-as-system topology diagram</title>
+                                <desc id="arch-desc">A 3×3 grid with the Warfighter entity at the center, connected by radial dashed lines to the seven capability domains (Human Performance, Protection, Lethality, Mobility, Network, Sensors, Power) arranged around it, and the parent Future Soldier 2030 concept in the bottom-right corner.</desc>
                                 <g stroke="#B0B0B0" stroke-width="0.4" stroke-dasharray="1.2 1.4" fill="none">
                                     <line x1="17" y1="17" x2="50" y2="50"/>
                                     <line x1="50" y1="17" x2="50" y2="50"/>
@@ -421,7 +453,7 @@
                     <div class="overflow-x-auto">
                         <table class="stamped-table w-full text-left font-mono">
                             <thead>
-                                <tr class="font-bold uppercase text-xs tracking-widest text-gov-ink/50">
+                                <tr class="font-bold uppercase text-xs tracking-widest text-gov-ink/65">
                                     <th scope="col" class="stamped-header w-1/4 rounded-tl-lg">Domain</th>
                                     <th scope="col" class="stamped-header w-1/2">Representative Technologies</th>
                                     <th scope="col" class="stamped-header w-1/4 rounded-tr-lg text-right">State</th>
@@ -446,7 +478,7 @@
                         <span class="font-display text-8xl md:text-[120px] font-black embossed-text tracking-tighter leading-none mt-[-10px]" aria-hidden="true">05</span>
                         <div>
                             <h2 class="font-stencil text-5xl md:text-7xl font-black uppercase text-gov-ink/85 mb-4 leading-[0.9] tracking-tight">Integration Matrix</h2>
-                            <p class="font-mono text-sm font-bold uppercase tracking-widest text-gov-ink/50 bg-gov-plastic-dark px-3 py-1 inline-block rounded">Cross-Domain Linkages</p>
+                            <p class="font-mono text-sm font-bold uppercase tracking-widest text-gov-ink/65 bg-gov-plastic-dark px-3 py-1 inline-block rounded">Cross-Domain Linkages</p>
                         </div>
                     </div>
 
@@ -454,7 +486,7 @@
                     <div class="overflow-x-auto">
                         <table class="stamped-table w-full text-left font-mono">
                             <thead>
-                                <tr class="font-bold uppercase text-xs tracking-widest text-gov-ink/50">
+                                <tr class="font-bold uppercase text-xs tracking-widest text-gov-ink/65">
                                     <th scope="col" class="stamped-header w-1/4 rounded-tl-lg">Edge</th>
                                     <th scope="col" class="stamped-header w-1/2">Coupling</th>
                                     <th scope="col" class="stamped-header w-1/4 rounded-tr-lg text-right">Index</th>
@@ -472,38 +504,52 @@
                     <!-- Capability interaction heatmap -->
                     <div>
                         <h3 class="font-display text-2xl font-black uppercase tracking-tight text-gov-ink/80 mb-4">Domain Interaction Heatmap</h3>
-                        <div class="heatmap">
-                            <div class="hcell hhead">·</div>
-                            <div class="hcell hhead">HPT</div>
-                            <div class="hcell hhead">PROT</div>
-                            <div class="hcell hhead">LETH</div>
-                            <div class="hcell hhead">MOB</div>
-                            <div class="hcell hhead">NET</div>
-                            <div class="hcell hhead">SENS</div>
-                            <div class="hcell hhead">PWR</div>
-
-                            <div class="hcell hrow">HPT</div>
-                            <div class="hcell h0">·</div><div class="hcell h1">1</div><div class="hcell h1">1</div><div class="hcell h1">1</div><div class="hcell h2">2</div><div class="hcell h3">3</div><div class="hcell h1">1</div>
-
-                            <div class="hcell hrow">PROT</div>
-                            <div class="hcell h1">1</div><div class="hcell h0">·</div><div class="hcell h2">2</div><div class="hcell h1">1</div><div class="hcell h3">3</div><div class="hcell h1">1</div><div class="hcell h2">2</div>
-
-                            <div class="hcell hrow">LETH</div>
-                            <div class="hcell h1">1</div><div class="hcell h2">2</div><div class="hcell h0">·</div><div class="hcell h1">1</div><div class="hcell h1">1</div><div class="hcell h3">3</div><div class="hcell h2">2</div>
-
-                            <div class="hcell hrow">MOB</div>
-                            <div class="hcell h1">1</div><div class="hcell h1">1</div><div class="hcell h1">1</div><div class="hcell h0">·</div><div class="hcell h1">1</div><div class="hcell h1">1</div><div class="hcell h3">3</div>
-
-                            <div class="hcell hrow">NET</div>
-                            <div class="hcell h2">2</div><div class="hcell h3">3</div><div class="hcell h1">1</div><div class="hcell h1">1</div><div class="hcell h0">·</div><div class="hcell h2">2</div><div class="hcell h1">1</div>
-
-                            <div class="hcell hrow">SENS</div>
-                            <div class="hcell h3">3</div><div class="hcell h1">1</div><div class="hcell h3">3</div><div class="hcell h1">1</div><div class="hcell h2">2</div><div class="hcell h0">·</div><div class="hcell h1">1</div>
-
-                            <div class="hcell hrow">PWR</div>
-                            <div class="hcell h1">1</div><div class="hcell h2">2</div><div class="hcell h2">2</div><div class="hcell h3">3</div><div class="hcell h1">1</div><div class="hcell h1">1</div><div class="hcell h0">·</div>
-                        </div>
-                        <div class="font-mono text-[10px] uppercase tracking-widest text-gov-ink/40 font-bold mt-3">
+                        <table class="heatmap" aria-label="Domain interaction strength matrix">
+                            <caption class="sr-only">Cross-domain coupling intensity between the seven Future Soldier 2030 capability domains. Values: 0 none, 1 low, 2 medium, 3 high.</caption>
+                            <thead>
+                                <tr>
+                                    <td class="hcell hhead" aria-hidden="true">·</td>
+                                    <th scope="col" class="hcell hhead">HPT</th>
+                                    <th scope="col" class="hcell hhead">PROT</th>
+                                    <th scope="col" class="hcell hhead">LETH</th>
+                                    <th scope="col" class="hcell hhead">MOB</th>
+                                    <th scope="col" class="hcell hhead">NET</th>
+                                    <th scope="col" class="hcell hhead">SENS</th>
+                                    <th scope="col" class="hcell hhead">PWR</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row" class="hcell hrow">HPT</th>
+                                    <td class="hcell h0"><span aria-label="self">·</span></td><td class="hcell h1">1</td><td class="hcell h1">1</td><td class="hcell h1">1</td><td class="hcell h2">2</td><td class="hcell h3">3</td><td class="hcell h1">1</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="hcell hrow">PROT</th>
+                                    <td class="hcell h1">1</td><td class="hcell h0"><span aria-label="self">·</span></td><td class="hcell h2">2</td><td class="hcell h1">1</td><td class="hcell h3">3</td><td class="hcell h1">1</td><td class="hcell h2">2</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="hcell hrow">LETH</th>
+                                    <td class="hcell h1">1</td><td class="hcell h2">2</td><td class="hcell h0"><span aria-label="self">·</span></td><td class="hcell h1">1</td><td class="hcell h1">1</td><td class="hcell h3">3</td><td class="hcell h2">2</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="hcell hrow">MOB</th>
+                                    <td class="hcell h1">1</td><td class="hcell h1">1</td><td class="hcell h1">1</td><td class="hcell h0"><span aria-label="self">·</span></td><td class="hcell h1">1</td><td class="hcell h1">1</td><td class="hcell h3">3</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="hcell hrow">NET</th>
+                                    <td class="hcell h2">2</td><td class="hcell h3">3</td><td class="hcell h1">1</td><td class="hcell h1">1</td><td class="hcell h0"><span aria-label="self">·</span></td><td class="hcell h2">2</td><td class="hcell h1">1</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="hcell hrow">SENS</th>
+                                    <td class="hcell h3">3</td><td class="hcell h1">1</td><td class="hcell h3">3</td><td class="hcell h1">1</td><td class="hcell h2">2</td><td class="hcell h0"><span aria-label="self">·</span></td><td class="hcell h1">1</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="hcell hrow">PWR</th>
+                                    <td class="hcell h1">1</td><td class="hcell h2">2</td><td class="hcell h2">2</td><td class="hcell h3">3</td><td class="hcell h1">1</td><td class="hcell h1">1</td><td class="hcell h0"><span aria-label="self">·</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="font-mono text-[10px] uppercase tracking-widest text-gov-ink/60 font-bold mt-3">
                             Scale: 0 (none) · 1 (low) · 2 (med) · 3 (high coupling)
                         </div>
                     </div>
@@ -512,33 +558,33 @@
                     <div>
                         <h3 class="font-display text-2xl font-black uppercase tracking-tight text-gov-ink/80 mb-4">Node Inventory — 27 Entities</h3>
                         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-3 font-mono text-xs">
-                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/40 font-bold">ORG</span> · NSRDEC</div>
-                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/40 font-bold">ORG</span> · RDECOM</div>
-                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/40 font-bold">ORG</span> · PEO-Soldier</div>
-                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/40 font-bold">CONCEPT</span> · Future Soldier 2030</div>
-                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/40 font-bold">ENTITY</span> · Warfighter</div>
-                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/40 font-bold">DOMAIN</span> · HPT</div>
-                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/40 font-bold">DOMAIN</span> · Protection</div>
-                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/40 font-bold">DOMAIN</span> · Lethality</div>
-                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/40 font-bold">DOMAIN</span> · Mobility</div>
-                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/40 font-bold">DOMAIN</span> · Network</div>
-                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/40 font-bold">DOMAIN</span> · Sensors</div>
-                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/40 font-bold">DOMAIN</span> · Power</div>
-                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/40 font-bold">TECH</span> · PIA</div>
-                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/40 font-bold">TECH</span> · VR/AR</div>
-                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/40 font-bold">TECH</span> · Nootropics</div>
-                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/40 font-bold">SYS</span> · Ensemble</div>
-                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/40 font-bold">SYS</span> · CBRN Barrier</div>
-                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/40 font-bold">WPN</span> · Caseless Rifle</div>
-                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/40 font-bold">WPN</span> · Air-Burst Munitions</div>
-                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/40 font-bold">SYS</span> · LBU Exoskeleton</div>
-                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/40 font-bold">SYS</span> · MAC Chassis</div>
-                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/40 font-bold">SYS</span> · Cognitive Nets</div>
-                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/40 font-bold">SYS</span> · Nano-Antennas</div>
-                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/40 font-bold">SYS</span> · Visor Display</div>
-                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/40 font-bold">SYS</span> · Biometric ID</div>
-                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/40 font-bold">SYS</span> · Swarm Robotics</div>
-                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/40 font-bold">SYS</span> · Hybrid Generator</div>
+                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/60 font-bold">ORG</span> · NSRDEC</div>
+                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/60 font-bold">ORG</span> · RDECOM</div>
+                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/60 font-bold">ORG</span> · PEO-Soldier</div>
+                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/60 font-bold">CONCEPT</span> · Future Soldier 2030</div>
+                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/60 font-bold">ENTITY</span> · Warfighter</div>
+                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/60 font-bold">DOMAIN</span> · HPT</div>
+                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/60 font-bold">DOMAIN</span> · Protection</div>
+                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/60 font-bold">DOMAIN</span> · Lethality</div>
+                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/60 font-bold">DOMAIN</span> · Mobility</div>
+                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/60 font-bold">DOMAIN</span> · Network</div>
+                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/60 font-bold">DOMAIN</span> · Sensors</div>
+                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/60 font-bold">DOMAIN</span> · Power</div>
+                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/60 font-bold">TECH</span> · PIA</div>
+                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/60 font-bold">TECH</span> · VR/AR</div>
+                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/60 font-bold">TECH</span> · Nootropics</div>
+                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/60 font-bold">SYS</span> · Ensemble</div>
+                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/60 font-bold">SYS</span> · CBRN Barrier</div>
+                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/60 font-bold">WPN</span> · Caseless Rifle</div>
+                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/60 font-bold">WPN</span> · Air-Burst Munitions</div>
+                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/60 font-bold">SYS</span> · LBU Exoskeleton</div>
+                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/60 font-bold">SYS</span> · MAC Chassis</div>
+                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/60 font-bold">SYS</span> · Cognitive Nets</div>
+                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/60 font-bold">SYS</span> · Nano-Antennas</div>
+                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/60 font-bold">SYS</span> · Visor Display</div>
+                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/60 font-bold">SYS</span> · Biometric ID</div>
+                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/60 font-bold">SYS</span> · Swarm Robotics</div>
+                            <div class="raised-panel rounded-lg px-3 py-2"><span class="text-gov-ink/60 font-bold">SYS</span> · Hybrid Generator</div>
                         </div>
                     </div>
 
@@ -546,33 +592,33 @@
                     <div>
                         <h3 class="font-display text-2xl font-black uppercase tracking-tight text-gov-ink/80 mb-4">Edge Ledger — Selected Relations</h3>
                         <div class="grid md:grid-cols-2 gap-2 font-mono text-xs text-gov-ink/75">
-                            <div class="stamped-cell"><span class="font-black text-gov-ink/50">leadsDevelopmentOf</span> · NSRDEC → FS2030</div>
-                            <div class="stamped-cell"><span class="font-black text-gov-ink/50">contributesTo</span> · RDECOM → FS2030</div>
-                            <div class="stamped-cell"><span class="font-black text-gov-ink/50">contributesTo</span> · PEO-Soldier → FS2030</div>
-                            <div class="stamped-cell"><span class="font-black text-gov-ink/50">definesCoreArea</span> · FS2030 → HPT</div>
-                            <div class="stamped-cell"><span class="font-black text-gov-ink/50">definesCoreArea</span> · FS2030 → Protection</div>
-                            <div class="stamped-cell"><span class="font-black text-gov-ink/50">definesCoreArea</span> · FS2030 → Lethality</div>
-                            <div class="stamped-cell"><span class="font-black text-gov-ink/50">utilizes</span> · HPT → PIA</div>
-                            <div class="stamped-cell"><span class="font-black text-gov-ink/50">utilizes</span> · HPT → VR/AR</div>
-                            <div class="stamped-cell"><span class="font-black text-gov-ink/50">monitorsStateOf</span> · PIA → Warfighter</div>
-                            <div class="stamped-cell"><span class="font-black text-gov-ink/50">implementedVia</span> · Protection → Ensemble</div>
-                            <div class="stamped-cell"><span class="font-black text-gov-ink/50">providesInherent</span> · Ensemble → CBRN</div>
-                            <div class="stamped-cell"><span class="font-black text-gov-ink/50">wornBy</span> · Ensemble → Warfighter</div>
-                            <div class="stamped-cell"><span class="font-black text-gov-ink/50">deploys</span> · Lethality → Caseless Rifle</div>
-                            <div class="stamped-cell"><span class="font-black text-gov-ink/50">deploys</span> · Lethality → Air-Burst</div>
-                            <div class="stamped-cell"><span class="font-black text-gov-ink/50">requires</span> · Mobility → LBU</div>
-                            <div class="stamped-cell"><span class="font-black text-gov-ink/50">interlocksWith</span> · LBU → MAC</div>
-                            <div class="stamped-cell"><span class="font-black text-gov-ink/50">supportsLoadFor</span> · LBU → Warfighter</div>
-                            <div class="stamped-cell"><span class="font-black text-gov-ink/50">operatesVia</span> · Network → Cognitive Nets</div>
-                            <div class="stamped-cell"><span class="font-black text-gov-ink/50">transmitsThrough</span> · Cognitive Nets → Antennas</div>
-                            <div class="stamped-cell"><span class="font-black text-gov-ink/50">integrates</span> · Sensors → Visor</div>
-                            <div class="stamped-cell"><span class="font-black text-gov-ink/50">integrates</span> · Sensors → Biometric</div>
-                            <div class="stamped-cell"><span class="font-black text-gov-ink/50">tasks</span> · Sensors → Swarm Robots</div>
-                            <div class="stamped-cell"><span class="font-black text-gov-ink/50">generatesFrom</span> · Power → Hybrid Generator</div>
-                            <div class="stamped-cell"><span class="font-black text-gov-ink/50">distributesVia</span> · Generator → Wireless</div>
-                            <div class="stamped-cell"><span class="font-black text-gov-ink/50">displaysAimPointFor</span> · Visor → Caseless Rifle</div>
-                            <div class="stamped-cell"><span class="font-black text-gov-ink/50">embeds</span> · Ensemble → Antennas</div>
-                            <div class="stamped-cell"><span class="font-black text-gov-ink/50">poweredBy</span> · LBU → Hybrid Generator</div>
+                            <div class="stamped-cell"><span class="font-black text-gov-ink/65">leadsDevelopmentOf</span> · NSRDEC → FS2030</div>
+                            <div class="stamped-cell"><span class="font-black text-gov-ink/65">contributesTo</span> · RDECOM → FS2030</div>
+                            <div class="stamped-cell"><span class="font-black text-gov-ink/65">contributesTo</span> · PEO-Soldier → FS2030</div>
+                            <div class="stamped-cell"><span class="font-black text-gov-ink/65">definesCoreArea</span> · FS2030 → HPT</div>
+                            <div class="stamped-cell"><span class="font-black text-gov-ink/65">definesCoreArea</span> · FS2030 → Protection</div>
+                            <div class="stamped-cell"><span class="font-black text-gov-ink/65">definesCoreArea</span> · FS2030 → Lethality</div>
+                            <div class="stamped-cell"><span class="font-black text-gov-ink/65">utilizes</span> · HPT → PIA</div>
+                            <div class="stamped-cell"><span class="font-black text-gov-ink/65">utilizes</span> · HPT → VR/AR</div>
+                            <div class="stamped-cell"><span class="font-black text-gov-ink/65">monitorsStateOf</span> · PIA → Warfighter</div>
+                            <div class="stamped-cell"><span class="font-black text-gov-ink/65">implementedVia</span> · Protection → Ensemble</div>
+                            <div class="stamped-cell"><span class="font-black text-gov-ink/65">providesInherent</span> · Ensemble → CBRN</div>
+                            <div class="stamped-cell"><span class="font-black text-gov-ink/65">wornBy</span> · Ensemble → Warfighter</div>
+                            <div class="stamped-cell"><span class="font-black text-gov-ink/65">deploys</span> · Lethality → Caseless Rifle</div>
+                            <div class="stamped-cell"><span class="font-black text-gov-ink/65">deploys</span> · Lethality → Air-Burst</div>
+                            <div class="stamped-cell"><span class="font-black text-gov-ink/65">requires</span> · Mobility → LBU</div>
+                            <div class="stamped-cell"><span class="font-black text-gov-ink/65">interlocksWith</span> · LBU → MAC</div>
+                            <div class="stamped-cell"><span class="font-black text-gov-ink/65">supportsLoadFor</span> · LBU → Warfighter</div>
+                            <div class="stamped-cell"><span class="font-black text-gov-ink/65">operatesVia</span> · Network → Cognitive Nets</div>
+                            <div class="stamped-cell"><span class="font-black text-gov-ink/65">transmitsThrough</span> · Cognitive Nets → Antennas</div>
+                            <div class="stamped-cell"><span class="font-black text-gov-ink/65">integrates</span> · Sensors → Visor</div>
+                            <div class="stamped-cell"><span class="font-black text-gov-ink/65">integrates</span> · Sensors → Biometric</div>
+                            <div class="stamped-cell"><span class="font-black text-gov-ink/65">tasks</span> · Sensors → Swarm Robots</div>
+                            <div class="stamped-cell"><span class="font-black text-gov-ink/65">generatesFrom</span> · Power → Hybrid Generator</div>
+                            <div class="stamped-cell"><span class="font-black text-gov-ink/65">distributesVia</span> · Generator → Wireless</div>
+                            <div class="stamped-cell"><span class="font-black text-gov-ink/65">displaysAimPointFor</span> · Visor → Caseless Rifle</div>
+                            <div class="stamped-cell"><span class="font-black text-gov-ink/65">embeds</span> · Ensemble → Antennas</div>
+                            <div class="stamped-cell"><span class="font-black text-gov-ink/65">poweredBy</span> · LBU → Hybrid Generator</div>
                         </div>
                     </div>
                 </section>
@@ -580,15 +626,15 @@
             </main>
 
             <!-- Design token specimen -->
-            <section aria-label="Design tokens" class="space-y-6 border-t-4 border-gov-plastic-dark pt-8">
+            <section id="tokens-specimen" aria-label="Design tokens" class="space-y-6 border-t-4 border-gov-plastic-dark pt-8 scroll-mt-32">
                 <div class="flex items-baseline justify-between">
                     <h2 class="font-display text-3xl md:text-4xl font-black uppercase tracking-tight text-gov-ink/80">Token Specimen</h2>
-                    <span class="font-mono text-[10px] uppercase tracking-widest text-gov-ink/40 font-bold">Civic Plastic · v1.0</span>
+                    <span class="font-mono text-[10px] uppercase tracking-widest text-gov-ink/60 font-bold">Civic Plastic · v1.0</span>
                 </div>
 
                 <!-- Color tokens -->
                 <div>
-                    <div class="font-mono text-[10px] uppercase tracking-widest text-gov-ink/40 font-bold mb-3">Color Tokens</div>
+                    <div class="font-mono text-[10px] uppercase tracking-widest text-gov-ink/60 font-bold mb-3">Color Tokens</div>
                     <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-3">
                         <div class="swatch-row">
                             <div class="swatch" style="background:#EAEAEA"></div>
@@ -636,7 +682,7 @@
                 <!-- Type ramp -->
                 <div class="grid md:grid-cols-2 gap-8">
                     <div>
-                        <div class="font-mono text-[10px] uppercase tracking-widest text-gov-ink/40 font-bold mb-3">Display · Space Grotesk</div>
+                        <div class="font-mono text-[10px] uppercase tracking-widest text-gov-ink/60 font-bold mb-3">Display · Space Grotesk</div>
                         <div class="space-y-3">
                             <div class="font-display font-black text-6xl leading-none tracking-tighter text-gov-ink/85">Aa 72px</div>
                             <div class="font-display font-black text-4xl leading-none tracking-tight text-gov-ink/80">Aa 36px</div>
@@ -645,19 +691,19 @@
                         </div>
                     </div>
                     <div>
-                        <div class="font-mono text-[10px] uppercase tracking-widest text-gov-ink/40 font-bold mb-3">Mono · VT323</div>
+                        <div class="font-mono text-[10px] uppercase tracking-widest text-gov-ink/60 font-bold mb-3">Mono · VT323</div>
                         <div class="space-y-3 font-mono">
                             <div class="text-3xl text-gov-ink/80">DOM-0123456789</div>
                             <div class="text-xl text-gov-ink/75">SYS://NSRDEC-2009</div>
                             <div class="text-sm uppercase tracking-widest text-gov-ink/60">Eyebrow · Caption · 14px</div>
-                            <div class="text-xs uppercase tracking-widest text-gov-ink/45">Micro Tag · 12px</div>
+                            <div class="text-xs uppercase tracking-widest text-gov-ink/60">Micro Tag · 12px</div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Component anatomy -->
                 <div>
-                    <div class="font-mono text-[10px] uppercase tracking-widest text-gov-ink/40 font-bold mb-3">Primitive Anatomy</div>
+                    <div class="font-mono text-[10px] uppercase tracking-widest text-gov-ink/60 font-bold mb-3">Primitive Anatomy</div>
                     <div class="grid md:grid-cols-4 gap-4">
                         <div class="raised-panel p-4 rounded-xl">
                             <div class="swatch-label mb-2">Raised Panel</div>
@@ -680,10 +726,29 @@
                 </div>
             </section>
 
-            <footer class="font-mono text-xs uppercase tracking-widest text-gov-ink/40 font-bold flex justify-between border-t-2 border-gov-plastic-dark pt-4">
+            <!-- Conversion / exits -->
+            <section aria-label="Next steps" class="grid md:grid-cols-3 gap-4 border-t-2 border-gov-plastic-dark pt-8">
+                <a href="mailto:taoconrad@gmail.com?subject=Future%20Soldier%20Design%20System" class="raised-panel rounded-xl p-5 hover:translate-y-[-2px] transition-transform group">
+                    <div class="font-mono text-[10px] uppercase tracking-widest text-gov-ink/60 font-bold mb-2">01 · Inquire</div>
+                    <div class="font-display text-xl font-bold text-gov-ink/85">Request case study</div>
+                    <div class="font-mono text-xs text-gov-ink/65 mt-2">taoconrad@gmail.com →</div>
+                </a>
+                <a href="https://github.com/augustave/SOLDIER-1" target="_blank" rel="noopener" class="raised-panel rounded-xl p-5 hover:translate-y-[-2px] transition-transform">
+                    <div class="font-mono text-[10px] uppercase tracking-widest text-gov-ink/60 font-bold mb-2">02 · Inspect</div>
+                    <div class="font-display text-xl font-bold text-gov-ink/85">View source on GitHub</div>
+                    <div class="font-mono text-xs text-gov-ink/65 mt-2">augustave/SOLDIER-1 →</div>
+                </a>
+                <a href="#tokens-specimen" class="raised-panel rounded-xl p-5 hover:translate-y-[-2px] transition-transform">
+                    <div class="font-mono text-[10px] uppercase tracking-widest text-gov-ink/60 font-bold mb-2">03 · Examine</div>
+                    <div class="font-display text-xl font-bold text-gov-ink/85">Design tokens</div>
+                    <div class="font-mono text-xs text-gov-ink/65 mt-2">Jump to specimen ↓</div>
+                </a>
+            </section>
+
+            <footer class="font-mono text-xs uppercase tracking-widest text-gov-ink/65 font-bold flex flex-col md:flex-row md:justify-between gap-2 border-t-2 border-gov-plastic-dark pt-4">
                 <span>Civic Plastic · v1.0</span>
-                <span>NSRDEC RDECOM · 02|2009</span>
-                <span>Hardware Build 899A-231450</span>
+                <span class="text-gov-ink/55 normal-case tracking-normal font-normal text-[11px]">Design exercise · not affiliated with DoD, US Army, or NSRDEC · public source: d2409ad840e3.pdf (2009)</span>
+                <span>Build 899A-231450</span>
             </footer>
         </div>
     </div>
@@ -721,7 +786,7 @@
                         <p class="font-display text-[10px] uppercase tracking-widest font-bold">Form FS-2030<br>NSRDEC Soldier Sys. Domain</p>
                     </div>
                     <div class="w-1/3 text-center">
-                        <h1 class="font-serif text-5xl md:text-6xl font-bold leading-[0.95] tracking-tight">Future Soldier</h1>
+                        <p class="font-serif text-5xl md:text-6xl font-bold leading-[0.95] tracking-tight" role="heading" aria-level="2">Future Soldier</p>
                         <p class="font-display text-xl font-bold uppercase tracking-widest mt-2 border-t border-gov-blue-ink pt-2 inline-block">2030 Initiative</p>
                     </div>
                     <div class="w-1/3 text-right">
@@ -1040,6 +1105,6 @@
         </div>
     </div>
 
-    <script type="module" src="scripts/main.js"></script>
+    <script type="module" src="scripts/main.js?v=8"></script>
 </body>
 </html>

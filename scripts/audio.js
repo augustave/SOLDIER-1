@@ -1,8 +1,26 @@
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const STORAGE_KEY = 'soldier-1:audio-muted';
+const initialMuted = reducedMotion || localStorage.getItem(STORAGE_KEY) === '1';
+
+let muted = initialMuted;
 let audioCtx;
 
+export function isMuted() { return muted; }
+
+export function setMuted(next) {
+    muted = next;
+    localStorage.setItem(STORAGE_KEY, next ? '1' : '0');
+    document.dispatchEvent(new CustomEvent('audio-mute-change', { detail: { muted } }));
+}
+
+export function toggleMuted() {
+    setMuted(!muted);
+    return muted;
+}
+
 function ctx() {
-    if (reducedMotion) return null;
+    if (muted) return null;
     if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     if (audioCtx.state === 'suspended') audioCtx.resume();
     return audioCtx;

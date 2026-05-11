@@ -178,7 +178,7 @@
     font-size: 0.7rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: rgba(17,19,20,0.5);
+    color: rgba(17,19,20,0.65);
     margin-top: 0.5rem;
 }
 
@@ -199,7 +199,7 @@
     font-weight: 800;
     font-size: 0.75rem;
     letter-spacing: 0.2em;
-    color: rgba(17,19,20,0.45);
+    color: rgba(17,19,20,0.62);
 }
 .spec-card .title {
     font-family: 'Space Grotesk', sans-serif;
@@ -398,7 +398,7 @@
     font-weight: 700;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: rgba(17,19,20,0.5);
+    color: rgba(17,19,20,0.65);
     text-align: center;
     margin-top: 0.5rem;
 }
@@ -443,7 +443,7 @@
 }
 .arch-node .code {
     font-size: 0.6rem;
-    color: rgba(17,19,20,0.4);
+    color: rgba(17,19,20,0.62);
     letter-spacing: 0.2em;
     margin-bottom: 0.25rem;
 }
@@ -456,13 +456,16 @@
 
 /* === Heatmap === */
 .heatmap {
-    display: grid;
-    grid-template-columns: 7rem repeat(7, 1fr);
-    gap: 2px;
+    border-collapse: separate;
+    border-spacing: 2px;
+    width: 100%;
+    table-layout: fixed;
     font-family: 'VT323', monospace;
-    font-size: 0.65rem;
+    font-size: 0.85rem;
     font-weight: 700;
 }
+.heatmap thead td:first-child,
+.heatmap th[scope="row"] { width: 7rem; }
 .heatmap .hcell {
     padding: 0.5rem;
     text-align: center;
@@ -475,8 +478,8 @@
     text-transform: uppercase;
     letter-spacing: 0.1em;
 }
-.heatmap .hhead { font-weight: 800; color: rgba(17,19,20,0.45); }
-.heatmap .hrow { text-align: right; padding-right: 0.75rem; font-weight: 800; color: rgba(17,19,20,0.45); }
+.heatmap .hhead { font-weight: 800; color: rgba(17,19,20,0.62); }
+.heatmap .hrow { text-align: right; padding-right: 0.75rem; font-weight: 800; color: rgba(17,19,20,0.62); }
 .heatmap .h0 { background: #EAEAEA; color: rgba(17,19,20,0.2); }
 .heatmap .h1 { background: linear-gradient(135deg, #DCE7DC, #D1E0D1); color: rgba(17,19,20,0.65); }
 .heatmap .h2 { background: linear-gradient(135deg, #B6D6B6, #A0CCA0); color: rgba(17,19,20,0.8); }
@@ -501,7 +504,7 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.15em;
-    color: rgba(17,19,20,0.55);
+    color: rgba(17,19,20,0.65);
 }
 .swatch-hex {
     font-family: 'VT323', monospace;

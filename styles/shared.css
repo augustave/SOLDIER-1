@@ -7,6 +7,27 @@ html {
 
 .no-select { user-select: none; }
 
+/* === Skip link === */
+.skip-link {
+    position: fixed;
+    top: 8px;
+    left: 8px;
+    z-index: 200;
+    padding: 0.5rem 1rem;
+    background: #111314;
+    color: #EAEAEA;
+    font-family: 'VT323', monospace;
+    font-size: 0.9rem;
+    text-decoration: none;
+    border: 2px solid #22c55e;
+    transform: translateY(-200%);
+    transition: transform 0.15s ease;
+}
+.skip-link:focus {
+    transform: translateY(0);
+    outline: none;
+}
+
 .sr-only {
     position: absolute;
     width: 1px; height: 1px;
